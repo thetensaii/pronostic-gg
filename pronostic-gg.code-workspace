@@ -1,0 +1,12 @@
+{
+  "folders": [
+    {
+      "path": "./",
+      "name": "_root"
+    },
+    {
+      "path": "apps/front",
+      "name": "Webapp"
+    },
+  ]
+}
