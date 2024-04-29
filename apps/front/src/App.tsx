@@ -1,7 +1,12 @@
+import { NavigationBar } from "./navigation/ui/organism/NavigationBar"
+
 function App() {
   return (
     <div>
-      <h1>Pronostic.gg</h1>
+      <NavigationBar />
+      <div className="container">
+        CONTENT
+      </div>
     </div>
   )
 }
