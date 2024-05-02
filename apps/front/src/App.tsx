@@ -1,10 +1,10 @@
- 
+import { css } from "../styled-system/css"
 
 function App() {
   return (
     <div>
       <div className="container">
-        CONTENT
+        <div className={css({ fontSize: "2xl", fontWeight: 'bold' })}>Hello 🐼!</div>
       </div>
     </div>
   )
