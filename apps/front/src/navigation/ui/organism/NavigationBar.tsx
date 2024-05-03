@@ -7,7 +7,7 @@ export const NavigationBar = () => {
     <nav className={css({ width: 'full', display: 'flex', justifyContent: 'space-between' })}>
       <Text as='p'>Pronostic.gg</Text>
       <ul className={css({ display: 'flex', justifyContent: 'space-between', gap: '12' })}>
-        <NavigationLink to="/" >
+        <NavigationLink to="/pronos" >
           Mes pronos
         </NavigationLink>
         <NavigationLink to="/resultats">

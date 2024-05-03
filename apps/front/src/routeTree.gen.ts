@@ -11,28 +11,40 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as IndexImport } from './routes/index'
+import { Route as PronosImport } from './routes/_pronos'
+import { Route as PronosPronosCompetitionIdImport } from './routes/_pronos/pronos.$competitionId'
 
 // Create/Update Routes
 
-const IndexRoute = IndexImport.update({
-  path: '/',
+const PronosRoute = PronosImport.update({
+  id: '/_pronos',
   getParentRoute: () => rootRoute,
+} as any)
+
+const PronosPronosCompetitionIdRoute = PronosPronosCompetitionIdImport.update({
+  path: '/pronos/$competitionId',
+  getParentRoute: () => PronosRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      preLoaderRoute: typeof IndexImport
+    '/_pronos': {
+      preLoaderRoute: typeof PronosImport
       parentRoute: typeof rootRoute
+    }
+    '/_pronos/pronos/$competitionId': {
+      preLoaderRoute: typeof PronosPronosCompetitionIdImport
+      parentRoute: typeof PronosImport
     }
   }
 }
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren([IndexRoute])
+export const routeTree = rootRoute.addChildren([
+  PronosRoute.addChildren([PronosPronosCompetitionIdRoute]),
+])
 
 /* prettier-ignore-end */
