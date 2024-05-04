@@ -3,7 +3,7 @@ import { CompetitionLink } from "../atom/CompetitionLink"
 
 export const PronosNavigationSidebar = () => {
   return (
-    <Stack>
+    <Stack gap='4'>
       <CompetitionLink to='/pronos/lfl'>LFL</CompetitionLink>
       <CompetitionLink to='/pronos/lec'>LEC</CompetitionLink>
       <CompetitionLink to='/pronos/vct-emea'>VCT EMEA</CompetitionLink>
