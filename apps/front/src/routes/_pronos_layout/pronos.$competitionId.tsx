@@ -1,10 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { css } from 'styled-system/css'
 import { Center, VStack } from 'styled-system/jsx'
+import { Game } from '~/pronos/ui/molecule/Game'
 import { Text } from "~/components/ui/text"
-import { GameResult } from '~/results/ui/molecule/GameResult'
 
-export const Route = createFileRoute('/_resultats/resultats/$competitionId')({
+export const Route = createFileRoute('/_pronos_layout/pronos/$competitionId')({
   component: () => (
     <div className={css({ w: 'full'})}>
       <Center>
@@ -18,8 +18,8 @@ export const Route = createFileRoute('/_resultats/resultats/$competitionId')({
             }))}    
           </Text>
           <VStack gap='6'>
-            <GameResult isPronoGood={true} teamA={{name: "Équipe A"}} teamAScore={1} teamB={{name: "Équipe B"}} teamBScore={0} dateTime={new Date()} />
-            <GameResult isPronoGood={false} teamA={{name: "Équipe C"}} teamAScore={0} teamB={{name: "Équipe D"}} teamBScore={1} dateTime={new Date()} />
+            <Game teamA={{name: "Équipe A"}} teamB={{name: "Équipe B"}} dateTime={new Date()} />
+            <Game teamA={{name: "Équipe C"}} teamB={{name: "Équipe D"}} dateTime={new Date()} />
           </VStack>
         </VStack>
       </Center> 

@@ -11,53 +11,54 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as ResultatsImport } from './routes/_resultats'
-import { Route as PronosImport } from './routes/_pronos'
-import { Route as ResultatsResultatsCompetitionIdImport } from './routes/_resultats/resultats.$competitionId'
-import { Route as PronosPronosCompetitionIdImport } from './routes/_pronos/pronos.$competitionId'
+import { Route as ResultatslayoutImport } from './routes/_resultats_layout'
+import { Route as PronoslayoutImport } from './routes/_pronos_layout'
+import { Route as ResultatslayoutResultatsCompetitionIdImport } from './routes/_resultats_layout/resultats.$competitionId'
+import { Route as PronoslayoutPronosCompetitionIdImport } from './routes/_pronos_layout/pronos.$competitionId'
 
 // Create/Update Routes
 
-const ResultatsRoute = ResultatsImport.update({
-  id: '/_resultats',
+const ResultatslayoutRoute = ResultatslayoutImport.update({
+  id: '/_resultats_layout',
   getParentRoute: () => rootRoute,
 } as any)
 
-const PronosRoute = PronosImport.update({
-  id: '/_pronos',
+const PronoslayoutRoute = PronoslayoutImport.update({
+  id: '/_pronos_layout',
   getParentRoute: () => rootRoute,
 } as any)
 
-const ResultatsResultatsCompetitionIdRoute =
-  ResultatsResultatsCompetitionIdImport.update({
+const ResultatslayoutResultatsCompetitionIdRoute =
+  ResultatslayoutResultatsCompetitionIdImport.update({
     path: '/resultats/$competitionId',
-    getParentRoute: () => ResultatsRoute,
+    getParentRoute: () => ResultatslayoutRoute,
   } as any)
 
-const PronosPronosCompetitionIdRoute = PronosPronosCompetitionIdImport.update({
-  path: '/pronos/$competitionId',
-  getParentRoute: () => PronosRoute,
-} as any)
+const PronoslayoutPronosCompetitionIdRoute =
+  PronoslayoutPronosCompetitionIdImport.update({
+    path: '/pronos/$competitionId',
+    getParentRoute: () => PronoslayoutRoute,
+  } as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/_pronos': {
-      preLoaderRoute: typeof PronosImport
+    '/_pronos_layout': {
+      preLoaderRoute: typeof PronoslayoutImport
       parentRoute: typeof rootRoute
     }
-    '/_resultats': {
-      preLoaderRoute: typeof ResultatsImport
+    '/_resultats_layout': {
+      preLoaderRoute: typeof ResultatslayoutImport
       parentRoute: typeof rootRoute
     }
-    '/_pronos/pronos/$competitionId': {
-      preLoaderRoute: typeof PronosPronosCompetitionIdImport
-      parentRoute: typeof PronosImport
+    '/_pronos_layout/pronos/$competitionId': {
+      preLoaderRoute: typeof PronoslayoutPronosCompetitionIdImport
+      parentRoute: typeof PronoslayoutImport
     }
-    '/_resultats/resultats/$competitionId': {
-      preLoaderRoute: typeof ResultatsResultatsCompetitionIdImport
-      parentRoute: typeof ResultatsImport
+    '/_resultats_layout/resultats/$competitionId': {
+      preLoaderRoute: typeof ResultatslayoutResultatsCompetitionIdImport
+      parentRoute: typeof ResultatslayoutImport
     }
   }
 }
@@ -65,8 +66,10 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export const routeTree = rootRoute.addChildren([
-  PronosRoute.addChildren([PronosPronosCompetitionIdRoute]),
-  ResultatsRoute.addChildren([ResultatsResultatsCompetitionIdRoute]),
+  PronoslayoutRoute.addChildren([PronoslayoutPronosCompetitionIdRoute]),
+  ResultatslayoutRoute.addChildren([
+    ResultatslayoutResultatsCompetitionIdRoute,
+  ]),
 ])
 
 /* prettier-ignore-end */
