@@ -11,7 +11,7 @@ const LeagueRanking = ( ) => {
   return (
     <VStack gap='6' className={css({ w: 'full'})}>
       <Heading as='h1' size='2xl'>Classement</Heading>
-      <CurrentPlayerRow position={1} username={'Jordan'} points={5} />
+      <CurrentPlayerRow {...playersList[0]} />
       <RankingTable players={playersList} />
     </VStack>
   )  
@@ -25,7 +25,7 @@ const playersList: Player[] = [
   {
     position: 1,
     username: "Jordan",
-    points: 5
+    points: 8
   },
   {
     position: 2,

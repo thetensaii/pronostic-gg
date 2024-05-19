@@ -6,7 +6,7 @@ import { Text } from "~/components/ui/text"
 
 export const Route = createFileRoute('/pronos/_pronos_layout/$competitionId')({
   component: () => (
-    <div className={css({ w: 'full'})}>
+    <div className={css({ w: 'full' })}>
       <Center>
         <VStack>
           <Text as="p">

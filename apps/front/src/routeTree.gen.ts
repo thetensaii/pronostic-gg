@@ -13,9 +13,12 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as LiguesIndexImport } from './routes/ligues/index'
 import { Route as ClassementIndexImport } from './routes/classement/index'
 import { Route as ResultatsResultatslayoutImport } from './routes/resultats/_resultats_layout'
 import { Route as PronosPronoslayoutImport } from './routes/pronos/_pronos_layout'
+import { Route as LiguesJoinImport } from './routes/ligues/join'
+import { Route as LiguesCreateImport } from './routes/ligues/create'
 import { Route as ResultatsResultatslayoutIndexImport } from './routes/resultats/_resultats_layout.index'
 import { Route as PronosPronoslayoutIndexImport } from './routes/pronos/_pronos_layout.index'
 import { Route as ResultatsResultatslayoutCompetitionIdImport } from './routes/resultats/_resultats_layout.$competitionId'
@@ -49,6 +52,11 @@ const ClassementCompetitionIdRoute = ClassementCompetitionIdImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const LiguesIndexRoute = LiguesIndexImport.update({
+  path: '/ligues/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const ClassementIndexRoute = ClassementIndexImport.update({
   path: '/classement/',
   getParentRoute: () => rootRoute,
@@ -62,6 +70,16 @@ const ResultatsResultatslayoutRoute = ResultatsResultatslayoutImport.update({
 const PronosPronoslayoutRoute = PronosPronoslayoutImport.update({
   id: '/_pronos_layout',
   getParentRoute: () => PronosRoute,
+} as any)
+
+const LiguesJoinRoute = LiguesJoinImport.update({
+  path: '/ligues/join',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const LiguesCreateRoute = LiguesCreateImport.update({
+  path: '/ligues/create',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const ResultatsResultatslayoutIndexRoute =
@@ -109,6 +127,14 @@ const ClassementCompetitionIdClassementlayoutLeagueIdRoute =
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/ligues/create': {
+      preLoaderRoute: typeof LiguesCreateImport
+      parentRoute: typeof rootRoute
+    }
+    '/ligues/join': {
+      preLoaderRoute: typeof LiguesJoinImport
+      parentRoute: typeof rootRoute
+    }
     '/pronos': {
       preLoaderRoute: typeof PronosImport
       parentRoute: typeof rootRoute
@@ -127,6 +153,10 @@ declare module '@tanstack/react-router' {
     }
     '/classement/': {
       preLoaderRoute: typeof ClassementIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/ligues/': {
+      preLoaderRoute: typeof LiguesIndexImport
       parentRoute: typeof rootRoute
     }
     '/classement/$competitionId': {
@@ -167,6 +197,8 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export const routeTree = rootRoute.addChildren([
+  LiguesCreateRoute,
+  LiguesJoinRoute,
   PronosRoute.addChildren([
     PronosPronoslayoutRoute.addChildren([
       PronosPronoslayoutCompetitionIdRoute,
@@ -180,6 +212,7 @@ export const routeTree = rootRoute.addChildren([
     ]),
   ]),
   ClassementIndexRoute,
+  LiguesIndexRoute,
   ClassementCompetitionIdRoute.addChildren([
     ClassementCompetitionIdClassementlayoutRoute.addChildren([
       ClassementCompetitionIdClassementlayoutLeagueIdRoute,
