@@ -3,10 +3,8 @@ import { css } from 'styled-system/css'
 import { Container, VStack } from 'styled-system/jsx'
 import { FormLabel } from '~/components/ui/form-label'
 import { Input } from '~/components/ui/input'
-import * as Combobox from '~/components/ui/combobox'
-import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react'
-import { IconButton } from '~/components/ui/icon-button'
 import { Button } from '~/components/ui/button'
+import { Dropdown } from '~/components/atom/Dropdown'
 
 export const Route = createFileRoute('/ligues/create')({
   component: () => 
@@ -17,41 +15,18 @@ export const Route = createFileRoute('/ligues/create')({
           <Input id="league-name" placeholder='Nom de la ligue'/>
         </VStack>
 
-        <Combobox.Root items={teamsOptions}>
-          <Combobox.Label>Sur quelle compétition veux-tu faire ta ligue ?</Combobox.Label>
-          <Combobox.Control>
-            <Combobox.Input placeholder="Compétition" asChild>
-              <Input />
-            </Combobox.Input>
-            <Combobox.Trigger asChild>
-              <IconButton variant="link" aria-label="open" size="xs">
-                <ChevronsUpDownIcon />
-              </IconButton>
-            </Combobox.Trigger>
-          </Combobox.Control>
-          <Combobox.Positioner>
-            <Combobox.Content>
-              <Combobox.ItemGroup id="framework">
-                <Combobox.ItemGroupLabel htmlFor="framework">Compétitions</Combobox.ItemGroupLabel>
-                  {teamsOptions.map((item) => (
-                    <Combobox.Item key={item.value} item={item}>
-                      <Combobox.ItemText>{item.label}</Combobox.ItemText>
-                      <Combobox.ItemIndicator>
-                        <CheckIcon />
-                      </Combobox.ItemIndicator>
-                    </Combobox.Item>
-                  ))}
-              </Combobox.ItemGroup>
-            </Combobox.Content>
-          </Combobox.Positioner>
-        </Combobox.Root>
+        <Dropdown 
+          label="Sur quelle compétition veux-tu faire ta ligue ?"
+          placeholder="Compétitions"
+          options={competitionsList}
+        />
 
         <Button>Créer la ligue</Button>
       </VStack>
     </Container>
 })
 
-const teamsOptions = [
+const competitionsList =  [
   {
     label: "LFL",
     value: "lfl",

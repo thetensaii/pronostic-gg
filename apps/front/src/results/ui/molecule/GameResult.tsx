@@ -5,7 +5,6 @@ import { Score } from "~/results/ui/atom/Score"
 import {Check, X} from 'lucide-react'
 
 type Props = {
-  dateTime: Date,
   teamA: Team,
   teamB: Team,
   teamAScore: number,

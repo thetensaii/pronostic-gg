@@ -13,6 +13,7 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as ProfilIndexImport } from './routes/profil/index'
 import { Route as LiguesIndexImport } from './routes/ligues/index'
 import { Route as ClassementIndexImport } from './routes/classement/index'
 import { Route as ResultatsResultatslayoutImport } from './routes/resultats/_resultats_layout'
@@ -49,6 +50,11 @@ const PronosRoute = PronosImport.update({
 
 const ClassementCompetitionIdRoute = ClassementCompetitionIdImport.update({
   path: '/classement/$competitionId',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ProfilIndexRoute = ProfilIndexImport.update({
+  path: '/profil/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -159,6 +165,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LiguesIndexImport
       parentRoute: typeof rootRoute
     }
+    '/profil/': {
+      preLoaderRoute: typeof ProfilIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/classement/$competitionId': {
       preLoaderRoute: typeof ClassementCompetitionIdImport
       parentRoute: typeof rootRoute
@@ -213,6 +223,7 @@ export const routeTree = rootRoute.addChildren([
   ]),
   ClassementIndexRoute,
   LiguesIndexRoute,
+  ProfilIndexRoute,
   ClassementCompetitionIdRoute.addChildren([
     ClassementCompetitionIdClassementlayoutRoute.addChildren([
       ClassementCompetitionIdClassementlayoutLeagueIdRoute,

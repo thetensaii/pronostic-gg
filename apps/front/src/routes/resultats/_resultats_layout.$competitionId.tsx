@@ -18,8 +18,8 @@ export const Route = createFileRoute('/resultats/_resultats_layout/$competitionI
             }))}    
           </Text>
           <VStack gap='6'>
-            <GameResult isPronoGood={true} teamA={{name: "Équipe A"}} teamAScore={1} teamB={{name: "Équipe B"}} teamBScore={0} dateTime={new Date()} />
-            <GameResult isPronoGood={false} teamA={{name: "Équipe C"}} teamAScore={0} teamB={{name: "Équipe D"}} teamBScore={1} dateTime={new Date()} />
+            <GameResult isPronoGood={true} teamA={{name: "Équipe A"}} teamAScore={1} teamB={{name: "Équipe B"}} teamBScore={0} />
+            <GameResult isPronoGood={false} teamA={{name: "Équipe C"}} teamAScore={0} teamB={{name: "Équipe D"}} teamBScore={1} />
           </VStack>
         </VStack>
       </Center> 
