@@ -8,5 +8,9 @@
       "path": "apps/front",
       "name": "Webapp"
     },
+    {
+      "path": "apps/back",
+      "name": "Server"
+    },
   ]
 }
