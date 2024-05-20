@@ -13,7 +13,9 @@
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "db:up": "docker compose up -d",
-    "db:down": "docker compose down"
+    "db:down": "docker compose down",
+    "db:migrations:run": "node ace migration:run",
+    "db:migrations:rollback": "node ace migration:rollback"
   },
   "imports": {
     "#controllers/*": "./app/controllers/*.js",
