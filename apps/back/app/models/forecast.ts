@@ -1,14 +1,23 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 
-export default class Forecaster extends BaseModel {
-  static table = "forecasters"
+export default class Forecast extends BaseModel {
+  static table = "forecasts"
 
   @column({ isPrimary: true })
   declare id: number
 
   @column()
-  declare username: string;
+  declare forecasterId: number
+
+  @column()
+  declare matchId: number
+
+  @column()
+  declare teamAScore: number
+
+  @column()
+  declare teamBScore: number
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
