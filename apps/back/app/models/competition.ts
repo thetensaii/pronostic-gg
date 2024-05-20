@@ -10,6 +10,12 @@ export class Competition extends BaseModel {
   declare id: number
 
   @column()
+  declare name:string
+
+  @column()
+  declare slug:string
+
+  @column()
   declare gameId: number;
 
   @manyToMany(() => Team)

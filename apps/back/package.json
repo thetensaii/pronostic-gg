@@ -15,7 +15,8 @@
     "db:up": "docker compose up -d",
     "db:down": "docker compose down",
     "db:migrations:run": "node ace migration:run",
-    "db:migrations:rollback": "node ace migration:rollback"
+    "db:migrations:rollback": "node ace migration:rollback",
+    "db:seed": "node ace db:seed"
   },
   "imports": {
     "#controllers/*": "./app/controllers/*.js",
