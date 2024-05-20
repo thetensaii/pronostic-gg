@@ -3,7 +3,7 @@ import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
 import { type BelongsTo } from '@adonisjs/lucid/types/relations'
 import { Team } from '#models/team'
 
-export default class Match extends BaseModel {
+export class Match extends BaseModel {
   static table = "matches"
 
   @column({ isPrimary: true })

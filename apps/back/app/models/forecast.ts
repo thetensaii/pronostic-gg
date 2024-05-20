@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 
-export default class Forecast extends BaseModel {
+export class Forecast extends BaseModel {
   static table = "forecasts"
 
   @column({ isPrimary: true })
