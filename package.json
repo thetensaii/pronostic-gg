@@ -7,6 +7,6 @@
     "db:up": "pnpm --parallel run db:up",
     "db:down": "pnpm --parallel run db:down",
     "db:migrations:run": "pnpm --parallel run db:migrations:run",
-    "db:migrations:rollback": "pnpm --parallel run db:migrations:down"
+    "db:migrations:rollback": "pnpm --parallel run db:migrations:rollback"
   }
 }
