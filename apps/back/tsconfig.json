@@ -6,6 +6,7 @@
     "paths": {
       "#models/*": ["./app/models/*.js"],
       "#providers/*": ["./providers/*.js"],
+      "#forecast/*": ["./app/forecast/*.js"],
     }
   },
 }

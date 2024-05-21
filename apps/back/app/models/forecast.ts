@@ -4,13 +4,11 @@ import { BaseModel, column } from '@adonisjs/lucid/orm'
 export class Forecast extends BaseModel {
   static table = "forecasts"
 
-  @column({ isPrimary: true })
-  declare id: number
 
-  @column()
+  @column({ isPrimary: true })
   declare forecasterId: number
 
-  @column()
+  @column({ isPrimary: true })
   declare matchId: number
 
   @column()
