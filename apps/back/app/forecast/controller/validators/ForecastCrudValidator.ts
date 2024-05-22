@@ -1,6 +1,6 @@
 import vine from "@vinejs/vine";
 
-export const createForecastValidator = vine.compile(
+export const updateOrCreateForecastValidator = vine.compile(
   vine.object({
     forecaster_id: vine.number(),
     match_id: vine.number(),

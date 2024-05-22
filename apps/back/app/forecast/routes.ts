@@ -4,5 +4,5 @@ const ForecastCrudController = () => import('#forecast/controller/ForecastCrudCo
 
 export const forecastRouter = () =>
   router.group(() => {
-    router.post('/', [ForecastCrudController, 'create'])
+    router.post('/', [ForecastCrudController, 'updateOrCreate'])
   }).prefix('forecasts')

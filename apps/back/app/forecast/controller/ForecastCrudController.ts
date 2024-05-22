@@ -1,6 +1,6 @@
 import { ForecastCrudService } from "#forecast/service/ForecastCrudService";
 import { HttpContext } from "@adonisjs/core/http";
-import { createForecastValidator } from "./validators/ForecastCrudValidator.js";
+import { updateOrCreateForecastValidator } from "./validators/ForecastCrudValidator.js";
 import { ForecastFactory } from "#forecast/domain/ForecastFactory";
 import { inject } from "@adonisjs/core";
 
@@ -11,8 +11,8 @@ export default class ForecastCrudController {
     private forecastCrudService: ForecastCrudService
   ){}
 
-  public async create({ request, response }: HttpContext) {
-    const payload = await request.validateUsing(createForecastValidator)
+  public async updateOrCreate({ request, response }: HttpContext) {
+    const payload = await request.validateUsing(updateOrCreateForecastValidator)
 
     const forecast = this.forecastFactory.create({
       forecasterId: payload.forecaster_id,
@@ -21,7 +21,7 @@ export default class ForecastCrudController {
       teamBScore: payload.team_b_score
     })
 
-    await this.forecastCrudService.createForecast(forecast)
+    await this.forecastCrudService.updateOrCreateForecast(forecast)
 
     response.safeStatus(201)
   }

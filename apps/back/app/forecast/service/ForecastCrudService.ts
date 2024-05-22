@@ -6,7 +6,7 @@ import { inject } from "@adonisjs/core";
 export class ForecastCrudService {
   constructor(private forecastRepository: ForecastRepository){}
   
-  public async createForecast(forecast: Forecast){
-    await this.forecastRepository.create(forecast)
+  public async updateOrCreateForecast(forecast: Forecast){
+    await this.forecastRepository.updateOrCreate(forecast)
   }
 }

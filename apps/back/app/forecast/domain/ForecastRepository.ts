@@ -1,5 +1,5 @@
 import { Forecast } from "#forecast/domain/Forecast";
 
 export abstract class ForecastRepository {
-  abstract create: (forecast: Forecast) => Promise<void>
+  abstract updateOrCreate: (forecast: Forecast) => Promise<void>
 }
