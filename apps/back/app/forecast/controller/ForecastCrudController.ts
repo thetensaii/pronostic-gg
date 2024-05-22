@@ -1,6 +1,6 @@
 import { ForecastCrudService } from "#forecast/service/ForecastCrudService";
 import { HttpContext } from "@adonisjs/core/http";
-import { updateOrCreateForecastValidator } from "./validators/ForecastCrudValidator.js";
+import { updateOrCreateForecastValidator } from "#forecast/controller/validators/ForecastCrudValidator";
 import { ForecastFactory } from "#forecast/domain/ForecastFactory";
 import { inject } from "@adonisjs/core";
 

@@ -4,10 +4,13 @@ import { Forecaster } from '#models/forecaster'
 import { type ManyToMany } from '@adonisjs/lucid/types/relations'
 
 export class League extends BaseModel {
-  static table = 'legues'
+  static table = 'leagues'
 
   @column({ isPrimary: true })
   declare id: number
+
+  @column()
+  declare name:string;
 
   @column()
   declare ownerId: number
