@@ -8,6 +8,6 @@
     "db:down": "pnpm --parallel run db:down",
     "db:migrations:run": "pnpm --parallel run db:migrations:run",
     "db:migrations:rollback": "pnpm --parallel run db:migrations:rollback",
-    "db:seed": "pnpm --parallel run db:seed"
+    "db:migrations:seed": "pnpm --parallel run db:migrations:seed"
   }
 }

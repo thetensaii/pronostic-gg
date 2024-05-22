@@ -23,6 +23,6 @@ export default class ForecastCrudController {
 
     await this.forecastCrudService.updateOrCreateForecast(forecast)
 
-    response.safeStatus(201)
+    response.status(201)
   }
 }

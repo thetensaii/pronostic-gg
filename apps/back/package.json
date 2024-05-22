@@ -16,7 +16,7 @@
     "db:down": "docker compose down",
     "db:migrations:run": "node ace migration:run",
     "db:migrations:rollback": "node ace migration:rollback",
-    "db:seed": "node ace db:seed"
+    "db:migrations:seed": "node ace migration:fresh --seed"
   },
   "imports": {
     "#controllers/*": "./app/controllers/*.js",
@@ -35,7 +35,8 @@
     "#start/*": "./start/*.js",
     "#tests/*": "./tests/*.js",
     "#config/*": "./config/*.js",
-    "#forecast/*": "./app/forecast/*.js"
+    "#forecast/*": "./app/forecast/*.js",
+    "#league/*": "./app/league/*.js"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^7.5.2",

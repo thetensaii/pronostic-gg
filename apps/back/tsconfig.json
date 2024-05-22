@@ -7,6 +7,7 @@
       "#models/*": ["./app/models/*.js"],
       "#providers/*": ["./providers/*.js"],
       "#forecast/*": ["./app/forecast/*.js"],
+      "#league/*": ["./app/league/*.js"],
     }
   },
 }
