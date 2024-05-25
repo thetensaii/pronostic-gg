@@ -1,8 +1,8 @@
 import { ApplicationService } from "@adonisjs/core/types";
 import { LeagueRepository } from "#league/domain/LeagueRepository";
 import { DbLeagueRepository } from "#league/infra/DbLeagueRepository";
-import { LeagueCRUDService } from "./domain/service/LeagueCRUDService.js";
-import { LeagueCRUD } from "./domain/LeagueCRUDService.js";
+import { LeagueCRUDService } from "#league/domain/service/LeagueCRUDService";
+import { LeagueCRUD } from "#league/domain/LeagueCRUD";
 
 export default class LeagueProvider {
   constructor(protected app: ApplicationService) {}
