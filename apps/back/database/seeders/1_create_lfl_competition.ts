@@ -1,7 +1,7 @@
-import { Competition } from '#models/competition'
-import { Game } from '#models/game'
-import { Match } from '#models/match'
-import { Team } from '#models/team'
+import { CompetitionModel } from '#models/competition'
+import { GameModel } from '#models/game'
+import { MatchModel } from '#models/match'
+import { TeamModel } from '#models/team'
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
 import { DateTime } from 'luxon'
 
@@ -9,17 +9,17 @@ export default class extends BaseSeeder {
   static environment = ['development']
 
   async run() {
-    const lol = await Game.updateOrCreate({}, {
+    const lol = await GameModel.updateOrCreate({}, {
       name: "League of Legends"
     })
 
-    const lfl = await Competition.updateOrCreate({}, {
+    const lfl = await CompetitionModel.updateOrCreate({}, {
       gameId: lol.id,
       name: "LFL",
       slug: "lfl",
     })
 
-    const teams = await Team.updateOrCreateMany(['name'], [
+    const teams = await TeamModel.updateOrCreateMany(['name'], [
       {
         name: "Karmine Corp"
       },
@@ -40,7 +40,7 @@ export default class extends BaseSeeder {
     await lfl.related('teams').detach()
     await lfl.related('teams').attach(teams.map(t => t.id))
 
-    await Match.updateOrCreateMany(['competitionId', 'teamAId', 'teamBId'], [
+    await MatchModel.updateOrCreateMany(['competitionId', 'teamAId', 'teamBId'], [
       {
         competitionId: lfl.id,
         teamAId: teams[0].id,

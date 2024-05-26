@@ -1,11 +1,11 @@
-import { Forecaster } from '#models/forecaster'
+import { ForecasterModel } from '#models/forecaster'
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
 
 export default class extends BaseSeeder {
   static environment = ['development']
 
   async run() {
-    await Forecaster.updateOrCreateMany(['username'], [
+    await ForecasterModel.updateOrCreateMany(['username'], [
       {
         username: "Drw_Paps",
       },

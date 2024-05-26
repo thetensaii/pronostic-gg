@@ -1,9 +1,9 @@
 import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
 import { type BelongsTo } from '@adonisjs/lucid/types/relations'
-import { Team } from '#models/team'
+import { TeamModel } from '#models/team'
 
-export class Match extends BaseModel {
+export class MatchModel extends BaseModel {
   static table = "matches"
 
   @column({ isPrimary: true })
@@ -18,14 +18,14 @@ export class Match extends BaseModel {
   @column()
   declare teamAId: number
 
-  @belongsTo(() => Team)
-  declare teamA: BelongsTo<typeof Team>
+  @belongsTo(() => TeamModel)
+  declare teamA: BelongsTo<typeof TeamModel>
 
   @column()
   declare teamBId: number
 
-  @belongsTo(() => Team)
-  declare teamB: BelongsTo<typeof Team>
+  @belongsTo(() => TeamModel)
+  declare teamB: BelongsTo<typeof TeamModel>
 
   @column()
   declare scoreA: number

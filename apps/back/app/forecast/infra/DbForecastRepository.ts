@@ -1,9 +1,9 @@
-import { Forecast as DomainForecast } from "#forecast/domain/Forecast";
-import { Forecast as ModelForecast } from "#models/forecast";
+import { Forecast } from "#forecast/domain/Forecast";
+import { ForecastModel } from "#models/forecast";
 import { ForecastRepository } from "#forecast/domain/ForecastRepository";
 
 export class DbForecastRepository implements ForecastRepository {
-  public async updateOrCreate(forecast: DomainForecast): Promise<void> {
-    await ModelForecast.updateOrCreate({ forecasterId: forecast.forecasterId, matchId: forecast.matchId }, forecast)
+  public async updateOrCreate(forecast: Forecast): Promise<void> {
+    await ForecastModel.updateOrCreate({ forecasterId: forecast.forecasterId, matchId: forecast.matchId }, forecast)
   }
 }

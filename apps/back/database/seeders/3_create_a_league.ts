@@ -1,18 +1,18 @@
-import { Competition } from '#models/competition'
-import { Forecaster } from '#models/forecaster'
-import { League } from '#models/league'
+import { CompetitionModel } from '#models/competition'
+import { ForecasterModel } from '#models/forecaster'
+import { LeagueModel } from '#models/league'
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
 
 export default class extends BaseSeeder {
   static environment = ['development']
 
   async run() {
-    const competition = await Competition.firstOrFail()
+    const competition = await CompetitionModel.firstOrFail()
 
-    const forecasters = await Forecaster.all()
+    const forecasters = await ForecasterModel.all()
     const leagueOwner = forecasters[0]
 
-    const league = await League.updateOrCreate(
+    const league = await LeagueModel.updateOrCreate(
       {
         ownerId: leagueOwner.id,
         competitionId: competition.id,

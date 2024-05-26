@@ -1,9 +1,9 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column, manyToMany } from '@adonisjs/lucid/orm'
 import { type ManyToMany } from '@adonisjs/lucid/types/relations';
-import { Team } from "#models/team"
+import { TeamModel } from "#models/team"
  
-export class Competition extends BaseModel {
+export class CompetitionModel extends BaseModel {
   static table = "competitions"
 
   @column({ isPrimary: true })
@@ -18,8 +18,8 @@ export class Competition extends BaseModel {
   @column()
   declare gameId: number;
 
-  @manyToMany(() => Team)
-  declare teams: ManyToMany<typeof Team>
+  @manyToMany(() => TeamModel)
+  declare teams: ManyToMany<typeof TeamModel>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

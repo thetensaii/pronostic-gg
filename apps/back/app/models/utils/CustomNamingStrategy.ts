@@ -12,4 +12,11 @@ export class CustomNamingStrategy extends CamelCaseNamingStrategy {
         .join('_')
     )
   }
+
+  relationPivotForeignKey(
+    _relation: 'manyToMany',
+    model: typeof BaseModel
+  ) {
+    return string.snakeCase(`${string.singular(model.table)}_${model.primaryKey}`)
+  }
 }
