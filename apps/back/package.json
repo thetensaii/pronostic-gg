@@ -35,7 +35,8 @@
     "#start/*": "./start/*.js",
     "#tests/*": "./tests/*.js",
     "#config/*": "./config/*.js",
-    "#forecast/*": "./app/forecast/*.js",
+    "#common/*": "./app/common/*.js",
+    "#forecaster/*": "./app/forecaster/*.js",
     "#league/*": "./app/league/*.js"
   },
   "devDependencies": {

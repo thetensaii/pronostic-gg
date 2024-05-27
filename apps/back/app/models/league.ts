@@ -13,7 +13,7 @@ export class LeagueModel extends BaseModel {
   declare name:string;
 
   @column()
-  declare ownerId: number
+  declare ownerId: string
 
   @column()
   declare competitionId: number

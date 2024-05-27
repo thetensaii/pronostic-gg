@@ -5,7 +5,7 @@ export class ForecasterModel extends BaseModel {
   static table = "forecasters"
 
   @column({ isPrimary: true })
-  declare id: number
+  declare id: string
 
   @column()
   declare username: string;
