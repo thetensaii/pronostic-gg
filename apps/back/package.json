@@ -28,7 +28,6 @@
     "#tests/*": "./tests/*.js",
     "#config/*": "./config/*.js",
     "#common/*": "./app/common/*.js",
-    "#forecaster/*": "./app/forecaster/*.js",
     "#league/*": "./app/league/*.js",
     "#user/*": "./app/user/*.js"
   },

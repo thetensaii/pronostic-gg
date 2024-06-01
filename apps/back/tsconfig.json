@@ -8,7 +8,6 @@
       "#models/*": ["./app/models/*.js"],
       "#providers/*": ["./providers/*.js"],
       "#user/*": ["./app/user/*.js"],
-      "#forecaster/*": ["./app/forecaster/*.js"],
       "#league/*": ["./app/league/*.js"],
     }
   },
