@@ -19,7 +19,8 @@ export default class extends BaseSeeder {
       competitionId: competition.id,
       createdAt: DateTime.fromJSDate(new Date()),
     })
-    league.related('members').attach(users.reduce((acc, current) => {
+    await league.related('members').detach()
+    await league.related('members').attach(users.reduce((acc, current) => {
       return Math.random() > 0.5 ? 
         acc : 
         {

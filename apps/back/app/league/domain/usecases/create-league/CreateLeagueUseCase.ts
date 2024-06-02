@@ -8,5 +8,5 @@ export type CreateLeagueDto = {
 }
 
 export abstract class CreateLeagueUseCase {
-  abstract execute: (props: CreateLeagueDto) => Promise<ResultType<string, CreateLeagueErrors>>
+  abstract execute: (createLeagueDto: CreateLeagueDto) => Promise<ResultType<string, CreateLeagueErrors>>
 }

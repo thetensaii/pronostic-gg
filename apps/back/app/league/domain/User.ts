@@ -1,5 +1,5 @@
 type UserProps = {
-  id: string
+  id: string,
 }
 
 export class User {

@@ -16,19 +16,19 @@ export class CreateLeague implements CreateLeagueUseCase {
     private leagueRepository: LeagueRepository
   ){}
 
-  public async execute(props: CreateLeagueDto): Promise<ResultType<string, CreateLeagueErrors>> {
-    const owner = await this.userRepository.find(props.ownerId)
+  public async execute(createLeagueDto: CreateLeagueDto): Promise<ResultType<string, CreateLeagueErrors>> {
+    const owner = await this.userRepository.find(createLeagueDto.ownerId)
     if(!owner){
       return Result.fail(CreateLeagueErrors.UserDontExistError)
     }
 
-    const competition = await  this.competitionRepository.find(props.competitionId)
+    const competition = await  this.competitionRepository.find(createLeagueDto.competitionId)
     if(!competition){
       return Result.fail(CreateLeagueErrors.CompetitionDontExistError)
     }
 
     const league = this.leagueFactory.create({
-      name: props.name,
+      name: createLeagueDto.name,
       owner: owner,
       competition: competition
     })

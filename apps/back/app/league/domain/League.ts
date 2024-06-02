@@ -1,4 +1,6 @@
 import { Competition } from "./Competition.js"
+import { Member } from "./Member.js"
+import { MemberFactory } from "./MemberFactory.js"
 import { User } from "./User.js"
 
 type LeagueProps = {
@@ -6,7 +8,7 @@ type LeagueProps = {
   name: string,
   competition: Competition,
   owner: User,
-  members: User[],
+  members: Member[],
   createdAt: Date,
   updatedAt: Date | null
 }
@@ -16,7 +18,7 @@ export class League {
   private _name: string
   private _competition: Competition
   private _owner: User
-  private _members: User[]
+  private _members: Member[]
   
   private _createdAt: Date
   private _updatedAt: Date | null
@@ -43,7 +45,7 @@ export class League {
   public get owner(): User {
     return this._owner
   }
-  public get members(): User[] {
+  public get members(): Member[] {
     return this._members
   }
   public get createdAt(): Date {
@@ -51,5 +53,16 @@ export class League {
   }
   public get updatedAt(): Date | null {
     return this._updatedAt
+  }
+
+  private isMember(user: User): boolean {
+    return this.members.some((member) => member.id === user.id)
+  }
+
+  public join(user: User): boolean {
+    if(this.isMember(user)) return false;
+    this._members.push(new MemberFactory().create(user))
+    this._updatedAt = new Date()
+    return true
   }
 } 
