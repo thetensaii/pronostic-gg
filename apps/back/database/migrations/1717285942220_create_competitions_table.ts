@@ -34,7 +34,6 @@ export default class extends BaseSchema {
         .onDelete("CASCADE")
       table.primary(["competition_id", "team_id"])
       table.timestamp('created_at').notNullable()
-      table.timestamp('updated_at')
     })
   }
 

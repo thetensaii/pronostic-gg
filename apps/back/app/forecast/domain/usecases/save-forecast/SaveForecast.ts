@@ -1,9 +1,9 @@
 import { Result, ResultType } from "#common/Result";
 import { inject } from "@adonisjs/core";
-import { ForecastFactory } from "../ForecastFactory.js";
-import { ForecastRepository } from "../repositories/ForecastRepository.js";
-import { MatchRepository } from "../repositories/MatchRepository.js";
-import { UserRepository } from "../repositories/UserRepository.js";
+import { ForecastFactory } from "../../ForecastFactory.js";
+import { ForecastRepository } from "../../repositories/ForecastRepository.js";
+import { MatchRepository } from "../../repositories/MatchRepository.js";
+import { UserRepository } from "../../repositories/UserRepository.js";
 import { SaveForecastErrors } from "./SaveForecastErrors.js";
 import { SaveForecastDto, SaveForecastUseCase } from "./SaveForecastUseCase.js";
 

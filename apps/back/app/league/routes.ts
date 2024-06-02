@@ -1,8 +1,8 @@
 import router from '@adonisjs/core/services/router'
 
-const LeagueCrudController = () => import('#league/controller/LeagueCRUDController')
+const CreateLeagueController = () => import('#league/controller/CreateLeagueController')
 
 export const leagueRouter = () =>
   router.group(() => {
-    router.post('/', [LeagueCrudController, 'create'])
+    router.post('/', [CreateLeagueController])
   }).prefix('leagues')

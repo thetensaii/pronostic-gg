@@ -1,20 +1,33 @@
 import { ApplicationService } from "@adonisjs/core/types";
-import { LeagueRepository } from "#league/domain/LeagueRepository";
-import { DbLeagueRepository } from "#league/infra/DbLeagueRepository";
-import { LeagueCRUDService } from "#league/domain/service/LeagueCRUDService";
-import { LeagueCRUD } from "#league/domain/LeagueCRUD";
+import { UserRepository } from "./domain/repositories/UserRepository.js";
+import { DbUserRepository } from "./infra/DbUserRepository.js";
+import { CompetitionRepository } from "./domain/repositories/CompetitionRepository.js";
+import { DbCompetitionRepository } from "./infra/DbCompetitionRepository.js";
+import { LeagueRepository } from "./domain/repositories/LeagueRepository.js";
+import { DbLeagueRepository } from "./infra/DbLeagueRepository.js";
+import { CreateLeagueUseCase } from "./domain/usecases/create-league/CreateLeagueUseCase.js";
+import { CreateLeague } from "./domain/usecases/create-league/CreateLeague.js";
 
-export default class LeagueProvider {
+export default class ForecastProvider {
   constructor(protected app: ApplicationService) {}
 
   register() {
     this.app.container.singleton(
-      LeagueRepository,
-      () => new DbLeagueRepository(),
+      UserRepository,
+      () => this.app.container.make(DbUserRepository),
     );
     this.app.container.singleton(
-      LeagueCRUDService,
-      () => this.app.container.make(LeagueCRUD)
+      CompetitionRepository,
+      () => this.app.container.make(DbCompetitionRepository),
+    );
+    this.app.container.singleton(
+      LeagueRepository,
+      () => this.app.container.make(DbLeagueRepository),
+    );
+    
+    this.app.container.singleton(
+      CreateLeagueUseCase,
+      () => this.app.container.make(CreateLeague),
     );
   }
 }

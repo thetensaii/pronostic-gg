@@ -1,11 +1,13 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, column, manyToMany } from '@adonisjs/lucid/orm'
+import { UserModel } from './user.js';
+import { type ManyToMany } from '@adonisjs/lucid/types/relations';
 
 export class LeagueModel extends BaseModel {
   static table = 'leagues'
 
   @column({ isPrimary: true })
-  declare id: number
+  declare id: string
 
   @column()
   declare name:string;
@@ -14,11 +16,14 @@ export class LeagueModel extends BaseModel {
   declare ownerId: string
 
   @column()
-  declare competitionId: number
+  declare competitionId: string
 
-  @column.dateTime({ autoCreate: true })
+  @manyToMany(() => UserModel)
+  declare members: ManyToMany<typeof UserModel>
+
+  @column.dateTime()
   declare createdAt: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime
+  @column.dateTime()
+  declare updatedAt: DateTime | null
 }

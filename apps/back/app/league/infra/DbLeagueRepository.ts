@@ -1,17 +1,23 @@
-import { LeagueRepository } from "#league/domain/LeagueRepository";
 import { League } from "#league/domain/League";
+import { LeagueRepository } from "#league/domain/repositories/LeagueRepository";
 import { LeagueModel } from "#models/league";
+import { DateTime } from "luxon";
 
 export class DbLeagueRepository implements LeagueRepository {
-  public async create(league: League): Promise<number> {
+  public async save(league: League): Promise<void> {
     const createdLeague = await LeagueModel.create({
-      ownerId: league.ownerId,
-      competitionId: league.competitionId,
+      id: league.id,
       name: league.name,
+      ownerId: league.owner.id,
+      competitionId: league.competition.id,
+      createdAt: DateTime.fromJSDate(league.createdAt),
+      updatedAt: league.updatedAt ? DateTime.fromJSDate(league.updatedAt) : null
     })
 
-    await createdLeague.related('forecasters').attach([league.ownerId])
-
-    return createdLeague.id
+    await createdLeague.related('members').attach({
+      [createdLeague.ownerId]: {
+        created_at: DateTime.fromJSDate(league.createdAt)
+      }
+    })
   }
 }

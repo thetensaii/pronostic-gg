@@ -9,7 +9,7 @@
       "#providers/*": ["./providers/*.js"],
       "#user/*": ["./app/user/*"],
       "#forecast/*": ["./app/forecast/*"],
-      "#league/*": ["./app/league/*.js"],
+      "#league/*": ["./app/league/*"],
     }
   },
 }

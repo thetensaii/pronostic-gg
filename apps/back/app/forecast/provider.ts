@@ -5,8 +5,8 @@ import { MatchRepository } from "./domain/repositories/MatchRepository.js";
 import { DbMatchRepository } from "./infra/DbMatchRepository.js";
 import { ForecastRepository } from "./domain/repositories/ForecastRepository.js";
 import { DbForecastRepository } from "./infra/DbForecastRepository.js";
-import { SaveForecastUseCase } from "./domain/usecases/SaveForecastUseCase.js";
-import { SaveForecast } from "./domain/usecases/SaveForecast.js";
+import { SaveForecastUseCase } from "./domain/usecases/save-forecast/SaveForecastUseCase.js";
+import { SaveForecast } from "./domain/usecases/save-forecast/SaveForecast.js";
 
 export default class ForecastProvider {
   constructor(protected app: ApplicationService) {}

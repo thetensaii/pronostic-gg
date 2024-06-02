@@ -1,5 +1,5 @@
 import { Result } from "#common/Result";
-import { SaveForecastUseCase } from "#forecast/domain/usecases/SaveForecastUseCase";
+import { SaveForecastUseCase } from "#forecast/domain/usecases/save-forecast/SaveForecastUseCase";
 import { inject } from "@adonisjs/core";
 import { HttpContext } from "@adonisjs/core/http";
 import vine from "@vinejs/vine";
