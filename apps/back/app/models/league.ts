@@ -1,7 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, manyToMany } from '@adonisjs/lucid/orm'
-import { ForecasterModel } from '#models/forecaster'
-import { type ManyToMany } from '@adonisjs/lucid/types/relations'
+import { BaseModel, column } from '@adonisjs/lucid/orm'
 
 export class LeagueModel extends BaseModel {
   static table = 'leagues'
@@ -17,9 +15,6 @@ export class LeagueModel extends BaseModel {
 
   @column()
   declare competitionId: number
-
-  @manyToMany(() => ForecasterModel)
-  declare forecasters: ManyToMany<typeof ForecasterModel>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

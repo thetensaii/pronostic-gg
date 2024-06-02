@@ -7,27 +7,29 @@ export default class extends BaseSchema {
 
   async up() {
     this.schema.createTable(this.matchesTableName, (table) => {
-      table.increments('id')
+      table.string('id').primary()
       table
-        .integer("competition_id")
+        .string("competition_id").notNullable()
         .references("id")
         .inTable(this.competitionsTableName)
+        .onUpdate("CASCADE")
         .onDelete("CASCADE")
-      table.timestamp("start_at")
+      table.timestamp("start_at").notNullable()
       table
-        .integer('team_a_id') 
+        .string('team_a_id').notNullable()
         .references("id")
         .inTable(this.teamsTableName)
+        .onUpdate("CASCADE")
         .onDelete("CASCADE")
       table
-        .integer('team_b_id') 
+        .string('team_b_id').notNullable()
         .references("id")
         .inTable(this.teamsTableName)
+        .onUpdate("CASCADE")
         .onDelete("CASCADE")
       table.integer("score_a").unsigned()
       table.integer("score_b").unsigned()
-
-      table.timestamp('created_at')
+      table.timestamp('created_at').notNullable()
       table.timestamp('updated_at')
     })
   }

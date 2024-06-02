@@ -11,7 +11,7 @@ export class UserFactory {
 
   constructor(private uuidGenerator: UUIDGenerator){}
 
-  public createUser(props: CreateUserProps): User {
+  public create(props: CreateUserProps): User {
     const id = this.uuidGenerator.generate()
 
     return new User({id: id, username: props.username, createdAt: new Date()})

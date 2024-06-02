@@ -5,14 +5,14 @@ export class GameModel extends BaseModel {
   static table = "games"
 
   @column({ isPrimary: true })
-  declare id: number
+  declare id: string
 
   @column()
   declare name:string;
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime()
   declare createdAt: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime
+  @column.dateTime()
+  declare updatedAt: DateTime | null
 }

@@ -14,5 +14,5 @@ export class UserModel extends BaseModel {
   declare createdAt: DateTime
 
   @column.dateTime()
-  declare updatedAt: DateTime
+  declare updatedAt: DateTime | null
 }

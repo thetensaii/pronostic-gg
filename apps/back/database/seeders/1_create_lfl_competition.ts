@@ -9,61 +9,89 @@ export default class extends BaseSeeder {
   static environment = ['development']
 
   async run() {
+    
     const lol = await GameModel.updateOrCreate({}, {
-      name: "League of Legends"
+      id: crypto.randomUUID(),
+      name: "League of Legends",
+      createdAt: DateTime.fromJSDate(new Date()),
     })
-
+    
     const lfl = await CompetitionModel.updateOrCreate({}, {
+      id: crypto.randomUUID(),
       gameId: lol.id,
       name: "LFL",
       slug: "lfl",
+      createdAt: DateTime.fromJSDate(new Date()),
     })
-
+    
     const teams = await TeamModel.updateOrCreateMany(['name'], [
       {
-        name: "Karmine Corp"
+        id: crypto.randomUUID(),
+        name: "Karmine Corp",
+        createdAt: DateTime.fromJSDate(new Date()),
       },
       {
-        name: "Vitality"
+        id: crypto.randomUUID(),
+        name: "Vitality",
+        createdAt: DateTime.fromJSDate(new Date()),
       },
       {
-        name: "Solary"
+        id: crypto.randomUUID(),
+        name: "Solary",
+        createdAt: DateTime.fromJSDate(new Date()),
       },
       {
-        name: "BDS"
+        id: crypto.randomUUID(),
+        name: "BDS",
+        createdAt: DateTime.fromJSDate(new Date()),
       },
       {
-        name: "TDS"
+        id: crypto.randomUUID(),
+        name: "TDS",
+        createdAt: DateTime.fromJSDate(new Date()),
       },
     ])
 
+    
     await lfl.related('teams').detach()
-    await lfl.related('teams').attach(teams.map(t => t.id))
+    await lfl.related('teams').attach(teams.reduce((acc, currentTeam) => {
+      return {...acc, [currentTeam.id]: {
+        created_at: DateTime.fromJSDate(new Date()),
+      }}
+    }, {}))
 
     await MatchModel.updateOrCreateMany(['competitionId', 'teamAId', 'teamBId'], [
       {
+        id: crypto.randomUUID(),
         competitionId: lfl.id,
         teamAId: teams[0].id,
         teamBId: teams[1].id,
         startAt: DateTime.fromJSDate(new Date()),
+        createdAt: DateTime.fromJSDate(new Date()),
       },
       {
+        id: crypto.randomUUID(),
         competitionId: lfl.id,
         teamAId: teams[1].id,
         teamBId: teams[2].id,
         startAt: DateTime.fromJSDate(new Date()),
+        createdAt: DateTime.fromJSDate(new Date()),
       },
       {
+        id: crypto.randomUUID(),
         competitionId: lfl.id,
         teamAId: teams[3].id,
         teamBId: teams[2].id,
         startAt: DateTime.fromJSDate(new Date()),
+        createdAt: DateTime.fromJSDate(new Date()),
       },
       {
+        id: crypto.randomUUID(),
         competitionId: lfl.id,
         teamAId: teams[4].id,
         teamBId: teams[2].id,
         startAt: DateTime.fromJSDate(new Date()),
+        createdAt: DateTime.fromJSDate(new Date()),
       },
     ])
 

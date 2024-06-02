@@ -7,22 +7,22 @@ export class MatchModel extends BaseModel {
   static table = "matches"
 
   @column({ isPrimary: true })
-  declare id: number
+  declare id: string
 
   @column()
-  declare competitionId: number
+  declare competitionId: string
 
   @column.dateTime()
   declare startAt: DateTime
 
   @column()
-  declare teamAId: number
+  declare teamAId: string
 
   @belongsTo(() => TeamModel)
   declare teamA: BelongsTo<typeof TeamModel>
 
   @column()
-  declare teamBId: number
+  declare teamBId: string
 
   @belongsTo(() => TeamModel)
   declare teamB: BelongsTo<typeof TeamModel>
@@ -34,9 +34,9 @@ export class MatchModel extends BaseModel {
   declare scoreB: number
 
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime()
   declare createdAt: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime
+  @column.dateTime()
+  declare updatedAt: DateTime | null
 }

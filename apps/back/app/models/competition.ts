@@ -7,7 +7,7 @@ export class CompetitionModel extends BaseModel {
   static table = "competitions"
 
   @column({ isPrimary: true })
-  declare id: number
+  declare id: string
 
   @column()
   declare name:string
@@ -16,14 +16,14 @@ export class CompetitionModel extends BaseModel {
   declare slug:string
 
   @column()
-  declare gameId: number;
+  declare gameId: string;
 
   @manyToMany(() => TeamModel)
   declare teams: ManyToMany<typeof TeamModel>
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime()
   declare createdAt: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime
+  @column.dateTime()
+  declare updatedAt: DateTime | null
 }

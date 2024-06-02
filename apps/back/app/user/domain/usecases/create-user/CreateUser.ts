@@ -18,7 +18,7 @@ export class CreateUser implements CreateUserUseCase {
       return Result.fail(new UsernameAlreadyExists())
     }
 
-    const user = this.userFactory.createUser({ username })
+    const user = this.userFactory.create({ username })
 
     await this.userRepository.save(user)
 

@@ -28,8 +28,9 @@
     "#tests/*": "./tests/*.js",
     "#config/*": "./config/*.js",
     "#common/*": "./app/common/*.js",
-    "#league/*": "./app/league/*.js",
-    "#user/*": "./app/user/*.js"
+    "#user/*": "./app/user/*.js",
+    "#forecast/*": "./app/forecast/*.js",
+    "#league/*": "./app/league/*.js"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^7.5.2",

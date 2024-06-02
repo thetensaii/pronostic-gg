@@ -6,10 +6,10 @@ export class ForecastModel extends BaseModel {
 
 
   @column({ isPrimary: true })
-  declare forecasterId: number
+  declare userId: string
 
   @column({ isPrimary: true })
-  declare matchId: number
+  declare matchId: string
 
   @column()
   declare teamAScore: number
@@ -17,9 +17,9 @@ export class ForecastModel extends BaseModel {
   @column()
   declare teamBScore: number
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime()
   declare createdAt: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime
+  @column.dateTime()
+  declare updatedAt: DateTime | null
 }
