@@ -1,6 +1,7 @@
 import { CompetitionModel } from '#models/competition'
 import { GameModel } from '#models/game'
 import { MatchModel } from '#models/match'
+import { StructureModel } from '#models/structure'
 import { TeamModel } from '#models/team'
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
 import { DateTime } from 'luxon'
@@ -24,7 +25,7 @@ export default class extends BaseSeeder {
       createdAt: DateTime.fromJSDate(new Date()),
     })
     
-    const teams = await TeamModel.updateOrCreateMany(['name'], [
+    const structures = await StructureModel.updateOrCreateMany(['name'], [
       {
         id: crypto.randomUUID(),
         name: "Karmine Corp",
@@ -47,6 +48,39 @@ export default class extends BaseSeeder {
       },
       {
         id: crypto.randomUUID(),
+        name: "TDS",
+        createdAt: DateTime.fromJSDate(new Date()),
+      },
+    ])
+
+    const teams = await TeamModel.updateOrCreateMany(['name'], [
+      {
+        id: crypto.randomUUID(),
+        structureId: structures[0].id,
+        name: "Karmine Corp B",
+        createdAt: DateTime.fromJSDate(new Date()),
+      },
+      {
+        id: crypto.randomUUID(),
+        structureId: structures[1].id,
+        name: "Vitality B",
+        createdAt: DateTime.fromJSDate(new Date()),
+      },
+      {
+        id: crypto.randomUUID(),
+        structureId: structures[2].id,
+        name: "Solary",
+        createdAt: DateTime.fromJSDate(new Date()),
+      },
+      {
+        id: crypto.randomUUID(),
+        structureId: structures[3].id,
+        name: "BDS A",
+        createdAt: DateTime.fromJSDate(new Date()),
+      },
+      {
+        id: crypto.randomUUID(),
+        structureId: structures[4].id,
         name: "TDS",
         createdAt: DateTime.fromJSDate(new Date()),
       },

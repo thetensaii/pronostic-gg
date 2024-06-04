@@ -1,14 +1,11 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 
-export class TeamModel extends BaseModel {
-  static table = 'teams'
+export class StructureModel extends BaseModel {
+  static table = "structures"
 
   @column({ isPrimary: true })
   declare id: string
-
-  @column()
-  declare structureId: string
 
   @column()
   declare name: string
