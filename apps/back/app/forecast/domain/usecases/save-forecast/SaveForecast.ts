@@ -2,8 +2,8 @@ import { Result, ResultType } from "#common/Result";
 import { inject } from "@adonisjs/core";
 import { ForecastFactory } from "../../ForecastFactory.js";
 import { ForecastRepository } from "../../repositories/ForecastRepository.js";
-import { MatchRepository } from "../../repositories/MatchRepository.js";
-import { UserRepository } from "../../repositories/UserRepository.js";
+import { MatchService } from "../../service/MatchService.js";
+import { UserService } from "../../service/UserService.js";
 import { SaveForecastErrors } from "./SaveForecastErrors.js";
 import { SaveForecastDto, SaveForecastUseCase } from "./SaveForecastUseCase.js";
 
@@ -11,8 +11,8 @@ import { SaveForecastDto, SaveForecastUseCase } from "./SaveForecastUseCase.js";
 export class SaveForecast implements SaveForecastUseCase {
 
   constructor(
-    private userRepository: UserRepository,
-    private matchRepository: MatchRepository,
+    private userService: UserService,
+    private matchService: MatchService,
     private forecastFactory: ForecastFactory,
     private forecastRepository: ForecastRepository
   ) {}
@@ -20,12 +20,12 @@ export class SaveForecast implements SaveForecastUseCase {
   public async execute(saveForecastDto: SaveForecastDto): Promise<ResultType<null, SaveForecastErrors>> {
     const { userId, matchId, score } = saveForecastDto
 
-    const user = await this.userRepository.find(userId)
+    const user = await this.userService.find(userId)
     if(!user){
       return Result.fail(SaveForecastErrors.UserDontExistError)
     }
 
-    const match = await this.matchRepository.find(matchId)
+    const match = await this.matchService.find(matchId)
     if(!match){
       return Result.fail(SaveForecastErrors.MatchDontExistError)
     }

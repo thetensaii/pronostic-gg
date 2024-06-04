@@ -1,11 +1,11 @@
 import { Match } from "#forecast/domain/Match";
-import { MatchRepository } from "#forecast/domain/repositories/MatchRepository";
 import { MatchModel } from "#models/match";
 import { inject } from "@adonisjs/core";
 import { DbMatchAdapter } from "./adapters/DbMatchAdapter.js";
+import { MatchService } from "#forecast/domain/service/MatchService";
 
 @inject()
-export class DbMatchRepository implements MatchRepository {
+export class DbMatchService implements MatchService {
 
   constructor(private dbMatchAdapter: DbMatchAdapter) {}
 

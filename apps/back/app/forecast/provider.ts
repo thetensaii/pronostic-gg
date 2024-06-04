@@ -1,8 +1,8 @@
 import { ApplicationService } from "@adonisjs/core/types";
-import { UserRepository } from "./domain/repositories/UserRepository.js";
-import { DbUserRepository } from "./infra/DbUserRepository.js";
-import { MatchRepository } from "./domain/repositories/MatchRepository.js";
-import { DbMatchRepository } from "./infra/DbMatchRepository.js";
+import { UserService } from "./domain/service/UserService.js";
+import { DbUserService } from "./infra/DbUserService.js";
+import { MatchService } from "./domain/service/MatchService.js";
+import { DbMatchService } from "./infra/DbMatchService.js";
 import { ForecastRepository } from "./domain/repositories/ForecastRepository.js";
 import { DbForecastRepository } from "./infra/DbForecastRepository.js";
 import { SaveForecastUseCase } from "./domain/usecases/save-forecast/SaveForecastUseCase.js";
@@ -13,12 +13,12 @@ export default class ForecastProvider {
 
   register() {
     this.app.container.singleton(
-      UserRepository,
-      () => this.app.container.make(DbUserRepository),
+      UserService,
+      () => this.app.container.make(DbUserService),
     );
     this.app.container.singleton(
-      MatchRepository,
-      () => this.app.container.make(DbMatchRepository),
+      MatchService,
+      () => this.app.container.make(DbMatchService),
     );
     
     this.app.container.singleton(

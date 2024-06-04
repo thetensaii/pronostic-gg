@@ -1,11 +1,11 @@
 import { inject } from "@adonisjs/core";
 import { User } from "#forecast/domain/User";
-import { UserRepository } from "#forecast/domain/repositories/UserRepository";
+import { UserService } from "#forecast/domain/service/UserService";
 import { UserModel } from "#models/user";
 import { DbUserAdapter } from "./adapters/DbUserAdapter.js";
 
 @inject()
-export class DbUserRepository implements UserRepository {
+export class DbUserService implements UserService {
 
   constructor(private dbUserAdapter: DbUserAdapter) {}
 
