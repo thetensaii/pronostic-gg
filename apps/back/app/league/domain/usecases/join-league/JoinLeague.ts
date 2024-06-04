@@ -1,6 +1,6 @@
 import { Result, ResultType } from "#common/Result";
 import { LeagueRepository } from "#league/domain/repositories/LeagueRepository";
-import { UserRepository } from "#league/domain/repositories/UserRepository";
+import { UserService } from "#league/domain/services/UserService";
 import { inject } from "@adonisjs/core";
 import { JoinLeagueErrors } from "./JoinLeagueErrors.js";
 import { JoinLeagueDto, JoinLeagueUseCase } from "./JoinLeagueUseCase.js";
@@ -8,7 +8,7 @@ import { JoinLeagueDto, JoinLeagueUseCase } from "./JoinLeagueUseCase.js";
 @inject()
 export class JoinLeague implements JoinLeagueUseCase {
   constructor(
-    private userRepository: UserRepository,
+    private userRepository: UserService,
     private leagueRepository: LeagueRepository
   ){}
 

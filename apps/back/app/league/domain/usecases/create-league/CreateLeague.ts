@@ -1,8 +1,8 @@
 import { Result, ResultType } from "#common/Result";
 import { LeagueFactory } from "#league/domain/LeagueFactory";
-import { CompetitionRepository } from "#league/domain/repositories/CompetitionRepository";
+import { CompetitionService } from "#league/domain/services/CompetitionService";
 import { LeagueRepository } from "#league/domain/repositories/LeagueRepository";
-import { UserRepository } from "#league/domain/repositories/UserRepository";
+import { UserService } from "#league/domain/services/UserService";
 import { inject } from "@adonisjs/core";
 import { CreateLeagueErrors } from "./CreateLeagueErrors.js";
 import { CreateLeagueDto, CreateLeagueUseCase } from "./CreateLeagueUseCase.js";
@@ -10,19 +10,19 @@ import { CreateLeagueDto, CreateLeagueUseCase } from "./CreateLeagueUseCase.js";
 @inject()
 export class CreateLeague implements CreateLeagueUseCase {
   constructor(
-    private userRepository: UserRepository,
-    private competitionRepository: CompetitionRepository,
+    private userService: UserService,
+    private competitionService: CompetitionService,
     private leagueFactory: LeagueFactory,
     private leagueRepository: LeagueRepository
   ){}
 
   public async execute(createLeagueDto: CreateLeagueDto): Promise<ResultType<string, CreateLeagueErrors>> {
-    const owner = await this.userRepository.find(createLeagueDto.ownerId)
+    const owner = await this.userService.find(createLeagueDto.ownerId)
     if(!owner){
       return Result.fail(CreateLeagueErrors.UserDontExistError)
     }
 
-    const competition = await  this.competitionRepository.find(createLeagueDto.competitionId)
+    const competition = await  this.competitionService.find(createLeagueDto.competitionId)
     if(!competition){
       return Result.fail(CreateLeagueErrors.CompetitionDontExistError)
     }

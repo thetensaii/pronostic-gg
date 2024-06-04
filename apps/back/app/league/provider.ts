@@ -1,8 +1,8 @@
 import { ApplicationService } from "@adonisjs/core/types";
-import { UserRepository } from "./domain/repositories/UserRepository.js";
-import { DbUserRepository } from "./infra/DbUserRepository.js";
-import { CompetitionRepository } from "./domain/repositories/CompetitionRepository.js";
-import { DbCompetitionRepository } from "./infra/DbCompetitionRepository.js";
+import { UserService } from "./domain/services/UserService.js";
+import { DbUserService } from "./infra/DbUserService.js";
+import { CompetitionService } from "./domain/services/CompetitionService.js";
+import { DbCompetitionService } from "./infra/DbCompetitionService.js";
 import { LeagueRepository } from "./domain/repositories/LeagueRepository.js";
 import { DbLeagueRepository } from "./infra/DbLeagueRepository.js";
 import { CreateLeagueUseCase } from "./domain/usecases/create-league/CreateLeagueUseCase.js";
@@ -15,12 +15,12 @@ export default class ForecastProvider {
 
   register() {
     this.app.container.singleton(
-      UserRepository,
-      () => this.app.container.make(DbUserRepository),
+      UserService,
+      () => this.app.container.make(DbUserService),
     );
     this.app.container.singleton(
-      CompetitionRepository,
-      () => this.app.container.make(DbCompetitionRepository),
+      CompetitionService,
+      () => this.app.container.make(DbCompetitionService),
     );
     this.app.container.singleton(
       LeagueRepository,
