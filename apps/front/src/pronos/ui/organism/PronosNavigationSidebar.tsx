@@ -1,13 +1,10 @@
-import { Stack } from "styled-system/jsx"
-import { CompetitionLink } from "../atom/CompetitionLink"
+import { useGetSidebarCompetitions } from "~/common/hooks/UseGetCompetitions"
+import { VerticalLinkGroup } from "~/components/molecule/VerticalLinkGroup"
 
 export const PronosNavigationSidebar = () => {
+  const competitions = useGetSidebarCompetitions()
+
   return (
-    <Stack gap='4'>
-      <CompetitionLink to='/pronos/lfl'>LFL</CompetitionLink>
-      <CompetitionLink to='/pronos/lec'>LEC</CompetitionLink>
-      <CompetitionLink to='/pronos/vct-emea'>VCT EMEA</CompetitionLink>
-      <CompetitionLink to='/pronos/vlr-france'>VLR France</CompetitionLink>
-    </Stack>
+    <VerticalLinkGroup links={competitions.map((c) => ({ name: c.name, to: `/pronos/${c.slug}` }))} />
   )
 }

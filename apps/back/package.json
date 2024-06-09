@@ -30,7 +30,8 @@
     "#common/*": "./app/common/*.js",
     "#user/*": "./app/user/*.js",
     "#forecast/*": "./app/forecast/*.js",
-    "#league/*": "./app/league/*.js"
+    "#league/*": "./app/league/*.js",
+    "#competition/*": "./app/competition/*.js"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^7.5.2",
