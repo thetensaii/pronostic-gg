@@ -13,7 +13,7 @@ export const VerticalLinkGroup = ({ links }: Props) => {
   return (
     <Stack gap='4'>
       {links.map((link) => (
-        <SidebarLink to={link.to}>{link.name}</SidebarLink>
+        <SidebarLink key={link.name} to={link.to}>{link.name}</SidebarLink>
       ))}
     </Stack>
   )

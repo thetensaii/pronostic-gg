@@ -23,7 +23,7 @@ import { Route as LiguesCreateImport } from './routes/ligues/create'
 import { Route as ResultatsResultatslayoutIndexImport } from './routes/resultats/_resultats_layout.index'
 import { Route as PronosPronoslayoutIndexImport } from './routes/pronos/_pronos_layout.index'
 import { Route as ResultatsResultatslayoutCompetitionIdImport } from './routes/resultats/_resultats_layout.$competitionId'
-import { Route as PronosPronoslayoutCompetitionIdImport } from './routes/pronos/_pronos_layout.$competitionId'
+import { Route as PronosPronoslayoutCompetitionSlugImport } from './routes/pronos/_pronos_layout.$competitionSlug'
 import { Route as ClassementCompetitionIdClassementlayoutImport } from './routes/classement/$competitionId/_classement_layout'
 import { Route as ClassementCompetitionIdClassementlayoutIndexImport } from './routes/classement/$competitionId/_classement_layout.index'
 import { Route as ClassementCompetitionIdClassementlayoutLeagueIdImport } from './routes/classement/$competitionId/_classement_layout.$leagueId'
@@ -105,9 +105,9 @@ const ResultatsResultatslayoutCompetitionIdRoute =
     getParentRoute: () => ResultatsResultatslayoutRoute,
   } as any)
 
-const PronosPronoslayoutCompetitionIdRoute =
-  PronosPronoslayoutCompetitionIdImport.update({
-    path: '/$competitionId',
+const PronosPronoslayoutCompetitionSlugRoute =
+  PronosPronoslayoutCompetitionSlugImport.update({
+    path: '/$competitionSlug',
     getParentRoute: () => PronosPronoslayoutRoute,
   } as any)
 
@@ -177,8 +177,8 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClassementCompetitionIdClassementlayoutImport
       parentRoute: typeof ClassementCompetitionIdRoute
     }
-    '/pronos/_pronos_layout/$competitionId': {
-      preLoaderRoute: typeof PronosPronoslayoutCompetitionIdImport
+    '/pronos/_pronos_layout/$competitionSlug': {
+      preLoaderRoute: typeof PronosPronoslayoutCompetitionSlugImport
       parentRoute: typeof PronosPronoslayoutImport
     }
     '/resultats/_resultats_layout/$competitionId': {
@@ -211,7 +211,7 @@ export const routeTree = rootRoute.addChildren([
   LiguesJoinRoute,
   PronosRoute.addChildren([
     PronosPronoslayoutRoute.addChildren([
-      PronosPronoslayoutCompetitionIdRoute,
+      PronosPronoslayoutCompetitionSlugRoute,
       PronosPronoslayoutIndexRoute,
     ]),
   ]),

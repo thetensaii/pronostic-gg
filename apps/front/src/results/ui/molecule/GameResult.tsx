@@ -1,6 +1,6 @@
 import { HStack } from "styled-system/jsx"
 import { Icon } from "~/components/ui/icon"
-import { Team } from "~/pronos/ui/atom/Team"
+import { Team } from "~/forecasts/ui/atom/Team"
 import { Score } from "~/results/ui/atom/Score"
 import {Check, X} from 'lucide-react'
 

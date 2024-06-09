@@ -1,7 +1,8 @@
 import { useGetSidebarCompetitions } from "~/common/hooks/UseGetCompetitions"
 import { VerticalLinkGroup } from "~/components/molecule/VerticalLinkGroup"
 
-export const PronosNavigationSidebar = () => {
+
+export const ForecastsNavigationSidebar = () => {
   const competitions = useGetSidebarCompetitions()
 
   return (
