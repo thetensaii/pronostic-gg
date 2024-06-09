@@ -1,11 +1,12 @@
 import { Result, ResultType } from "#common/Result";
 import { inject } from "@adonisjs/core";
-import { ForecastFactory } from "../../ForecastFactory.js";
 import { ForecastRepository } from "../../repositories/ForecastRepository.js";
 import { MatchService } from "../../service/MatchService.js";
 import { UserService } from "../../service/UserService.js";
-import { SaveForecastErrors } from "./SaveForecastErrors.js";
-import { SaveForecastDto, SaveForecastUseCase } from "./SaveForecastUseCase.js";
+import { SaveForecastDto, SaveForecastErrors, SaveForecastUseCase } from "./SaveForecastUseCase.js";
+import { Forecast } from "#forecast/domain/Forecast";
+import { UserDontExistError } from "#forecast/domain/errors/UserDontExistError";
+import { MatchDontExistError } from "#forecast/domain/errors/MatchDontExistError";
 
 @inject()
 export class SaveForecast implements SaveForecastUseCase {
@@ -13,7 +14,6 @@ export class SaveForecast implements SaveForecastUseCase {
   constructor(
     private userService: UserService,
     private matchService: MatchService,
-    private forecastFactory: ForecastFactory,
     private forecastRepository: ForecastRepository
   ) {}
 
@@ -22,19 +22,22 @@ export class SaveForecast implements SaveForecastUseCase {
 
     const user = await this.userService.find(userId)
     if(!user){
-      return Result.fail(SaveForecastErrors.UserDontExistError)
+      return Result.fail(UserDontExistError)
     }
 
     const match = await this.matchService.find(matchId)
     if(!match){
-      return Result.fail(SaveForecastErrors.MatchDontExistError)
+      return Result.fail(MatchDontExistError)
     }
 
     let forecast = await this.forecastRepository.find({ userId: user.id, matchId: match.id})
     if(!forecast) {
-      forecast = this.forecastFactory.create({ user, match, score })
+      const result = Forecast.create({ user, match, score })
+      if(Result.isFail(result)) return result
+      forecast = result.value
     } else {
-      forecast.setScore(score)
+      const result = forecast.setScore(score)
+      if(Result.isFail(result)) return result
     }
 
     await this.forecastRepository.save(forecast)

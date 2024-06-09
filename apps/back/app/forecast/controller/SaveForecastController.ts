@@ -32,9 +32,24 @@ export default class SaveForecastController {
     })
 
     if(Result.isFail(result)){
-      response.status(400)
+      switch(result.error){
+        case 'UserDontExistError':
+          return response.status(400).json({
+            message: `User does not exist`
+          })
+        case 'MatchDontExistError':
+          return response.status(400).json({
+            message: `Match does not exist`
+          })
+        case 'ScoreIsNotPossibleError':
+          return response.status(400).json({
+            message: `${payload.score[0]} - ${payload.score[1]} is not a possible score`
+          })
+        default:
+          return response.status(400)
+      }
     } else {
-      response.status(201)
+      return response.status(201)
     }
   }  
 }

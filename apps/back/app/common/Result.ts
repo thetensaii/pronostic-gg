@@ -25,7 +25,7 @@ export class Result {
     }
   }
 
-  static isFail(result: ResultType<unknown, unknown>): result is FailResultType<unknown> {
+  static isFail<TValue extends unknown = unknown, TError extends unknown = unknown>(result: ResultType<TValue, TError>): result is FailResultType<TError> {
     return result.status === 'fail'
   }
 }
