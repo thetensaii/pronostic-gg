@@ -5,24 +5,21 @@ import { css } from "styled-system/css"
 
 type Props = {
   dateTime: Date,
-  teamA: Team,
-  teamB: Team,
+  teams: [string, string],
+  score: [number, number] | null
   disabledScoreInput?: boolean,
-  teamAScore?: number,
-  teamBScore?: number,
 }
 
-export const ForecastInput = ({ dateTime, teamA, teamB, teamAScore, teamBScore, disabledScoreInput }: Props) => {
-  const isScoreDefined = teamAScore != null && teamBScore != null
+export const ForecastInput = ({ dateTime, teams, score, disabledScoreInput }: Props) => {
   return (
     <HStack alignItems='end'>
-      <Team name={teamA.name} />
+      <Team name={teams[0]} />
       <HStack>
-        <PinInput value={isScoreDefined ? [`${teamAScore}`, `${teamBScore}`] : undefined}  length={2} disabled={disabledScoreInput} onValueChange={(value) => console.log(value)} onValueInvalid={(value) => console.log(value)} pattern={"^[0-1]$"}>
+        <PinInput value={score ? [`${score[0]}`, `${score[1]}`] : undefined}  length={2} disabled={disabledScoreInput} onValueChange={(value) => console.log(value)} onValueInvalid={(value) => console.log(value)} pattern={"^[0-1]$"}>
           <div className={css({ mx: ['auto']})}>{dateTime.toLocaleTimeString([],  { hour: "2-digit", minute: "2-digit" })}</div>
         </PinInput>
       </HStack>
-      <Team name={teamB.name} />
+      <Team name={teams[1]} />
     </HStack>
   )
 }

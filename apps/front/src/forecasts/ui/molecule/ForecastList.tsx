@@ -15,7 +15,7 @@ type Props = {
 export const ForecastList = ({ forecasts }: Props) => {
   return (
     <VStack gap='6'>
-      {forecasts.map((f) => <ForecastInput teamA={{name: f.teams[0]}} teamB={{name: f.teams[1]}} dateTime={f.startAt} />)}
+      {forecasts.map((f) => <ForecastInput key={f.teams.join('-')} dateTime={f.startAt} teams={f.teams} score={f.score} />)}
     </VStack>
   )
 }

@@ -26,8 +26,8 @@ export const ForecastsMain = ({ competitionSlug }: Props) => {
   <div className={css({ w: 'full' })}>
     <Center>
       <VStack>
-        {Object.keys(forecastGroupedByDate).sort().map(forecastGroupDay => {
-          return <ForecastsGroupedByDay date={new Date(forecastGroupDay)} forecasts={forecastGroupedByDate[forecastGroupDay]} />
+        {Object.keys(forecastGroupedByDate).sort().map(forecastGroupDayString => {
+          return <ForecastsGroupedByDay key={forecastGroupDayString} date={new Date(forecastGroupDayString)} forecasts={forecastGroupedByDate[forecastGroupDayString]} />
         })}
       </VStack>
     </Center> 
