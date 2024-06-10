@@ -10,7 +10,7 @@
       "#user/*": ["./app/modules/user/*"],
       "#forecast/*": ["./app/forecast/*"],
       "#league/*": ["./app/league/*"],
-      "#competition/*": ["./app/competition/*"],
+      "#competition/*": ["./app/modules/competition/*"],
     }
   },
 }
