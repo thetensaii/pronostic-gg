@@ -1,6 +1,6 @@
 import router from '@adonisjs/core/services/router'
 
-const CreateUserController = () => import('#user/controller/CreateUserController')
+const CreateUserController = () => import('./controller/CreateUserController.js')
 
 export const userRouter = () =>
   router.group(() => {

@@ -7,7 +7,7 @@
       "#common/*": ["./app/common/*.js"],
       "#models/*": ["./app/models/*.js"],
       "#providers/*": ["./providers/*.js"],
-      "#user/*": ["./app/user/*"],
+      "#user/*": ["./app/modules/user/*"],
       "#forecast/*": ["./app/forecast/*"],
       "#league/*": ["./app/league/*"],
       "#competition/*": ["./app/competition/*"],
