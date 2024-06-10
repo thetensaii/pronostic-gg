@@ -1,5 +1,5 @@
-import { Forecast } from "#forecast/domain/Forecast";
-import { FindForecastProps, ForecastRepository } from "#forecast/domain/repositories/ForecastRepository";
+import { Forecast } from "../domain/Forecast.js";
+import { FindForecastProps, ForecastRepository } from "../domain/repositories/ForecastRepository.js";
 import { ForecastModel } from "#models/forecast";
 import { DateTime } from "luxon";
 import { DbForecastAdapter } from "./adapters/DbForecastAdapter.js";

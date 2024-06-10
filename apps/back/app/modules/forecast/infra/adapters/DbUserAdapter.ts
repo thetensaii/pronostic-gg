@@ -1,4 +1,4 @@
-import { User } from "#forecast/domain/User";
+import { User } from "../../domain/User.js";
 import { UserModel } from "#models/user";
 
 export class DbUserAdapter {

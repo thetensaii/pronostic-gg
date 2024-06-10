@@ -8,7 +8,7 @@
       "#models/*": ["./app/models/*.js"],
       "#providers/*": ["./providers/*.js"],
       "#user/*": ["./app/modules/user/*"],
-      "#forecast/*": ["./app/forecast/*"],
+      "#forecast/*": ["./app/modules/forecast/*"],
       "#league/*": ["./app/modules/league/*"],
       "#competition/*": ["./app/modules/competition/*"],
     }

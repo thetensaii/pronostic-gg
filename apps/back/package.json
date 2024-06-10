@@ -29,7 +29,7 @@
     "#config/*": "./config/*.js",
     "#common/*": "./app/common/*.js",
     "#user/*": "./app/modules/user/*.js",
-    "#forecast/*": "./app/forecast/*.js",
+    "#forecast/*": "./app/modules/forecast/*.js",
     "#league/*": "./app/modules/league/*.js",
     "#competition/*": "./app/modules/competition/*.js"
   },

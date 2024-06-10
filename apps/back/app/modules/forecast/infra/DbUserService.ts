@@ -1,6 +1,6 @@
 import { inject } from "@adonisjs/core";
-import { User } from "#forecast/domain/User";
-import { UserService } from "#forecast/domain/service/UserService";
+import { User } from "../domain/User.js";
+import { UserService } from "../domain/service/UserService.js";
 import { UserModel } from "#models/user";
 import { DbUserAdapter } from "./adapters/DbUserAdapter.js";
 

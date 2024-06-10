@@ -1,7 +1,7 @@
 import router from '@adonisjs/core/services/router'
 
-const SaveForecastController = () => import('#forecast/controller/SaveForecastController')
-const GetNextForecastsController = () => import('#forecast/controller/GetNextForecastsController')
+const SaveForecastController = () => import('./controller/SaveForecastController.js')
+const GetNextForecastsController = () => import('./controller/GetNextForecastsController.js')
 
 export const forecastRouter = () =>
   router.group(() => {

@@ -1,6 +1,6 @@
-import { Forecast } from "#forecast/domain/Forecast";
-import { Match } from "#forecast/domain/Match";
-import { User } from "#forecast/domain/User";
+import { Forecast } from "../../domain/Forecast.js";
+import { Match } from "../../domain/Match.js";
+import { User } from "../../domain/User.js";
 import { ForecastModel } from "#models/forecast";
 
 export class DbForecastAdapter {

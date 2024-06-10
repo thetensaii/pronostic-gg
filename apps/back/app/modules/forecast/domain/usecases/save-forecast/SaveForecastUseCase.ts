@@ -1,7 +1,7 @@
 import { ResultType } from "#common/Result"
-import { MatchDontExistError } from "#forecast/domain/errors/MatchDontExistError"
-import { ScoreIsNotPossibleError } from "#forecast/domain/errors/ScoreIsNotPossibleError"
-import { UserDontExistError } from "#forecast/domain/errors/UserDontExistError"
+import { MatchDontExistError } from "../../errors/MatchDontExistError.js"
+import { ScoreIsNotPossibleError } from "../../errors/ScoreIsNotPossibleError.js"
+import { UserDontExistError } from "../../errors/UserDontExistError.js"
 
 export type SaveForecastDto = {
   userId: string

@@ -4,9 +4,9 @@ import { ForecastRepository } from "../../repositories/ForecastRepository.js";
 import { MatchService } from "../../service/MatchService.js";
 import { UserService } from "../../service/UserService.js";
 import { SaveForecastDto, SaveForecastErrors, SaveForecastUseCase } from "./SaveForecastUseCase.js";
-import { Forecast } from "#forecast/domain/Forecast";
-import { UserDontExistError } from "#forecast/domain/errors/UserDontExistError";
-import { MatchDontExistError } from "#forecast/domain/errors/MatchDontExistError";
+import { Forecast } from "../../Forecast.js";
+import { UserDontExistError } from "../../errors/UserDontExistError.js";
+import { MatchDontExistError } from "../../errors/MatchDontExistError.js";
 
 @inject()
 export class SaveForecast implements SaveForecastUseCase {

@@ -1,4 +1,4 @@
-import { Match } from "#forecast/domain/Match";
+import { Match } from "../../domain/Match.js";
 import { MatchModel } from "#models/match";
 
 export class DbMatchAdapter {
