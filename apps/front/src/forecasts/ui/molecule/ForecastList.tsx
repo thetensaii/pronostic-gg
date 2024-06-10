@@ -1,5 +1,5 @@
 import { VStack } from "styled-system/jsx"
-import { ForecastInput } from "./ForecastInput"
+import { ForecastForm } from "./ForecastForm"
 
 export type Forecast = {
   matchId: string,
@@ -15,7 +15,7 @@ type Props = {
 export const ForecastList = ({ forecasts }: Props) => {
   return (
     <VStack gap='6'>
-      {forecasts.map((f) => <ForecastInput key={f.teams.join('-')} dateTime={f.startAt} teams={f.teams} score={f.score} />)}
+      {forecasts.map((f) => <ForecastForm key={f.teams.join('-')} forecast={f} />)}
     </VStack>
   )
 }

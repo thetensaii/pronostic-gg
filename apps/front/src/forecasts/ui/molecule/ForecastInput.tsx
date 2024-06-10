@@ -8,14 +8,16 @@ type Props = {
   teams: [string, string],
   score: [number, number] | null
   disabledScoreInput?: boolean,
+  onChange: (score: [number, number]) => void
 }
 
-export const ForecastInput = ({ dateTime, teams, score, disabledScoreInput }: Props) => {
+export const ForecastInput = ({ dateTime, teams, score, disabledScoreInput, onChange }: Props) => {
+
   return (
     <HStack alignItems='end'>
       <Team name={teams[0]} />
       <HStack>
-        <PinInput value={score ? [`${score[0]}`, `${score[1]}`] : undefined}  length={2} disabled={disabledScoreInput} onValueChange={(value) => console.log(value)} onValueInvalid={(value) => console.log(value)} pattern={"^[0-1]$"}>
+        <PinInput value={score ? [`${score[0]}`, `${score[1]}`] : undefined}  length={2} disabled={disabledScoreInput} onValueComplete={(details) => { onChange([Number(details.value[0]), Number(details.value[1])])}} pattern={"^[0-1]$"}>
           <div className={css({ mx: ['auto']})}>{dateTime.toLocaleTimeString([],  { hour: "2-digit", minute: "2-digit" })}</div>
         </PinInput>
       </HStack>

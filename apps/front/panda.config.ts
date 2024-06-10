@@ -9,7 +9,7 @@ export default defineConfig({
   include: ["./src/**/*.{js,jsx,ts,tsx}"],
 
   presets: [
-    '@pandacss/preset-base', 
+    '@pandacss/preset-panda', 
     createPreset({
       accentColor: 'iris',
       grayColor: 'mauve',
