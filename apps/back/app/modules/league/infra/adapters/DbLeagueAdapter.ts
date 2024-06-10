@@ -1,7 +1,7 @@
-import { Competition } from "#league/domain/Competition";
-import { League } from "#league/domain/League";
-import { Member } from "#league/domain/Member";
-import { User } from "#league/domain/User";
+import { Competition } from "../../domain/Competition.js";
+import { League } from "../../domain/League.js";
+import { Member } from "../../domain/Member.js";
+import { User } from "../../domain/User.js";
 import { LeagueModel } from "#models/league";
 import { DbMember } from "../DbLeagueRepository.js";
 

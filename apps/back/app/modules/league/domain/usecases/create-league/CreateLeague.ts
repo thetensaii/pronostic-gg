@@ -1,8 +1,8 @@
 import { Result, ResultType } from "#common/Result";
-import { LeagueFactory } from "#league/domain/LeagueFactory";
-import { CompetitionService } from "#league/domain/services/CompetitionService";
-import { LeagueRepository } from "#league/domain/repositories/LeagueRepository";
-import { UserService } from "#league/domain/services/UserService";
+import { LeagueFactory } from "../../LeagueFactory.js";
+import { CompetitionService } from "../../services/CompetitionService.js";
+import { LeagueRepository } from "../../repositories/LeagueRepository.js";
+import { UserService } from "../../services/UserService.js";
 import { inject } from "@adonisjs/core";
 import { CreateLeagueErrors } from "./CreateLeagueErrors.js";
 import { CreateLeagueDto, CreateLeagueUseCase } from "./CreateLeagueUseCase.js";

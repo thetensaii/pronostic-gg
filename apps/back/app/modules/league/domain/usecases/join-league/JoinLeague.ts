@@ -1,6 +1,6 @@
 import { Result, ResultType } from "#common/Result";
-import { LeagueRepository } from "#league/domain/repositories/LeagueRepository";
-import { UserService } from "#league/domain/services/UserService";
+import { LeagueRepository } from "../../repositories/LeagueRepository.js";
+import { UserService } from "../../services/UserService.js";
 import { inject } from "@adonisjs/core";
 import { JoinLeagueErrors } from "./JoinLeagueErrors.js";
 import { JoinLeagueDto, JoinLeagueUseCase } from "./JoinLeagueUseCase.js";

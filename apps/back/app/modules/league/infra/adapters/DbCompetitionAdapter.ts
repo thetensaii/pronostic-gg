@@ -1,5 +1,5 @@
 
-import { Competition } from "#league/domain/Competition";
+import { Competition } from "../../domain/Competition.js";
 import { CompetitionModel } from "#models/competition";
 
 export class DbCompetitionAdapter {

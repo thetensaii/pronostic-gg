@@ -1,8 +1,8 @@
 import { inject } from "@adonisjs/core";
 import { UserModel } from "#models/user";
-import { UserService } from "#league/domain/services/UserService";
+import { UserService } from "../domain/services/UserService.js";
 import { DbUserAdapter } from "./adapters/DbUserAdapter.js";
-import { User } from "#league/domain/User";
+import { User } from "../domain/User.js";
 
 @inject()
 export class DbUserService implements UserService {

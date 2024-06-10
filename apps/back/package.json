@@ -30,7 +30,7 @@
     "#common/*": "./app/common/*.js",
     "#user/*": "./app/modules/user/*.js",
     "#forecast/*": "./app/forecast/*.js",
-    "#league/*": "./app/league/*.js",
+    "#league/*": "./app/modules/league/*.js",
     "#competition/*": "./app/modules/competition/*.js"
   },
   "devDependencies": {

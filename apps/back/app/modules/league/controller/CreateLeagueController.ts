@@ -1,5 +1,5 @@
 import { Result } from "#common/Result";
-import { CreateLeagueUseCase } from "#league/domain/usecases/create-league/CreateLeagueUseCase";
+import { CreateLeagueUseCase } from "../domain/usecases/create-league/CreateLeagueUseCase.js";
 import { inject } from "@adonisjs/core";
 import { HttpContext } from "@adonisjs/core/http";
 import vine from "@vinejs/vine";

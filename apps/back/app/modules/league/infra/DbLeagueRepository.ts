@@ -1,5 +1,5 @@
-import { League } from "#league/domain/League";
-import { LeagueRepository } from "#league/domain/repositories/LeagueRepository";
+import { League } from "../domain/League.js";
+import { LeagueRepository } from "../domain/repositories/LeagueRepository.js";
 import { LeagueModel } from "#models/league";
 import { DateTime } from "luxon";
 import { DbLeagueAdapter } from "./adapters/DbLeagueAdapter.js";

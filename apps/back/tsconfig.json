@@ -9,7 +9,7 @@
       "#providers/*": ["./providers/*.js"],
       "#user/*": ["./app/modules/user/*"],
       "#forecast/*": ["./app/forecast/*"],
-      "#league/*": ["./app/league/*"],
+      "#league/*": ["./app/modules/league/*"],
       "#competition/*": ["./app/modules/competition/*"],
     }
   },

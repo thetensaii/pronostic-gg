@@ -1,6 +1,6 @@
 import { inject } from "@adonisjs/core";
-import { CompetitionService } from "#league/domain/services/CompetitionService";
-import { Competition } from "#league/domain/Competition";
+import { CompetitionService } from "../domain/services/CompetitionService.js";
+import { Competition } from "../domain/Competition.js";
 import { CompetitionModel } from "#models/competition";
 import { DbCompetitionAdapter } from "./adapters/DbCompetitionAdapter.js";
 

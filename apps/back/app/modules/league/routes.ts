@@ -1,7 +1,7 @@
 import router from '@adonisjs/core/services/router'
 
-const CreateLeagueController = () => import('#league/controller/CreateLeagueController')
-const JoinLeagueController = () => import('#league/controller/JoinLeagueController')
+const CreateLeagueController = () => import('./controller/CreateLeagueController.js')
+const JoinLeagueController = () => import('./controller/JoinLeagueController.js')
 
 export const leagueRouter = () =>
   router.group(() => {

@@ -1,6 +1,6 @@
 import router from '@adonisjs/core/services/router'
 import { userRouter } from '#user/routes'
-import { leagueRouter } from '#league/routes'
+import { leagueRouter } from '../app/modules/league/routes.js'
 import { forecastRouter } from '#forecast/routes'
 import { competitionRouter } from '#competition/routes'
 
