@@ -8,12 +8,12 @@ import { JoinLeagueDto, JoinLeagueUseCase } from "./JoinLeagueUseCase.js";
 @inject()
 export class JoinLeague implements JoinLeagueUseCase {
   constructor(
-    private userRepository: UserService,
+    private userService: UserService,
     private leagueRepository: LeagueRepository
   ){}
 
   public async execute(joinLeagueDto: JoinLeagueDto): Promise<ResultType<null, JoinLeagueErrors>> {
-    const user = await this.userRepository.find(joinLeagueDto.userId)
+    const user = await this.userService.find(joinLeagueDto.userId)
     if(!user){
       return Result.fail(JoinLeagueErrors.UserDontExistError)
     }
