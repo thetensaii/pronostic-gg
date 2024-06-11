@@ -13,6 +13,9 @@ export class LeagueModel extends BaseModel {
   declare name:string;
 
   @column()
+  declare code:string;
+
+  @column()
   declare ownerId: string
 
   @column()

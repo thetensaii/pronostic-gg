@@ -6,6 +6,7 @@ import { User } from "./User.js"
 type LeagueProps = {
   id: string,
   name: string,
+  code: string,
   competition: Competition,
   owner: User,
   members: Member[],
@@ -16,6 +17,7 @@ type LeagueProps = {
 export class League {
   private _id: string
   private _name: string
+  private _code: string
   private _competition: Competition
   private _owner: User
   private _members: Member[]
@@ -26,8 +28,9 @@ export class League {
   constructor(props: LeagueProps){
     this._id = props.id
     this._name = props.name
+    this._code = props.code
     this._competition = props.competition
-    this._owner= props.owner
+    this._owner = props.owner
     this._members = props.members
     this._createdAt = props.createdAt
     this._updatedAt = props.updatedAt
@@ -38,6 +41,9 @@ export class League {
   }
   public get name(): string {
     return this._name
+  }
+  public get code(): string {
+    return this._code
   }
   public get competition(): Competition {
     return this._competition

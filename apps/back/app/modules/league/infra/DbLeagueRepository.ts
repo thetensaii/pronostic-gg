@@ -29,6 +29,7 @@ export class DbLeagueRepository implements LeagueRepository {
       {
         id: league.id,
         name: league.name,
+        code: league.code,
         ownerId: league.owner.id,
         competitionId: league.competition.id,
         createdAt: DateTime.fromJSDate(league.createdAt),
@@ -44,10 +45,5 @@ export class DbLeagueRepository implements LeagueRepository {
         } 
       }
     }, {}))
-    // await createdLeague.related('members').sync({
-    //   [createdLeague.ownerId]: {
-    //     created_at: DateTime.fromJSDate(league.createdAt)
-    //   }
-    // })
   }
 }
