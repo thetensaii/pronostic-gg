@@ -5,7 +5,11 @@ import { Heading } from '~/components/ui/heading'
 import { CurrentPlayerRow, Player } from '~/ranking/ui/molecule/CurrentPlayerRow'
 import { RankingTable } from '~/ranking/ui/molecule/RankingTable'
 
-const LeagueRanking = ( ) => {
+export const Route = createFileRoute('/classement/$competitionId/_classement_layout/$leagueId')({
+  component: LeagueRanking
+})
+
+function LeagueRanking( ) {
   // const { competitionId, leagueId } = Route.useParams()
 
   return (
@@ -17,9 +21,6 @@ const LeagueRanking = ( ) => {
   )  
 }
 
-export const Route = createFileRoute('/classement/$competitionId/_classement_layout/$leagueId')({
-  component: LeagueRanking
-})
 
 const playersList: Player[] = [
   {
