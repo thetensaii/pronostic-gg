@@ -1,13 +1,14 @@
 import { useQuery } from "@tanstack/react-query"
 import { Environment } from "~/environment"
 
-type SidebarCompetition = {
+type Competition = {
+  id: string,
   name: string,
   slug: string
 }
 
-export const useGetSidebarCompetitions = (): SidebarCompetition[] => {
-  const query = useQuery<SidebarCompetition[]>({ 
+export const useGetCompetitions = (): Competition[] => {
+  const query = useQuery<Competition[]>({ 
     queryKey: ['competitions'], 
     queryFn: async () => {
       const response = await fetch(`${Environment.VITE_BACKEND_URL}/competitions`)

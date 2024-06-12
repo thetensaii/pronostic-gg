@@ -1,5 +1,5 @@
 import { Stack } from "styled-system/jsx"
-import { useGetSidebarCompetitions } from "~/common/hooks/UseGetCompetitions"
+import { useGetCompetitions } from "~/common/hooks/UseGetCompetitions"
 import { VerticalLinkGroup } from "~/components/molecule/VerticalLinkGroup"
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
 }
 
 export const RankingNavigationSidebar = ({currentCompetitionSlug}: Props) => {
-  const competitions = useGetSidebarCompetitions()
+  const competitions = useGetCompetitions()
 
   const leaguesLinks = [
     {

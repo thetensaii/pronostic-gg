@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
+import { USER_ID } from "~/common/userId"
 import { Environment } from "~/environment"
 
 type RawLeague = {
@@ -12,7 +13,7 @@ export const useGetLeagues = () => {
     queryKey: ['leagues'], 
     queryFn: async () => {
       const url = new URL(`${Environment.VITE_BACKEND_URL}/leagues`)
-      url.searchParams.set('user_id', '4316d453-5425-4fd7-95a0-0bea8f40268d')
+      url.searchParams.set('user_id', USER_ID)
       const response = await fetch(url.toString())
 
       if(response.ok) return await response.json()

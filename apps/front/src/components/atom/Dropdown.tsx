@@ -9,14 +9,16 @@ type Option = {
 }
 
 type DropdownProps = {
+  name: string,
   label?: string,
   placeholder: string,
   options: Option[]
+  onChange: (id: string) => void
 }
 
-export function Dropdown({label, placeholder, options }: DropdownProps) {
+export function Dropdown({label, placeholder, options, onChange }: DropdownProps) {
   return (
-    <Combobox.Root items={options}>
+    <Combobox.Root items={options} onValueChange={(details) => onChange(details.value[0])}>
       <Combobox.Label>{label}</Combobox.Label>
       <Combobox.Control>
         <Combobox.Input placeholder={placeholder} asChild>

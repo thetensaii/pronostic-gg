@@ -1,11 +1,19 @@
 import { useMutation } from "@tanstack/react-query"
 import { USER_ID } from "~/common/userId"
 import { Environment } from "~/environment"
+type CreateLeagueMutationProps = {
+  name: string,
+  competitionId:string
+}
 
-export const useSaveForecast = (matchId: string) => {
+type CreateLeagueHookProps = {
+  onSuccess: () => void
+}
+
+export const useCreateLeague = ({ onSuccess } : CreateLeagueHookProps) => {
   const mutation = useMutation({ 
-    mutationFn: async ( score: [number, number]) => {
-      const url = new URL(`${Environment.VITE_BACKEND_URL}/forecasts`)
+    mutationFn: async ({name, competitionId}:CreateLeagueMutationProps) => {
+      const url = new URL(`${Environment.VITE_BACKEND_URL}/leagues`)
 
       const response = await fetch(url.toString(), {
         method: 'POST',
@@ -13,24 +21,27 @@ export const useSaveForecast = (matchId: string) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          user_id: USER_ID,
-          match_id: matchId,
-          score
+          owner_id: USER_ID,
+          name,
+          competition_id: competitionId
         })
       })
 
       if(!response.ok) {
         throw await response.json()
       }
+    },
+    onSuccess: () => {
+      onSuccess()
     }
   })
 
-  const save = (score: [number, number]) => {
-    mutation.mutate(score)
+  const createLeague = (props: CreateLeagueMutationProps) => {
+    mutation.mutate(props)
   }
 
   return {
-    save,
+    createLeague,
     isSuccess: mutation.isSuccess,
     isLoading: mutation.isPending,
     isError: mutation.isError,
