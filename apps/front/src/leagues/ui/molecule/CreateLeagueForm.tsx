@@ -21,7 +21,7 @@ type FormValues = {
   competition: string
 }
 
-export const CreaLeagueForm = ({ competitions, onCreateSuccess }: Props) => {
+export const CreateLeagueForm = ({ competitions, onCreateSuccess }: Props) => {
   const { createLeague, isLoading } = useCreateLeague({ onSuccess: onCreateSuccess})
   const { control, handleSubmit } = useForm<FormValues>({
     defaultValues: {

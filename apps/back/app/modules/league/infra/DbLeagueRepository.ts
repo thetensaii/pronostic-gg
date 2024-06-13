@@ -24,6 +24,15 @@ export class DbLeagueRepository implements LeagueRepository {
     return this.dbLeagueAdapter.toDomain(dbLeague, dbMembers)
   }
 
+  public async findByCode(leagueCode: string): Promise<League | null> {
+    const dbLeague = await LeagueModel.findBy('code', leagueCode)
+
+    if(!dbLeague) return null
+
+    const dbMembers = (await dbLeague.related('members').pivotQuery<DbMember>())
+    return this.dbLeagueAdapter.toDomain(dbLeague, dbMembers)
+  }
+
   public async save(league: League): Promise<void> {
     const createdLeague = await LeagueModel.updateOrCreate({ id: league.id },
       {

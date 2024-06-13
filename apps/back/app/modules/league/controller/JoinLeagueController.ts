@@ -7,7 +7,7 @@ import vine from "@vinejs/vine";
 const joinLeagueValidator = vine.compile(
   vine.object({
     user_id: vine.string(),
-    league_id: vine.string()
+    league_code: vine.string()
   })
 )
 
@@ -19,12 +19,19 @@ export default class JoinLeagueController {
   public async handle({request, response}: HttpContext) {
     const payload = await request.validateUsing(joinLeagueValidator)
 
-    const result = await this.joinLeagueUseCase.execute({ userId: payload.user_id, leagueId: payload.league_id })
+    const result = await this.joinLeagueUseCase.execute({ userId: payload.user_id, leagueCode: payload.league_code })
     
     if(Result.isFail(result)) {
-      response.status(400)
+      switch(result.error){
+        case 'LeagueAlreadyJoinedError':
+          return response.status(400).json({ message: "Vous êtes déjà dans cette ligue."})
+        case 'LeagueDontExistError':
+          return response.status(400).json({ message: "Code non valide."})
+        default:
+          return response.status(400)
+      }
     } else {
-      response.status(200)
+      return response.status(200)
     }
   }
 }

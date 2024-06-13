@@ -1,7 +1,7 @@
 import { css } from "styled-system/css"
 import { Container } from "styled-system/jsx"
 import { useGetCompetitions } from "~/common/hooks/UseGetCompetitions"
-import { CreaLeagueForm } from "../molecule/CreateLeagueForm"
+import { CreateLeagueForm } from "../molecule/CreateLeagueForm"
 import { useNavigate } from "@tanstack/react-router"
 
 export const CreateLeague = ( ) => {
@@ -14,7 +14,7 @@ export const CreateLeague = ( ) => {
 
   return (
     <Container maxWidth='6xl'  className={css({ pt: '8', lg : { display : 'flex', gap: '32' } })}>
-      <CreaLeagueForm competitions={competitions} onCreateSuccess={onCreateSuccess} />
+      <CreateLeagueForm competitions={competitions} onCreateSuccess={onCreateSuccess} />
     </Container>
   )
 }
