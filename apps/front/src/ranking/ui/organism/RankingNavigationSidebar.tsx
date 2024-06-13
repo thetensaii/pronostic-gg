@@ -1,6 +1,7 @@
 import { Stack } from "styled-system/jsx"
 import { useGetCompetitions } from "~/common/hooks/UseGetCompetitions"
 import { VerticalLinkGroup } from "~/components/molecule/VerticalLinkGroup"
+import { useGetJoinedCompetitionLeagues } from "~/ranking/hooks/UseGetJoinedCompetitionLeagues"
 
 type Props = {
   currentCompetitionSlug: string
@@ -8,26 +9,12 @@ type Props = {
 
 export const RankingNavigationSidebar = ({currentCompetitionSlug}: Props) => {
   const competitions = useGetCompetitions()
-
-  const leaguesLinks = [
-    {
-      name: "Global",
-      to: `/classement/${currentCompetitionSlug}/main`
-    },
-    {
-      name: "Copains",
-      to: `/classement/${currentCompetitionSlug}/copains`
-    },
-    {
-      name: "Les Zamis",
-      to: `/classement/${currentCompetitionSlug}/zamis`
-    },
-  ]
+  const joinedCompetitionsLeagues = useGetJoinedCompetitionLeagues(currentCompetitionSlug)
 
   return (
     <Stack gap='16'>
       <VerticalLinkGroup links={competitions.map((c) => ({ name: c.name, to: `/classement/${c.slug}`}))} />
-      <VerticalLinkGroup links={leaguesLinks} />
+      <VerticalLinkGroup links={joinedCompetitionsLeagues.map((l) => ({ name: l.name, to: `/classement/${currentCompetitionSlug}/${l.code}` }))} />
     </Stack>
   )
 }
