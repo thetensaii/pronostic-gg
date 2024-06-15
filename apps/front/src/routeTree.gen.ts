@@ -24,16 +24,16 @@ import { Route as ResultatsResultatslayoutIndexImport } from './routes/resultats
 import { Route as PronosPronoslayoutIndexImport } from './routes/pronos/_pronos_layout.index'
 import { Route as ResultatsResultatslayoutCompetitionSlugImport } from './routes/resultats/_resultats_layout.$competitionSlug'
 import { Route as PronosPronoslayoutCompetitionSlugImport } from './routes/pronos/_pronos_layout.$competitionSlug'
-import { Route as ClassementCompetitionIdClassementlayoutImport } from './routes/classement/$competitionId/_classement_layout'
-import { Route as ClassementCompetitionIdClassementlayoutIndexImport } from './routes/classement/$competitionId/_classement_layout.index'
-import { Route as ClassementCompetitionIdClassementlayoutLeagueIdImport } from './routes/classement/$competitionId/_classement_layout.$leagueId'
+import { Route as ClassementCompetitionSlugClassementlayoutImport } from './routes/classement/$competitionSlug/_classement_layout'
+import { Route as ClassementCompetitionSlugClassementlayoutIndexImport } from './routes/classement/$competitionSlug/_classement_layout.index'
+import { Route as ClassementCompetitionSlugClassementlayoutLeagueCodeImport } from './routes/classement/$competitionSlug/_classement_layout.$leagueCode'
 
 // Create Virtual Routes
 
 const ResultatsImport = createFileRoute('/resultats')()
 const PronosImport = createFileRoute('/pronos')()
-const ClassementCompetitionIdImport = createFileRoute(
-  '/classement/$competitionId',
+const ClassementCompetitionSlugImport = createFileRoute(
+  '/classement/$competitionSlug',
 )()
 
 // Create/Update Routes
@@ -48,8 +48,8 @@ const PronosRoute = PronosImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const ClassementCompetitionIdRoute = ClassementCompetitionIdImport.update({
-  path: '/classement/$competitionId',
+const ClassementCompetitionSlugRoute = ClassementCompetitionSlugImport.update({
+  path: '/classement/$competitionSlug',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -111,22 +111,22 @@ const PronosPronoslayoutCompetitionSlugRoute =
     getParentRoute: () => PronosPronoslayoutRoute,
   } as any)
 
-const ClassementCompetitionIdClassementlayoutRoute =
-  ClassementCompetitionIdClassementlayoutImport.update({
+const ClassementCompetitionSlugClassementlayoutRoute =
+  ClassementCompetitionSlugClassementlayoutImport.update({
     id: '/_classement_layout',
-    getParentRoute: () => ClassementCompetitionIdRoute,
+    getParentRoute: () => ClassementCompetitionSlugRoute,
   } as any)
 
-const ClassementCompetitionIdClassementlayoutIndexRoute =
-  ClassementCompetitionIdClassementlayoutIndexImport.update({
+const ClassementCompetitionSlugClassementlayoutIndexRoute =
+  ClassementCompetitionSlugClassementlayoutIndexImport.update({
     path: '/',
-    getParentRoute: () => ClassementCompetitionIdClassementlayoutRoute,
+    getParentRoute: () => ClassementCompetitionSlugClassementlayoutRoute,
   } as any)
 
-const ClassementCompetitionIdClassementlayoutLeagueIdRoute =
-  ClassementCompetitionIdClassementlayoutLeagueIdImport.update({
-    path: '/$leagueId',
-    getParentRoute: () => ClassementCompetitionIdClassementlayoutRoute,
+const ClassementCompetitionSlugClassementlayoutLeagueCodeRoute =
+  ClassementCompetitionSlugClassementlayoutLeagueCodeImport.update({
+    path: '/$leagueCode',
+    getParentRoute: () => ClassementCompetitionSlugClassementlayoutRoute,
   } as any)
 
 // Populate the FileRoutesByPath interface
@@ -169,13 +169,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfilIndexImport
       parentRoute: typeof rootRoute
     }
-    '/classement/$competitionId': {
-      preLoaderRoute: typeof ClassementCompetitionIdImport
+    '/classement/$competitionSlug': {
+      preLoaderRoute: typeof ClassementCompetitionSlugImport
       parentRoute: typeof rootRoute
     }
-    '/classement/$competitionId/_classement_layout': {
-      preLoaderRoute: typeof ClassementCompetitionIdClassementlayoutImport
-      parentRoute: typeof ClassementCompetitionIdRoute
+    '/classement/$competitionSlug/_classement_layout': {
+      preLoaderRoute: typeof ClassementCompetitionSlugClassementlayoutImport
+      parentRoute: typeof ClassementCompetitionSlugRoute
     }
     '/pronos/_pronos_layout/$competitionSlug': {
       preLoaderRoute: typeof PronosPronoslayoutCompetitionSlugImport
@@ -193,13 +193,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResultatsResultatslayoutIndexImport
       parentRoute: typeof ResultatsResultatslayoutImport
     }
-    '/classement/$competitionId/_classement_layout/$leagueId': {
-      preLoaderRoute: typeof ClassementCompetitionIdClassementlayoutLeagueIdImport
-      parentRoute: typeof ClassementCompetitionIdClassementlayoutImport
+    '/classement/$competitionSlug/_classement_layout/$leagueCode': {
+      preLoaderRoute: typeof ClassementCompetitionSlugClassementlayoutLeagueCodeImport
+      parentRoute: typeof ClassementCompetitionSlugClassementlayoutImport
     }
-    '/classement/$competitionId/_classement_layout/': {
-      preLoaderRoute: typeof ClassementCompetitionIdClassementlayoutIndexImport
-      parentRoute: typeof ClassementCompetitionIdClassementlayoutImport
+    '/classement/$competitionSlug/_classement_layout/': {
+      preLoaderRoute: typeof ClassementCompetitionSlugClassementlayoutIndexImport
+      parentRoute: typeof ClassementCompetitionSlugClassementlayoutImport
     }
   }
 }
@@ -224,10 +224,10 @@ export const routeTree = rootRoute.addChildren([
   ClassementIndexRoute,
   LiguesIndexRoute,
   ProfilIndexRoute,
-  ClassementCompetitionIdRoute.addChildren([
-    ClassementCompetitionIdClassementlayoutRoute.addChildren([
-      ClassementCompetitionIdClassementlayoutLeagueIdRoute,
-      ClassementCompetitionIdClassementlayoutIndexRoute,
+  ClassementCompetitionSlugRoute.addChildren([
+    ClassementCompetitionSlugClassementlayoutRoute.addChildren([
+      ClassementCompetitionSlugClassementlayoutLeagueCodeRoute,
+      ClassementCompetitionSlugClassementlayoutIndexRoute,
     ]),
   ]),
 ])

@@ -1,26 +1,23 @@
-import { createFileRoute } from '@tanstack/react-router'
 import { css } from 'styled-system/css'
 import { VStack } from 'styled-system/jsx'
 import { Heading } from '~/components/ui/heading'
-import { CurrentPlayerRow, Player } from '~/ranking/ui/molecule/CurrentPlayerRow'
-import { RankingTable } from '~/ranking/ui/molecule/RankingTable'
+import { CurrentPlayerRow, Player } from '~/leaderboard/ui/molecule/CurrentPlayerRow'
+import { RankingTable } from '~/leaderboard/ui/molecule/RankingTable'
 
-export const Route = createFileRoute('/classement/$competitionId/_classement_layout/$leagueId')({
-  component: LeagueRanking
-})
+type Props = {
+  leagueCode: string
+}
 
-function LeagueRanking( ) {
-  // const { competitionId, leagueId } = Route.useParams()
-
+export const Leaderboard = ({ leagueCode }: Props) => {
+  console.log(leagueCode)
   return (
     <VStack gap='6' className={css({ w: 'full'})}>
-      <Heading as='h1' size='2xl'>Classement</Heading>
+      <Heading as='h1' size='2xl'>Classement : Les ZAMIS</Heading>
       <CurrentPlayerRow {...playersList[0]} />
       <RankingTable players={playersList} />
     </VStack>
-  )  
+  )
 }
-
 
 const playersList: Player[] = [
   {

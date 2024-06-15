@@ -1,7 +1,7 @@
 import { Stack } from "styled-system/jsx"
 import { useGetCompetitions } from "~/common/hooks/UseGetCompetitions"
 import { VerticalLinkGroup } from "~/components/molecule/VerticalLinkGroup"
-import { useGetJoinedCompetitionLeagues } from "~/ranking/hooks/UseGetJoinedCompetitionLeagues"
+import { useGetJoinedCompetitionLeagues } from "~/leaderboard/hooks/UseGetJoinedCompetitionLeagues"
 
 type Props = {
   currentCompetitionSlug: string
