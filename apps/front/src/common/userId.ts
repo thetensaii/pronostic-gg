@@ -1,2 +1,2 @@
 // Temp variable until authentication
-export const USER_ID = 'eb1ee8b8-e47a-40af-a565-12cb6d6e6c69'
+export const USER_ID = 'dc6b0f28-9197-41ef-9c8d-7f6e0b122f37'

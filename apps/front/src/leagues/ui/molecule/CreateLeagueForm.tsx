@@ -4,16 +4,20 @@ import { Dropdown } from "~/components/atom/Dropdown"
 import { Button } from "~/components/ui/button"
 import { FormLabel } from "~/components/ui/form-label"
 import { Input } from "~/components/ui/input"
-import { useCreateLeague } from "../hooks/UseCreateLeague"
 
 type Competition = {
   id: string,
   name: string
 }
 
+type OnSubmitProps = {
+  name: string,
+  competition: string
+}
 type Props = {
   competitions: Competition[],
-  onCreateSuccess: () => void
+  onSubmit: (props: OnSubmitProps) => void,
+  isLoading: boolean
 }
 
 type FormValues = {
@@ -21,8 +25,7 @@ type FormValues = {
   competition: string
 }
 
-export const CreateLeagueForm = ({ competitions, onCreateSuccess }: Props) => {
-  const { createLeague, isLoading } = useCreateLeague({ onSuccess: onCreateSuccess})
+export const CreateLeagueForm = ({ competitions, onSubmit, isLoading }: Props) => {
   const { control, handleSubmit } = useForm<FormValues>({
     defaultValues: {
       name: '',
@@ -30,16 +33,8 @@ export const CreateLeagueForm = ({ competitions, onCreateSuccess }: Props) => {
     }
   })
 
-  
-  const onSubmit = (data:FormValues) => {
-    createLeague({
-      name: data.name,
-      competitionId: data.competition
-    })
-  };
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit((data) => onSubmit(data))}>
       <VStack gap="6">
         <VStack w="full" alignItems="start">
           <FormLabel htmlFor="name">Comment veux-tu appeler ta ligue ?</FormLabel>
