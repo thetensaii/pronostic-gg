@@ -38,11 +38,11 @@ export default class GetNextForecastsController {
       return response.status(401)
     }
     
-    await competition.load('matches')
-    const matchesIds = competition.matches.map(m => m.id)
+    const matches = await competition.related('matches').query().whereNull('score_a').andWhereNull('score_b')
+    const matchesIds = matches.map(m => m.id)
     const userForecasts = await ForecastModel.query().where('user_id', user.id).andWhereIn('match_id', matchesIds)
 
-    return await Promise.all(competition.matches.map(async (match) => this.convertMatchToForecastDto(match, userForecasts)))
+    return await Promise.all(matches.map(async (match) => this.convertMatchToForecastDto(match, userForecasts)))
   }
 
   private async convertMatchToForecastDto(match: MatchModel, userForecasts: ForecastModel[] ): Promise<ForecastDto> {

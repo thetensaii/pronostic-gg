@@ -22,7 +22,7 @@ import { Route as LiguesJoinImport } from './routes/ligues/join'
 import { Route as LiguesCreateImport } from './routes/ligues/create'
 import { Route as ResultatsResultatslayoutIndexImport } from './routes/resultats/_resultats_layout.index'
 import { Route as PronosPronoslayoutIndexImport } from './routes/pronos/_pronos_layout.index'
-import { Route as ResultatsResultatslayoutCompetitionIdImport } from './routes/resultats/_resultats_layout.$competitionId'
+import { Route as ResultatsResultatslayoutCompetitionSlugImport } from './routes/resultats/_resultats_layout.$competitionSlug'
 import { Route as PronosPronoslayoutCompetitionSlugImport } from './routes/pronos/_pronos_layout.$competitionSlug'
 import { Route as ClassementCompetitionIdClassementlayoutImport } from './routes/classement/$competitionId/_classement_layout'
 import { Route as ClassementCompetitionIdClassementlayoutIndexImport } from './routes/classement/$competitionId/_classement_layout.index'
@@ -99,9 +99,9 @@ const PronosPronoslayoutIndexRoute = PronosPronoslayoutIndexImport.update({
   getParentRoute: () => PronosPronoslayoutRoute,
 } as any)
 
-const ResultatsResultatslayoutCompetitionIdRoute =
-  ResultatsResultatslayoutCompetitionIdImport.update({
-    path: '/$competitionId',
+const ResultatsResultatslayoutCompetitionSlugRoute =
+  ResultatsResultatslayoutCompetitionSlugImport.update({
+    path: '/$competitionSlug',
     getParentRoute: () => ResultatsResultatslayoutRoute,
   } as any)
 
@@ -181,8 +181,8 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PronosPronoslayoutCompetitionSlugImport
       parentRoute: typeof PronosPronoslayoutImport
     }
-    '/resultats/_resultats_layout/$competitionId': {
-      preLoaderRoute: typeof ResultatsResultatslayoutCompetitionIdImport
+    '/resultats/_resultats_layout/$competitionSlug': {
+      preLoaderRoute: typeof ResultatsResultatslayoutCompetitionSlugImport
       parentRoute: typeof ResultatsResultatslayoutImport
     }
     '/pronos/_pronos_layout/': {
@@ -217,7 +217,7 @@ export const routeTree = rootRoute.addChildren([
   ]),
   ResultatsRoute.addChildren([
     ResultatsResultatslayoutRoute.addChildren([
-      ResultatsResultatslayoutCompetitionIdRoute,
+      ResultatsResultatslayoutCompetitionSlugRoute,
       ResultatsResultatslayoutIndexRoute,
     ]),
   ]),
