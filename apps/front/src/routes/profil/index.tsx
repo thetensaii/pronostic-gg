@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Container, Box, HStack, VStack } from 'styled-system/jsx'
 import { Text } from '~/components/ui/text'
 import { Dropdown } from '~/components/atom/Dropdown'
-import { MatchResult } from '~/results/ui/molecule/MatchResult'
+// import { MatchResult } from '~/results/ui/molecule/MatchResult'
 
 export const Route = createFileRoute('/profil/')({
   component: () => {
@@ -23,8 +23,8 @@ export const Route = createFileRoute('/profil/')({
               </Box>
             </HStack>
             <VStack gap='6' marginTop="4">
-              <MatchResult isForecastGood={true} teamA={{name: "Équipe A"}} teamAScore={1} teamB={{name: "Équipe B"}} teamBScore={0} />
-              <MatchResult isForecastGood={false} teamA={{name: "Équipe C"}} teamAScore={0} teamB={{name: "Équipe D"}} teamBScore={1} />
+              {/* <MatchResult isForecastGood={true} teamA={{name: "Équipe A"}} teamAScore={1} teamB={{name: "Équipe B"}} teamBScore={0} />
+              <MatchResult isForecastGood={false} teamA={{name: "Équipe C"}} teamAScore={0} teamB={{name: "Équipe D"}} teamBScore={1} /> */}
             </VStack>
           </Box>
         </Box>

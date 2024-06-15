@@ -20,7 +20,7 @@ export const useGetForecastsResults = (competitionSlug: string): ForecastResult[
       const response = await fetch(url.toString())
       const data = await response.json()
       
-      return data.map((rawForecastResult): ForecastResult => ({ 
+      return data.map((rawForecastResult: any): ForecastResult => ({ 
         matchId: rawForecastResult.match_id,
         startAt: new Date(rawForecastResult.start_at),
         teams: rawForecastResult.teams,
