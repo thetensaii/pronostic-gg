@@ -36,7 +36,7 @@ export const CreateLeagueForm = ({ competitions, onSubmit, isLoading }: Props) =
   return (
     <form onSubmit={handleSubmit((data) => onSubmit(data))}>
       <VStack gap="6">
-        <VStack w="full" alignItems="start">
+        <VStack css={{ w: 'full', alignItems: 'start'}}>
           <FormLabel htmlFor="name">Comment veux-tu appeler ta ligue ?</FormLabel>
           <Controller
             name="name"

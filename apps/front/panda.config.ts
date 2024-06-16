@@ -24,7 +24,7 @@ export default defineConfig({
   theme: {
     extend: {},
   },
-
+  jsxStyleProps:'minimal',
   jsxFramework: 'react',
 
   // The output directory for your css system

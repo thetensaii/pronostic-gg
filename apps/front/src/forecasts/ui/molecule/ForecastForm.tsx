@@ -30,7 +30,7 @@ export const ForecastForm = ({ forecast }: Props) => {
   }
 
   return (
-    <HStack gap='2' alignItems='center'>
+    <HStack css={{ gap: '2', alignItems: 'center' }}>
       <ForecastInput  dateTime={startAt} teams={teams} score={score} onChange={handleChange} />
       {ForecastStatus}
     </HStack>

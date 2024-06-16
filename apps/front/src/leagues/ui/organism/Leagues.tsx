@@ -14,14 +14,14 @@ export const Leagues = () => {
           {leagues.map((league) => <LeagueCard name={league.name} competition={league.competitionName} numberOfMembers={league.countMembers} />)}
         </Grid>
 
-        <VStack w="full">
-          <Button w="full" asChild>
+        <VStack css={{ w: 'full' }}>
+          <Button css={{ w: 'full' }} asChild>
             <Link to="/ligues/create">
               Créer une nouvelle ligue
             </Link> 
           </Button>
 
-          <Button w="full" variant='outline' asChild>
+          <Button css={{ w: 'full' }} variant='outline' asChild>
             <Link to="/ligues/join">
               Rejoindre une ligue
             </Link>

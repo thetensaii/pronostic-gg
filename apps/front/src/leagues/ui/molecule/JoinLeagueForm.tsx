@@ -24,8 +24,8 @@ export const JoinLeagueForm = ({ onSubmit, isLoading, errorMessage }: Props) => 
   
   return (
     <form onSubmit={handleSubmit((data) => onSubmit(data.leagueCode))} className={css({w: 'full'})}>
-      <HStack w="8/12" alignItems="end" justifyItems="between">
-        <VStack w="full" alignItems="start">
+      <HStack css={{ w: '8/12', alignItems: 'end', justifyItems: 'between'}}>
+        <VStack css={{ w: 'full', alignItems: 'start'}}>
           <FormLabel htmlFor="leagueCode">Pour rejoindre une ligue, rentre ton code ici :</FormLabel>
           <Controller
             name="leagueCode"
