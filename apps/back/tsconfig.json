@@ -11,6 +11,7 @@
       "#forecast/*": ["./app/modules/forecast/*"],
       "#league/*": ["./app/modules/league/*"],
       "#competition/*": ["./app/modules/competition/*"],
+      "#leaderboard/*": ["./app/modules/leaderboard/*"],
     }
   },
 }

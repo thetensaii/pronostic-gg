@@ -31,7 +31,8 @@
     "#user/*": "./app/modules/user/*.js",
     "#forecast/*": "./app/modules/forecast/*.js",
     "#league/*": "./app/modules/league/*.js",
-    "#competition/*": "./app/modules/competition/*.js"
+    "#competition/*": "./app/modules/competition/*.js",
+    "#leaderboard/*": "./app/modules/leaderboard/*.js"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^7.5.2",

@@ -1,12 +1,12 @@
-import {Player} from './CurrentPlayerRow'
 import * as Table from '~/components/ui/table'
 import { Text } from "~/components/ui/text"
+import { RankedMember } from '../organism/Leaderboard'
 
 type Props = {
-  players: Player[]
+  members: RankedMember[]
 }
 
-export const RankingTable = ({players}: Props) => {
+export const RankingTable = ({ members }: Props) => {
   return (
     <Table.Root variant="outline">
       <Table.Head>
@@ -17,11 +17,11 @@ export const RankingTable = ({players}: Props) => {
         </Table.Row>
       </Table.Head>
       <Table.Body>
-        {players.map((player) => (
-          <Table.Row key={player.username}>
-            <Table.Cell><Text as="span" size='md'>{player.position}</Text></Table.Cell>
-            <Table.Cell><Text as="span" size='md'>{player.username}</Text></Table.Cell>
-            <Table.Cell><Text as="span" size='md'>{player.points}</Text></Table.Cell>
+        {members.sort((a, b) => a.rank - b.rank).map((member) => (
+          <Table.Row key={member.username}>
+            <Table.Cell><Text as="span" size='md'>{member.rank}</Text></Table.Cell>
+            <Table.Cell><Text as="span" size='md'>{member.username}</Text></Table.Cell>
+            <Table.Cell><Text as="span" size='md'>{member.points}</Text></Table.Cell>
           </Table.Row>
         ))}
       </Table.Body>

@@ -1,0 +1,12 @@
+{
+  // EDITOR
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  
+  // ESLINT
+  "eslint.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit" 
+  },
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+}
