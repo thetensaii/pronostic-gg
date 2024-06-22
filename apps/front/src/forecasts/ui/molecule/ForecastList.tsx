@@ -1,12 +1,6 @@
 import { VStack } from "styled-system/jsx"
 import { ForecastForm } from "./ForecastForm"
-
-export type Forecast = {
-  matchId: string,
-  startAt: Date,
-  teams: [string, string],
-  score: [number, number] | null
-}
+import { Forecast } from "../organism/ForecastsMain"
 
 type Props = {
   forecasts: Forecast[]

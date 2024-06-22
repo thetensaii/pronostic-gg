@@ -15,7 +15,7 @@ export class DbForecastRepository implements ForecastRepository {
     if(!dbForecast){
       return null
     }
-
+    await dbForecast.load('match')
     return this.dbForecastAdapter.toDomain(dbForecast) 
   }
 

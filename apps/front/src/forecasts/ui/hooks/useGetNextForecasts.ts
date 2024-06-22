@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query"
 import { USER_ID } from "~/common/userId"
 import { Environment } from "~/environment"
 
-type NextForecast = {
+export type NextForecast = {
   matchId: string,
   startAt: Date,
   teams: [string, string]

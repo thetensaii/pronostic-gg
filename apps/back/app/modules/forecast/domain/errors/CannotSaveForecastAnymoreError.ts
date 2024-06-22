@@ -1,0 +1,2 @@
+export const CannotSaveForecastAnymoreError = 'CannotSaveForecastAnymoreError'
+export type CannotSaveForecastAnymoreError = typeof CannotSaveForecastAnymoreError

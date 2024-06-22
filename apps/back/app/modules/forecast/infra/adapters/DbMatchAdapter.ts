@@ -3,6 +3,6 @@ import { MatchModel } from "#models/match";
 
 export class DbMatchAdapter {
   public toDomain(match: MatchModel): Match {
-    return new Match({ id: match.id })
+    return new Match({ id: match.id, startAt: match.startAt.toJSDate() })
   }
 }

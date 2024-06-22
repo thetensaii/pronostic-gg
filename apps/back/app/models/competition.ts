@@ -23,7 +23,7 @@ export class CompetitionModel extends BaseModel {
   declare teams: ManyToMany<typeof TeamModel>
 
   @hasMany(() => MatchModel, {
-    foreignKey: 'competitionId', // defaults to userId
+    foreignKey: 'competitionId',
   })
   declare matches: HasMany<typeof MatchModel>
 

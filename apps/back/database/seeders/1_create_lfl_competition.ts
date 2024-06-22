@@ -5,6 +5,7 @@ import { StructureModel } from '#models/structure'
 import { TeamModel } from '#models/team'
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
 import { DateTime } from 'luxon'
+const ONE_HOUR_IN_MS = 60 * 60 * 1_000
 
 export default class extends BaseSeeder {
   static environment = ['development']
@@ -100,7 +101,7 @@ export default class extends BaseSeeder {
         competitionId: lfl.id,
         teamAId: teams[0].id,
         teamBId: teams[1].id,
-        startAt: DateTime.fromJSDate(new Date()),
+        startAt: DateTime.fromJSDate(new Date(new Date().getTime() + ONE_HOUR_IN_MS)),
         createdAt: DateTime.fromJSDate(new Date()),
       },
       {
@@ -108,7 +109,7 @@ export default class extends BaseSeeder {
         competitionId: lfl.id,
         teamAId: teams[1].id,
         teamBId: teams[2].id,
-        startAt: DateTime.fromJSDate(new Date()),
+        startAt: DateTime.fromJSDate(new Date(new Date().getTime() - ONE_HOUR_IN_MS)),
         createdAt: DateTime.fromJSDate(new Date()),
       },
       {
@@ -116,7 +117,7 @@ export default class extends BaseSeeder {
         competitionId: lfl.id,
         teamAId: teams[3].id,
         teamBId: teams[2].id,
-        startAt: DateTime.fromJSDate(new Date()),
+        startAt: DateTime.fromJSDate(new Date(new Date().getTime() + 3 * ONE_HOUR_IN_MS)),
         createdAt: DateTime.fromJSDate(new Date()),
       },
       {
