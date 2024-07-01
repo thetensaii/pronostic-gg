@@ -1,4 +1,4 @@
-export class LeagueCodeGenerator {
+export class CodeGenerator {
   public generate(): string {
     const codeLength = 7
     let code = ''

@@ -20,6 +20,7 @@ import { Route as ResultatsResultatslayoutImport } from './routes/resultats/_res
 import { Route as PronosPronoslayoutImport } from './routes/pronos/_pronos_layout'
 import { Route as LiguesJoinImport } from './routes/ligues/join'
 import { Route as LiguesCreateImport } from './routes/ligues/create'
+import { Route as authSignupImport } from './routes/(auth)/signup'
 import { Route as ResultatsResultatslayoutIndexImport } from './routes/resultats/_resultats_layout.index'
 import { Route as PronosPronoslayoutIndexImport } from './routes/pronos/_pronos_layout.index'
 import { Route as ResultatsResultatslayoutCompetitionSlugImport } from './routes/resultats/_resultats_layout.$competitionSlug'
@@ -88,6 +89,11 @@ const LiguesCreateRoute = LiguesCreateImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const authSignupRoute = authSignupImport.update({
+  path: '/signup',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const ResultatsResultatslayoutIndexRoute =
   ResultatsResultatslayoutIndexImport.update({
     path: '/',
@@ -133,6 +139,10 @@ const ClassementCompetitionSlugClassementlayoutLeagueCodeRoute =
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/(auth)/signup': {
+      preLoaderRoute: typeof authSignupImport
+      parentRoute: typeof rootRoute
+    }
     '/ligues/create': {
       preLoaderRoute: typeof LiguesCreateImport
       parentRoute: typeof rootRoute
@@ -207,6 +217,7 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export const routeTree = rootRoute.addChildren([
+  authSignupRoute,
   LiguesCreateRoute,
   LiguesJoinRoute,
   PronosRoute.addChildren([

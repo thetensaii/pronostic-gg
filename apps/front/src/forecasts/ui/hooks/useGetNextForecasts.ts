@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query"
-import { USER_ID } from "~/common/userId"
 import { Environment } from "~/environment"
 
 export type NextForecast = {
@@ -14,9 +13,10 @@ export const useGetNextForecasts = (competitionSlug: string): NextForecast[] => 
     queryKey: ['forecasts', 'next', competitionSlug], 
     queryFn: async () => {
       const url = new URL(`${Environment.VITE_BACKEND_URL}/forecasts/${competitionSlug}/next`)
-      url.searchParams.set('user_id', USER_ID)
 
-      const response = await fetch(url.toString())
+      const response = await fetch(url.toString(), {
+        credentials: 'include'
+      })
       const data = await response.json()
       
       return data.map((rawNextForecast: any) => ({ 

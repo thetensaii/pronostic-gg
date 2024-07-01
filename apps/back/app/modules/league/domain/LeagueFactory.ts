@@ -4,7 +4,7 @@ import { Competition } from "./Competition.js"
 import { League } from "./League.js"
 import { User } from "./User.js"
 import { Member } from "./Member.js"
-import { LeagueCodeGenerator } from "./LeagueCodeGenerator.js"
+import { CodeGenerator } from "#common/utils/CodeGenerator"
 
 type CreateLeagueProps = {
   name: string,
@@ -16,7 +16,7 @@ type CreateLeagueProps = {
 export class LeagueFactory {
   constructor(
     private uuidGenerator: UUIDGenerator, 
-    private leagueCodeGenerator: LeagueCodeGenerator
+    private codeGenerator: CodeGenerator
   ){}
 
   public create(props:CreateLeagueProps): League {
@@ -25,7 +25,7 @@ export class LeagueFactory {
     return new League({
       id: this.uuidGenerator.generate(),
       name: props.name,
-      code: this.leagueCodeGenerator.generate(),
+      code: this.codeGenerator.generate(),
       owner: props.owner,
       competition: props.competition,
       members: [

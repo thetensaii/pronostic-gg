@@ -1,4 +1,4 @@
-import { LeagueCodeGenerator } from '#league/domain/LeagueCodeGenerator'
+import { CodeGenerator } from '#common/utils/CodeGenerator'
 import { CompetitionModel } from '#models/competition'
 import { LeagueModel } from '#models/league'
 import { UserModel } from '#models/user'
@@ -16,7 +16,7 @@ export default class extends BaseSeeder {
     const league = await LeagueModel.create({
       id: crypto.randomUUID(),
       name: "Les Zamis",
-      code: new LeagueCodeGenerator().generate(),
+      code: new CodeGenerator().generate(),
       ownerId: user.id,
       competitionId: competition.id,
       createdAt: DateTime.fromJSDate(new Date()),
