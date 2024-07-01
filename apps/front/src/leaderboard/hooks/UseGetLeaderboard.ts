@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query"
-import { USER_ID } from "~/common/userId"
 import { Environment } from "~/environment"
 type RankedMember = {
   username: string,
@@ -18,8 +17,9 @@ export const useGetLeaderboard = (leagueCode: string) => {
     queryKey: ['leaderboard', leagueCode], 
     queryFn: async () => {
       const url = new URL(`${Environment.VITE_BACKEND_URL}/leaderboard/${leagueCode}`)
-      url.searchParams.set('user_id', USER_ID)
-      const response = await fetch(url.toString())
+      const response = await fetch(url.toString(), {
+        credentials: 'include'
+      })
       if(!response.ok) throw new Error() 
       const data = await response.json()
 

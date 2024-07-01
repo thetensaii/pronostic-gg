@@ -1,3 +1,4 @@
+import { middleware } from '#start/kernel'
 import router from '@adonisjs/core/services/router'
 
 const CreateLeagueController = () => import('./controller/CreateLeagueController.js')
@@ -11,4 +12,4 @@ export const leagueRouter = () =>
     router.post('/join', [JoinLeagueController])
     router.get('/', [GetLeaguesController])
     router.get('/competition', [GetJoinedCompetitionLeaguesController])
-  }).prefix('leagues')
+  }).prefix('leagues').use(middleware.auth())

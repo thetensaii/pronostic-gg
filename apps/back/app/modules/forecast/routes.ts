@@ -8,6 +8,6 @@ const GetForecastsResultsController = () => import('./controller/GetForecastsRes
 export const forecastRouter = () =>
   router.group(() => {
     router.post('/', [SaveForecastController])
-    router.get('/:competition_slug/next', [GetNextForecastsController]).use(middleware.auth())
+    router.get('/:competition_slug/next', [GetNextForecastsController])
     router.get('/:competition_slug/results', [GetForecastsResultsController])
-  }).prefix('forecasts')
+  }).prefix('forecasts').use(middleware.auth())

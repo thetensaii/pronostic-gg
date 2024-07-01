@@ -1,5 +1,4 @@
 import { useMutation } from "@tanstack/react-query"
-import { USER_ID } from "~/common/userId"
 import { Environment } from "~/environment"
 
 export const useSaveForecast = (matchId: string) => {
@@ -12,8 +11,8 @@ export const useSaveForecast = (matchId: string) => {
         headers: {
           'Content-Type': 'application/json'
         },
+        credentials: 'include',
         body: JSON.stringify({
-          user_id: USER_ID,
           match_id: matchId,
           score
         })

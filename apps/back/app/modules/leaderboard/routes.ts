@@ -1,3 +1,4 @@
+import { middleware } from '#start/kernel'
 import router from '@adonisjs/core/services/router'
 
 const GetLeaderboardController = () => import('./controller/GetLeaderboardController.js')
@@ -5,4 +6,4 @@ const GetLeaderboardController = () => import('./controller/GetLeaderboardContro
 export const leaderboardRouter = () =>
   router.group(() => {
     router.get('/:league_code', [GetLeaderboardController])
-  }).prefix('leaderboard')
+  }).prefix('leaderboard').use(middleware.auth())

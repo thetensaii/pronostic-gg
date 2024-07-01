@@ -23,10 +23,9 @@ type ForecastDto = {
 @inject()
 export default class GetNextForecastsController {
 
-  public async handle({ request, response, auth }: HttpContext) {
-    const payload = await request.validateUsing(getNextForecastsValidator)
-
+  public async handle({ auth, request, response }: HttpContext) {
     const user = auth.getUserOrFail()
+    const payload = await request.validateUsing(getNextForecastsValidator)
 
     const competition = await CompetitionModel.findBy('slug', payload.params.competition_slug)
     if(!competition){

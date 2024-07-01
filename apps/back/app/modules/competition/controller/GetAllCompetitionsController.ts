@@ -6,8 +6,6 @@ type CompetitionDto = {
   slug: string,
 }
 
-
-
 export default class GetAllCompetitionsController {
   public async handle(): Promise<CompetitionDto[]> {
     const competitions = await CompetitionModel.all()

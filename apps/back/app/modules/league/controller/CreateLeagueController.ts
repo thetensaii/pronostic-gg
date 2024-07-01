@@ -7,9 +7,7 @@ import vine from "@vinejs/vine";
 const createLeagueValidator = vine.compile(
   vine.object({
     name: vine.string(),
-    owner_id: vine.string(),
     competition_id: vine.string(),
-    
   })
 )
 
@@ -18,12 +16,13 @@ export default class CreateLeagueController {
 
   constructor(private createLeagueUseCase: CreateLeagueUseCase){}
 
-  public async handle({ request, response }: HttpContext) {
+  public async handle({ auth, request, response }: HttpContext) {
+    const user = auth.getUserOrFail()
     const payload = await request.validateUsing(createLeagueValidator)
 
     const result = await this.createLeagueUseCase.execute({ 
       name: payload.name,
-      ownerId: payload.owner_id,
+      ownerId: user.id,
       competitionId: payload.competition_id
     })
 

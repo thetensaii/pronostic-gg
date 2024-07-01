@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query"
-import { USER_ID } from "~/common/userId"
 import { Environment } from "~/environment"
 
 type CompetitionJoinedLeague = {
@@ -11,9 +10,10 @@ export const useGetJoinedCompetitionLeagues = (competitionSlug: string) => {
     queryKey: ['leagues','competition', competitionSlug], 
     queryFn: async () => {
       const url = new URL(`${Environment.VITE_BACKEND_URL}/leagues/competition`)
-      url.searchParams.set('user_id', USER_ID)
       url.searchParams.set('competition_slug', competitionSlug)
-      const response = await fetch(url.toString())
+      const response = await fetch(url.toString(), {
+        credentials: 'include'
+      })
       if(response.ok) return await response.json()
     }
   })

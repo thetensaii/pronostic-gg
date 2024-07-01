@@ -1,5 +1,4 @@
 import { useMutation } from "@tanstack/react-query"
-import { USER_ID } from "~/common/userId"
 import { Environment } from "~/environment"
 type JoinLeagueMutationProps = {
   leagueCode: string
@@ -19,8 +18,8 @@ export const useJoinLeague = ({ onSuccess } : JoinLeagueHookProps) => {
         headers: {
           'Content-Type': 'application/json'
         },
+        credentials: 'include',
         body: JSON.stringify({
-          user_id: USER_ID,
           league_code: leagueCode
         })
       })

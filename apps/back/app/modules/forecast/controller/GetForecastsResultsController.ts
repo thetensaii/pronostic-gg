@@ -1,13 +1,11 @@
 import { CompetitionModel } from "#models/competition";
 import { ForecastModel } from "#models/forecast";
 import { MatchModel } from "#models/match";
-import { UserModel } from "#models/user";
 import { HttpContext } from "@adonisjs/core/http";
 import vine from "@vinejs/vine";
 
 const getForecastsResultsValidator = vine.compile(
   vine.object({
-    user_id: vine.string(),
     params: vine.object({
       competition_slug: vine.string(),
     })
@@ -23,13 +21,10 @@ type ForecastResultDto = {
 }
 
 export default class GetForecastsResultsController {
-  public async handle({ request, response }: HttpContext) {
+  public async handle({auth, request, response }: HttpContext) {
+    const user = auth.getUserOrFail()
     const payload = await request.validateUsing(getForecastsResultsValidator)
 
-    const user = await UserModel.find(payload.user_id)
-    if(!user){
-      return response.status(401)
-    }
 
     const competition = await CompetitionModel.findBy('slug', payload.params.competition_slug)
     if(!competition){

@@ -7,7 +7,6 @@ import vine from "@vinejs/vine";
 
 const getLeaderboardValidator = vine.compile(
   vine.object({
-    user_id: vine.string(),
     params: vine.object({
       league_code: vine.string()
     })
@@ -26,13 +25,9 @@ type RankedMemberDto = Member & {
 
 export default class GetLeaderboardController {
 
-  public async handle({ request, response }: HttpContext) {
+  public async handle({auth, request, response }: HttpContext) {
+    const user = auth.getUserOrFail()
     const payload = await request.validateUsing(getLeaderboardValidator)
-
-    const user = await UserModel.find(payload.user_id)
-    if(!user){
-      return response.status(401)
-    }
 
     const league = await LeagueModel.findBy('code', payload.params.league_code)
     if(!league){

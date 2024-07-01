@@ -6,7 +6,6 @@ import vine from "@vinejs/vine";
 
 const saveForecastValidator = vine.compile(
   vine.object({
-    user_id: vine.string(),
     match_id: vine.string(),
     score: vine.tuple([
       vine.number(),
@@ -22,12 +21,13 @@ export default class SaveForecastController {
     private saveForecastUseCase: SaveForecastUseCase
   ){}
 
-  public async handle({ request, response }: HttpContext){
+  public async handle({auth, request, response }: HttpContext){
+    const user = auth.getUserOrFail()
     const payload = await request.validateUsing(saveForecastValidator)
 
     const result = await this.saveForecastUseCase.execute({
       matchId: payload.match_id,
-      userId: payload.user_id,
+      userId: user.id,
       score: payload.score
     })
 

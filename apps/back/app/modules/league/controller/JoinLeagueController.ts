@@ -6,7 +6,6 @@ import vine from "@vinejs/vine";
 
 const joinLeagueValidator = vine.compile(
   vine.object({
-    user_id: vine.string(),
     league_code: vine.string()
   })
 )
@@ -16,10 +15,11 @@ export default class JoinLeagueController {
 
   constructor(private joinLeagueUseCase: JoinLeagueUseCase){}
 
-  public async handle({request, response}: HttpContext) {
+  public async handle({auth, request, response}: HttpContext) {
+    const user = auth.getUserOrFail()
     const payload = await request.validateUsing(joinLeagueValidator)
 
-    const result = await this.joinLeagueUseCase.execute({ userId: payload.user_id, leagueCode: payload.league_code })
+    const result = await this.joinLeagueUseCase.execute({ userId: user.id, leagueCode: payload.league_code })
     
     if(Result.isFail(result)) {
       switch(result.error){
