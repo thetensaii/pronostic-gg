@@ -5,5 +5,5 @@ const GetLeaderboardController = () => import('./controller/GetLeaderboardContro
 
 export const leaderboardRouter = () =>
   router.group(() => {
-    router.get('/:league_code', [GetLeaderboardController])
+    router.get('/:competition_slug/:league_code', [GetLeaderboardController])
   }).prefix('leaderboard').use(middleware.auth())

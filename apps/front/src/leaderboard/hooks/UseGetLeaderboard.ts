@@ -12,11 +12,11 @@ type Result = {
   members: RankedMember[]
 }
 
-export const useGetLeaderboard = (leagueCode: string) => {
+export const useGetLeaderboard = (competitionSlug: string ,leagueCode: string) => {
   return useQuery<Result>({ 
-    queryKey: ['leaderboard', leagueCode], 
+    queryKey: ['leaderboard', competitionSlug, leagueCode], 
     queryFn: async () => {
-      const url = new URL(`${Environment.VITE_BACKEND_URL}/leaderboard/${leagueCode}`)
+      const url = new URL(`${Environment.VITE_BACKEND_URL}/leaderboard/${competitionSlug}/${leagueCode}`)
       const response = await fetch(url.toString(), {
         credentials: 'include'
       })

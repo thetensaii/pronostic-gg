@@ -13,10 +13,11 @@ export type RankedMember = {
 }
 
 type Props = {
+  competitionSlug: string,
   leagueCode: string
 }
-export const Leaderboard = ({ leagueCode }: Props) => {
-  const { isLoading, isSuccess, data } = useGetLeaderboard(leagueCode)
+export const Leaderboard = ({competitionSlug, leagueCode }: Props) => {
+  const { isLoading, isSuccess, data } = useGetLeaderboard(competitionSlug, leagueCode)
 
   if(isLoading) return <Text>Chargement..</Text>
   if(!isSuccess) return <Text>Une erreur est survenue.</Text> // A Revoir hein

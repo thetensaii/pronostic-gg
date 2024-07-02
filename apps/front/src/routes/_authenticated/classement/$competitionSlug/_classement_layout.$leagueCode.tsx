@@ -7,10 +7,10 @@ export const Route = createFileRoute('/_authenticated/classement/$competitionSlu
 })
 
 function LeaderboardComponent( ) {
-  const { leagueCode } = Route.useParams()
+  const { leagueCode, competitionSlug } = Route.useParams()
 
   return (
-    <Leaderboard leagueCode={leagueCode} />
+    <Leaderboard competitionSlug={competitionSlug} leagueCode={leagueCode} />
   )  
 }
 

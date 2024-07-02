@@ -7,6 +7,7 @@ const getJoinedCompetitionLeaguesValidator = vine.compile(
   })
 )
 
+
 export default class GetJoinedCompetitionLeaguesController {
 
   public async handle({ auth, request }: HttpContext) {
@@ -14,7 +15,13 @@ export default class GetJoinedCompetitionLeaguesController {
     const payload = await request.validateUsing(getJoinedCompetitionLeaguesValidator)
 
     const joinedCompetitionLeagues = await user.related('leagues').query().join('competitions', 'competition_id', 'competitions.id').where('competitions.slug', payload.competition_slug)
-
-    return joinedCompetitionLeagues.map(l => ({ name: l.name, code: l.code }))
+    
+    return [
+      {
+        name: "Global",
+        code: "main"
+      },
+      ...joinedCompetitionLeagues.map(l => ({ name: l.name, code: l.code }))
+    ]
   }
 }

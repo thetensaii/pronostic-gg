@@ -1,3 +1,4 @@
+import { CompetitionModel } from "#models/competition";
 import { ForecastModel } from "#models/forecast";
 import { LeagueModel } from "#models/league";
 import { MatchModel } from "#models/match";
@@ -8,6 +9,7 @@ import vine from "@vinejs/vine";
 const getLeaderboardValidator = vine.compile(
   vine.object({
     params: vine.object({
+      competition_slug: vine.string(),
       league_code: vine.string()
     })
   })
@@ -29,21 +31,38 @@ export default class GetLeaderboardController {
     const user = auth.getUserOrFail()
     const payload = await request.validateUsing(getLeaderboardValidator)
 
-    const league = await LeagueModel.findBy('code', payload.params.league_code)
-    if(!league){
-      return response.status(404)
+    let competition: CompetitionModel
+    let members: UserModel[]
+    let leagueName: string
+
+    if(payload.params.league_code === 'main'){
+      const maybeCompetition = await CompetitionModel.findBy('slug', payload.params.competition_slug)
+      if(!maybeCompetition){
+        return response.status(404)
+      }
+
+      leagueName = "Global"
+      competition = maybeCompetition
+      members = await UserModel.all()
+    } else {
+      const league = await LeagueModel.findBy('code', payload.params.league_code)
+      if(!league){
+        return response.status(404)
+      }
+  
+      await league.load('members')
+      if(!league.members.map((m) => m.id).includes(user.id)){
+        return response.status(401)
+      }
+      await league.load('competition')
+
+      leagueName = league.name
+      members = league.members
+      competition = league.competition
     }
 
-    await league.load('members')
-    if(!league.members.map((m) => m.id).includes(user.id)){
-      return response.status(401)
-    }
-
-    await league.load('competition')
-    const endedMatches = await league.competition.related('matches').query().whereNotNull('score_a').andWhereNotNull('score_b') 
-
-    const membersPointsDto = await Promise.all(league.members.map((m) => this.computeMemberPoints(m, endedMatches)))
-
+    const endedMatches = await competition.related('matches').query().whereNotNull('score_a').andWhereNotNull('score_b') 
+    const membersPointsDto = await Promise.all(members.map((m) => this.computeMemberPoints(m, endedMatches)))
 
     const rankedMembers = this.computeRank(membersPointsDto)
 
@@ -53,7 +72,7 @@ export default class GetLeaderboardController {
     }
 
     return {
-      league_name: league.name,
+      league_name: leagueName,
       user : rankedUser,
       members: rankedMembers
     }
