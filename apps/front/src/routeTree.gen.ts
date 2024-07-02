@@ -13,80 +13,48 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as ProfilIndexImport } from './routes/profil/index'
-import { Route as LiguesIndexImport } from './routes/ligues/index'
-import { Route as ClassementIndexImport } from './routes/classement/index'
-import { Route as ResultatsResultatslayoutImport } from './routes/resultats/_resultats_layout'
-import { Route as PronosPronoslayoutImport } from './routes/pronos/_pronos_layout'
-import { Route as LiguesJoinImport } from './routes/ligues/join'
-import { Route as LiguesCreateImport } from './routes/ligues/create'
+import { Route as AuthenticatedImport } from './routes/_authenticated'
 import { Route as authSignupImport } from './routes/(auth)/signup'
-import { Route as ResultatsResultatslayoutIndexImport } from './routes/resultats/_resultats_layout.index'
-import { Route as PronosPronoslayoutIndexImport } from './routes/pronos/_pronos_layout.index'
-import { Route as ResultatsResultatslayoutCompetitionSlugImport } from './routes/resultats/_resultats_layout.$competitionSlug'
-import { Route as PronosPronoslayoutCompetitionSlugImport } from './routes/pronos/_pronos_layout.$competitionSlug'
-import { Route as ClassementCompetitionSlugClassementlayoutImport } from './routes/classement/$competitionSlug/_classement_layout'
-import { Route as ClassementCompetitionSlugClassementlayoutIndexImport } from './routes/classement/$competitionSlug/_classement_layout.index'
-import { Route as ClassementCompetitionSlugClassementlayoutLeagueCodeImport } from './routes/classement/$competitionSlug/_classement_layout.$leagueCode'
+import { Route as AuthenticatedProfilIndexImport } from './routes/_authenticated/profil/index'
+import { Route as AuthenticatedLiguesIndexImport } from './routes/_authenticated/ligues/index'
+import { Route as AuthenticatedClassementIndexImport } from './routes/_authenticated/classement/index'
+import { Route as AuthenticatedResultatsResultatslayoutImport } from './routes/_authenticated/resultats/_resultats_layout'
+import { Route as AuthenticatedPronosPronoslayoutImport } from './routes/_authenticated/pronos/_pronos_layout'
+import { Route as AuthenticatedLiguesJoinImport } from './routes/_authenticated/ligues/join'
+import { Route as AuthenticatedLiguesCreateImport } from './routes/_authenticated/ligues/create'
+import { Route as AuthenticatedResultatsResultatslayoutIndexImport } from './routes/_authenticated/resultats/_resultats_layout.index'
+import { Route as AuthenticatedPronosPronoslayoutIndexImport } from './routes/_authenticated/pronos/_pronos_layout.index'
+import { Route as AuthenticatedResultatsResultatslayoutCompetitionSlugImport } from './routes/_authenticated/resultats/_resultats_layout.$competitionSlug'
+import { Route as AuthenticatedPronosPronoslayoutCompetitionSlugImport } from './routes/_authenticated/pronos/_pronos_layout.$competitionSlug'
+import { Route as AuthenticatedClassementCompetitionSlugClassementlayoutImport } from './routes/_authenticated/classement/$competitionSlug/_classement_layout'
+import { Route as AuthenticatedClassementCompetitionSlugClassementlayoutIndexImport } from './routes/_authenticated/classement/$competitionSlug/_classement_layout.index'
+import { Route as AuthenticatedClassementCompetitionSlugClassementlayoutLeagueCodeImport } from './routes/_authenticated/classement/$competitionSlug/_classement_layout.$leagueCode'
 
 // Create Virtual Routes
 
-const ResultatsImport = createFileRoute('/resultats')()
-const PronosImport = createFileRoute('/pronos')()
-const ClassementCompetitionSlugImport = createFileRoute(
-  '/classement/$competitionSlug',
+const AuthenticatedResultatsImport = createFileRoute(
+  '/_authenticated/resultats',
+)()
+const AuthenticatedPronosImport = createFileRoute('/_authenticated/pronos')()
+const AuthenticatedClassementCompetitionSlugImport = createFileRoute(
+  '/_authenticated/classement/$competitionSlug',
 )()
 
 // Create/Update Routes
 
-const ResultatsRoute = ResultatsImport.update({
+const AuthenticatedRoute = AuthenticatedImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AuthenticatedResultatsRoute = AuthenticatedResultatsImport.update({
   path: '/resultats',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => AuthenticatedRoute,
 } as any)
 
-const PronosRoute = PronosImport.update({
+const AuthenticatedPronosRoute = AuthenticatedPronosImport.update({
   path: '/pronos',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const ClassementCompetitionSlugRoute = ClassementCompetitionSlugImport.update({
-  path: '/classement/$competitionSlug',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const ProfilIndexRoute = ProfilIndexImport.update({
-  path: '/profil/',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const LiguesIndexRoute = LiguesIndexImport.update({
-  path: '/ligues/',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const ClassementIndexRoute = ClassementIndexImport.update({
-  path: '/classement/',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const ResultatsResultatslayoutRoute = ResultatsResultatslayoutImport.update({
-  id: '/_resultats_layout',
-  getParentRoute: () => ResultatsRoute,
-} as any)
-
-const PronosPronoslayoutRoute = PronosPronoslayoutImport.update({
-  id: '/_pronos_layout',
-  getParentRoute: () => PronosRoute,
-} as any)
-
-const LiguesJoinRoute = LiguesJoinImport.update({
-  path: '/ligues/join',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const LiguesCreateRoute = LiguesCreateImport.update({
-  path: '/ligues/create',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => AuthenticatedRoute,
 } as any)
 
 const authSignupRoute = authSignupImport.update({
@@ -94,122 +62,175 @@ const authSignupRoute = authSignupImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const ResultatsResultatslayoutIndexRoute =
-  ResultatsResultatslayoutIndexImport.update({
-    path: '/',
-    getParentRoute: () => ResultatsResultatslayoutRoute,
+const AuthenticatedClassementCompetitionSlugRoute =
+  AuthenticatedClassementCompetitionSlugImport.update({
+    path: '/classement/$competitionSlug',
+    getParentRoute: () => AuthenticatedRoute,
   } as any)
 
-const PronosPronoslayoutIndexRoute = PronosPronoslayoutIndexImport.update({
-  path: '/',
-  getParentRoute: () => PronosPronoslayoutRoute,
+const AuthenticatedProfilIndexRoute = AuthenticatedProfilIndexImport.update({
+  path: '/profil/',
+  getParentRoute: () => AuthenticatedRoute,
 } as any)
 
-const ResultatsResultatslayoutCompetitionSlugRoute =
-  ResultatsResultatslayoutCompetitionSlugImport.update({
-    path: '/$competitionSlug',
-    getParentRoute: () => ResultatsResultatslayoutRoute,
+const AuthenticatedLiguesIndexRoute = AuthenticatedLiguesIndexImport.update({
+  path: '/ligues/',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+
+const AuthenticatedClassementIndexRoute =
+  AuthenticatedClassementIndexImport.update({
+    path: '/classement/',
+    getParentRoute: () => AuthenticatedRoute,
   } as any)
 
-const PronosPronoslayoutCompetitionSlugRoute =
-  PronosPronoslayoutCompetitionSlugImport.update({
-    path: '/$competitionSlug',
-    getParentRoute: () => PronosPronoslayoutRoute,
+const AuthenticatedResultatsResultatslayoutRoute =
+  AuthenticatedResultatsResultatslayoutImport.update({
+    id: '/_resultats_layout',
+    getParentRoute: () => AuthenticatedResultatsRoute,
   } as any)
 
-const ClassementCompetitionSlugClassementlayoutRoute =
-  ClassementCompetitionSlugClassementlayoutImport.update({
-    id: '/_classement_layout',
-    getParentRoute: () => ClassementCompetitionSlugRoute,
+const AuthenticatedPronosPronoslayoutRoute =
+  AuthenticatedPronosPronoslayoutImport.update({
+    id: '/_pronos_layout',
+    getParentRoute: () => AuthenticatedPronosRoute,
   } as any)
 
-const ClassementCompetitionSlugClassementlayoutIndexRoute =
-  ClassementCompetitionSlugClassementlayoutIndexImport.update({
+const AuthenticatedLiguesJoinRoute = AuthenticatedLiguesJoinImport.update({
+  path: '/ligues/join',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+
+const AuthenticatedLiguesCreateRoute = AuthenticatedLiguesCreateImport.update({
+  path: '/ligues/create',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+
+const AuthenticatedResultatsResultatslayoutIndexRoute =
+  AuthenticatedResultatsResultatslayoutIndexImport.update({
     path: '/',
-    getParentRoute: () => ClassementCompetitionSlugClassementlayoutRoute,
+    getParentRoute: () => AuthenticatedResultatsResultatslayoutRoute,
   } as any)
 
-const ClassementCompetitionSlugClassementlayoutLeagueCodeRoute =
-  ClassementCompetitionSlugClassementlayoutLeagueCodeImport.update({
-    path: '/$leagueCode',
-    getParentRoute: () => ClassementCompetitionSlugClassementlayoutRoute,
+const AuthenticatedPronosPronoslayoutIndexRoute =
+  AuthenticatedPronosPronoslayoutIndexImport.update({
+    path: '/',
+    getParentRoute: () => AuthenticatedPronosPronoslayoutRoute,
   } as any)
+
+const AuthenticatedResultatsResultatslayoutCompetitionSlugRoute =
+  AuthenticatedResultatsResultatslayoutCompetitionSlugImport.update({
+    path: '/$competitionSlug',
+    getParentRoute: () => AuthenticatedResultatsResultatslayoutRoute,
+  } as any)
+
+const AuthenticatedPronosPronoslayoutCompetitionSlugRoute =
+  AuthenticatedPronosPronoslayoutCompetitionSlugImport.update({
+    path: '/$competitionSlug',
+    getParentRoute: () => AuthenticatedPronosPronoslayoutRoute,
+  } as any)
+
+const AuthenticatedClassementCompetitionSlugClassementlayoutRoute =
+  AuthenticatedClassementCompetitionSlugClassementlayoutImport.update({
+    id: '/_classement_layout',
+    getParentRoute: () => AuthenticatedClassementCompetitionSlugRoute,
+  } as any)
+
+const AuthenticatedClassementCompetitionSlugClassementlayoutIndexRoute =
+  AuthenticatedClassementCompetitionSlugClassementlayoutIndexImport.update({
+    path: '/',
+    getParentRoute: () =>
+      AuthenticatedClassementCompetitionSlugClassementlayoutRoute,
+  } as any)
+
+const AuthenticatedClassementCompetitionSlugClassementlayoutLeagueCodeRoute =
+  AuthenticatedClassementCompetitionSlugClassementlayoutLeagueCodeImport.update(
+    {
+      path: '/$leagueCode',
+      getParentRoute: () =>
+        AuthenticatedClassementCompetitionSlugClassementlayoutRoute,
+    } as any,
+  )
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/_authenticated': {
+      preLoaderRoute: typeof AuthenticatedImport
+      parentRoute: typeof rootRoute
+    }
     '/(auth)/signup': {
       preLoaderRoute: typeof authSignupImport
       parentRoute: typeof rootRoute
     }
-    '/ligues/create': {
-      preLoaderRoute: typeof LiguesCreateImport
-      parentRoute: typeof rootRoute
+    '/_authenticated/ligues/create': {
+      preLoaderRoute: typeof AuthenticatedLiguesCreateImport
+      parentRoute: typeof AuthenticatedImport
     }
-    '/ligues/join': {
-      preLoaderRoute: typeof LiguesJoinImport
-      parentRoute: typeof rootRoute
+    '/_authenticated/ligues/join': {
+      preLoaderRoute: typeof AuthenticatedLiguesJoinImport
+      parentRoute: typeof AuthenticatedImport
     }
-    '/pronos': {
-      preLoaderRoute: typeof PronosImport
-      parentRoute: typeof rootRoute
+    '/_authenticated/pronos': {
+      preLoaderRoute: typeof AuthenticatedPronosImport
+      parentRoute: typeof AuthenticatedImport
     }
-    '/pronos/_pronos_layout': {
-      preLoaderRoute: typeof PronosPronoslayoutImport
-      parentRoute: typeof PronosRoute
+    '/_authenticated/pronos/_pronos_layout': {
+      preLoaderRoute: typeof AuthenticatedPronosPronoslayoutImport
+      parentRoute: typeof AuthenticatedPronosRoute
     }
-    '/resultats': {
-      preLoaderRoute: typeof ResultatsImport
-      parentRoute: typeof rootRoute
+    '/_authenticated/resultats': {
+      preLoaderRoute: typeof AuthenticatedResultatsImport
+      parentRoute: typeof AuthenticatedImport
     }
-    '/resultats/_resultats_layout': {
-      preLoaderRoute: typeof ResultatsResultatslayoutImport
-      parentRoute: typeof ResultatsRoute
+    '/_authenticated/resultats/_resultats_layout': {
+      preLoaderRoute: typeof AuthenticatedResultatsResultatslayoutImport
+      parentRoute: typeof AuthenticatedResultatsRoute
     }
-    '/classement/': {
-      preLoaderRoute: typeof ClassementIndexImport
-      parentRoute: typeof rootRoute
+    '/_authenticated/classement/': {
+      preLoaderRoute: typeof AuthenticatedClassementIndexImport
+      parentRoute: typeof AuthenticatedImport
     }
-    '/ligues/': {
-      preLoaderRoute: typeof LiguesIndexImport
-      parentRoute: typeof rootRoute
+    '/_authenticated/ligues/': {
+      preLoaderRoute: typeof AuthenticatedLiguesIndexImport
+      parentRoute: typeof AuthenticatedImport
     }
-    '/profil/': {
-      preLoaderRoute: typeof ProfilIndexImport
-      parentRoute: typeof rootRoute
+    '/_authenticated/profil/': {
+      preLoaderRoute: typeof AuthenticatedProfilIndexImport
+      parentRoute: typeof AuthenticatedImport
     }
-    '/classement/$competitionSlug': {
-      preLoaderRoute: typeof ClassementCompetitionSlugImport
-      parentRoute: typeof rootRoute
+    '/_authenticated/classement/$competitionSlug': {
+      preLoaderRoute: typeof AuthenticatedClassementCompetitionSlugImport
+      parentRoute: typeof AuthenticatedImport
     }
-    '/classement/$competitionSlug/_classement_layout': {
-      preLoaderRoute: typeof ClassementCompetitionSlugClassementlayoutImport
-      parentRoute: typeof ClassementCompetitionSlugRoute
+    '/_authenticated/classement/$competitionSlug/_classement_layout': {
+      preLoaderRoute: typeof AuthenticatedClassementCompetitionSlugClassementlayoutImport
+      parentRoute: typeof AuthenticatedClassementCompetitionSlugRoute
     }
-    '/pronos/_pronos_layout/$competitionSlug': {
-      preLoaderRoute: typeof PronosPronoslayoutCompetitionSlugImport
-      parentRoute: typeof PronosPronoslayoutImport
+    '/_authenticated/pronos/_pronos_layout/$competitionSlug': {
+      preLoaderRoute: typeof AuthenticatedPronosPronoslayoutCompetitionSlugImport
+      parentRoute: typeof AuthenticatedPronosPronoslayoutImport
     }
-    '/resultats/_resultats_layout/$competitionSlug': {
-      preLoaderRoute: typeof ResultatsResultatslayoutCompetitionSlugImport
-      parentRoute: typeof ResultatsResultatslayoutImport
+    '/_authenticated/resultats/_resultats_layout/$competitionSlug': {
+      preLoaderRoute: typeof AuthenticatedResultatsResultatslayoutCompetitionSlugImport
+      parentRoute: typeof AuthenticatedResultatsResultatslayoutImport
     }
-    '/pronos/_pronos_layout/': {
-      preLoaderRoute: typeof PronosPronoslayoutIndexImport
-      parentRoute: typeof PronosPronoslayoutImport
+    '/_authenticated/pronos/_pronos_layout/': {
+      preLoaderRoute: typeof AuthenticatedPronosPronoslayoutIndexImport
+      parentRoute: typeof AuthenticatedPronosPronoslayoutImport
     }
-    '/resultats/_resultats_layout/': {
-      preLoaderRoute: typeof ResultatsResultatslayoutIndexImport
-      parentRoute: typeof ResultatsResultatslayoutImport
+    '/_authenticated/resultats/_resultats_layout/': {
+      preLoaderRoute: typeof AuthenticatedResultatsResultatslayoutIndexImport
+      parentRoute: typeof AuthenticatedResultatsResultatslayoutImport
     }
-    '/classement/$competitionSlug/_classement_layout/$leagueCode': {
-      preLoaderRoute: typeof ClassementCompetitionSlugClassementlayoutLeagueCodeImport
-      parentRoute: typeof ClassementCompetitionSlugClassementlayoutImport
+    '/_authenticated/classement/$competitionSlug/_classement_layout/$leagueCode': {
+      preLoaderRoute: typeof AuthenticatedClassementCompetitionSlugClassementlayoutLeagueCodeImport
+      parentRoute: typeof AuthenticatedClassementCompetitionSlugClassementlayoutImport
     }
-    '/classement/$competitionSlug/_classement_layout/': {
-      preLoaderRoute: typeof ClassementCompetitionSlugClassementlayoutIndexImport
-      parentRoute: typeof ClassementCompetitionSlugClassementlayoutImport
+    '/_authenticated/classement/$competitionSlug/_classement_layout/': {
+      preLoaderRoute: typeof AuthenticatedClassementCompetitionSlugClassementlayoutIndexImport
+      parentRoute: typeof AuthenticatedClassementCompetitionSlugClassementlayoutImport
     }
   }
 }
@@ -217,30 +238,32 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export const routeTree = rootRoute.addChildren([
+  AuthenticatedRoute.addChildren([
+    AuthenticatedLiguesCreateRoute,
+    AuthenticatedLiguesJoinRoute,
+    AuthenticatedPronosRoute.addChildren([
+      AuthenticatedPronosPronoslayoutRoute.addChildren([
+        AuthenticatedPronosPronoslayoutCompetitionSlugRoute,
+        AuthenticatedPronosPronoslayoutIndexRoute,
+      ]),
+    ]),
+    AuthenticatedResultatsRoute.addChildren([
+      AuthenticatedResultatsResultatslayoutRoute.addChildren([
+        AuthenticatedResultatsResultatslayoutCompetitionSlugRoute,
+        AuthenticatedResultatsResultatslayoutIndexRoute,
+      ]),
+    ]),
+    AuthenticatedClassementIndexRoute,
+    AuthenticatedLiguesIndexRoute,
+    AuthenticatedProfilIndexRoute,
+    AuthenticatedClassementCompetitionSlugRoute.addChildren([
+      AuthenticatedClassementCompetitionSlugClassementlayoutRoute.addChildren([
+        AuthenticatedClassementCompetitionSlugClassementlayoutLeagueCodeRoute,
+        AuthenticatedClassementCompetitionSlugClassementlayoutIndexRoute,
+      ]),
+    ]),
+  ]),
   authSignupRoute,
-  LiguesCreateRoute,
-  LiguesJoinRoute,
-  PronosRoute.addChildren([
-    PronosPronoslayoutRoute.addChildren([
-      PronosPronoslayoutCompetitionSlugRoute,
-      PronosPronoslayoutIndexRoute,
-    ]),
-  ]),
-  ResultatsRoute.addChildren([
-    ResultatsResultatslayoutRoute.addChildren([
-      ResultatsResultatslayoutCompetitionSlugRoute,
-      ResultatsResultatslayoutIndexRoute,
-    ]),
-  ]),
-  ClassementIndexRoute,
-  LiguesIndexRoute,
-  ProfilIndexRoute,
-  ClassementCompetitionSlugRoute.addChildren([
-    ClassementCompetitionSlugClassementlayoutRoute.addChildren([
-      ClassementCompetitionSlugClassementlayoutLeagueCodeRoute,
-      ClassementCompetitionSlugClassementlayoutIndexRoute,
-    ]),
-  ]),
 ])
 
 /* prettier-ignore-end */

@@ -4,7 +4,7 @@ import { Text } from '~/components/ui/text'
 import { Dropdown } from '~/components/atom/Dropdown'
 // import { MatchResult } from '~/results/ui/molecule/MatchResult'
 
-export const Route = createFileRoute('/profil/')({
+export const Route = createFileRoute('/_authenticated/profil/')({
   component: () => {
     return (
       <Container css={{ maxWidth: '3xl', marginTop: '12'}}>

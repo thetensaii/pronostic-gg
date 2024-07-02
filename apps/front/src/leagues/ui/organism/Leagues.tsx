@@ -11,7 +11,7 @@ export const Leagues = () => {
     <Center>
       <VStack gap="8">
         <Grid columns={3} gap="6">
-          {leagues.map((league) => <LeagueCard name={league.name} competition={league.competitionName} numberOfMembers={league.countMembers} />)}
+          {leagues.map((league) => <LeagueCard key={league.code} name={league.name} competition={league.competitionName} numberOfMembers={league.countMembers} />)}
         </Grid>
 
         <VStack css={{ w: 'full' }}>

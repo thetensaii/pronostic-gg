@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Leaderboard } from '~/leaderboard/ui/organism/Leaderboard'
 
 
-export const Route = createFileRoute('/classement/$competitionSlug/_classement_layout/$leagueCode')({
+export const Route = createFileRoute('/_authenticated/classement/$competitionSlug/_classement_layout/$leagueCode')({
   component: LeaderboardComponent
 })
 

@@ -2,7 +2,7 @@ import { Outlet, createFileRoute } from '@tanstack/react-router'
 import { Container } from 'styled-system/jsx'
 import { RankingNavigationSidebar } from '~/leaderboard/ui/organism/RankingNavigationSidebar'
 
-export const Route = createFileRoute('/classement/$competitionSlug/_classement_layout')({
+export const Route = createFileRoute('/_authenticated/classement/$competitionSlug/_classement_layout')({
   component: ClassementLayout
   
 })

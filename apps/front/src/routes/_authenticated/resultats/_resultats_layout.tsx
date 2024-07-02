@@ -1,11 +1,11 @@
 import { Outlet, createFileRoute } from '@tanstack/react-router'
 import { Container } from 'styled-system/jsx'
-import { ForecastsNavigationSidebar } from '~/forecasts/ui/organism/ForecastsNavigationSidebar'
+import { ResultsNavigationSidebar } from '~/results/ui/orgasnism/ResultsNavigationSidebar'
 
-export const Route = createFileRoute('/pronos/_pronos_layout')({
+export const Route = createFileRoute('/_authenticated/resultats/_resultats_layout')({
   component: () => 
     <Container css={{ maxWidth: '6xl', pt: '8', lg : { display : 'flex', gap: '32' } }}>
-      <ForecastsNavigationSidebar />
+      <ResultsNavigationSidebar />
       <Outlet />
     </Container>
 })
