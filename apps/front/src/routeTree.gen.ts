@@ -15,6 +15,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Route as rootRoute } from './routes/__root'
 import { Route as AuthenticatedImport } from './routes/_authenticated'
 import { Route as authSignupImport } from './routes/(auth)/signup'
+import { Route as authLoginImport } from './routes/(auth)/login'
 import { Route as AuthenticatedProfilIndexImport } from './routes/_authenticated/profil/index'
 import { Route as AuthenticatedLiguesIndexImport } from './routes/_authenticated/ligues/index'
 import { Route as AuthenticatedClassementIndexImport } from './routes/_authenticated/classement/index'
@@ -59,6 +60,11 @@ const AuthenticatedPronosRoute = AuthenticatedPronosImport.update({
 
 const authSignupRoute = authSignupImport.update({
   path: '/signup',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const authLoginRoute = authLoginImport.update({
+  path: '/login',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -158,6 +164,10 @@ declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/_authenticated': {
       preLoaderRoute: typeof AuthenticatedImport
+      parentRoute: typeof rootRoute
+    }
+    '/(auth)/login': {
+      preLoaderRoute: typeof authLoginImport
       parentRoute: typeof rootRoute
     }
     '/(auth)/signup': {
@@ -263,6 +273,7 @@ export const routeTree = rootRoute.addChildren([
       ]),
     ]),
   ]),
+  authLoginRoute,
   authSignupRoute,
 ])
 

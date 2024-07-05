@@ -5,11 +5,10 @@ import { NavigationBar } from '~/navigation/ui/organism/NavigationBar'
 export const Route = createFileRoute('/_authenticated')({
   loader: async () => {
     const isAuthenticated = await checkIsAuthenticated()
-    // const isAuthenticated = false
 
     if (!isAuthenticated) {
       throw redirect({
-        to: '/signup',
+        to: '/login',
       })
     }
   },
