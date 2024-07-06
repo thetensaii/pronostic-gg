@@ -1,7 +1,7 @@
 import { css } from "styled-system/css"
 import { Center, VStack } from "styled-system/jsx"
-import { NextForecast, useGetNextForecasts } from "../hooks/useGetNextForecasts"
 import { ForecastsGroupedByDay } from "../molecule/ForecastsGroupByDay"
+import { NextForecast } from "~/forecasts/services/findNextForecasts"
 
 export type Forecast = {
   matchId: string,
@@ -12,8 +12,9 @@ export type Forecast = {
 }
 
 type Props = {
-  competitionSlug: string
+  nextForecasts: NextForecast[]
 }
+
 const canForecastBeChanged = (nextForecast: NextForecast): boolean => {
   const ONE_HOUR_IN_MS = 60 * 60 * 1_000
   const currentDate = new Date()
@@ -22,8 +23,7 @@ const canForecastBeChanged = (nextForecast: NextForecast): boolean => {
   return timeLeft > ONE_HOUR_IN_MS
 
 }
-export const ForecastsMain = ({ competitionSlug }: Props) => {
-  const nextForecasts = useGetNextForecasts(competitionSlug)
+export const ForecastsMain = ({ nextForecasts }: Props) => {
   const forecasts = nextForecasts.map<Forecast>((nf) => ({...nf, canChange: canForecastBeChanged(nf) }))
   const forecastGroupedByDate = forecasts.reduce<Record<string, Forecast[]>>((acc, currentForecast)  => {
     const currentDateString = new Intl.DateTimeFormat('fr-FR').format(currentForecast.startAt)
