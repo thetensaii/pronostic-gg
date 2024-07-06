@@ -1,21 +1,14 @@
 import { css } from 'styled-system/css'
 import { Center } from 'styled-system/jsx'
-import { useGetForecastsResults } from '../hooks/UseGetForecastsResults'
 import { ResultsGroupByDate } from '../molecule/ResultsGroupByDay'
+import { ForecastResult } from '~/results/services/FindForecastsResults'
 
-export type ForecastResult = {
-  matchId: string,
-  startAt: Date,
-  teams: [string, string],
-  score: [number, number],
-  isForecastGood: boolean
-}
+
 type Props = {
-  competitionSlug: string
+  forecastsResults: ForecastResult[]
 }
 
-export const Results = ({ competitionSlug }: Props) => {
-  const forecastsResults = useGetForecastsResults(competitionSlug)
+export const Results = ({ forecastsResults }: Props) => {
   const resultsGroupedByDate = forecastsResults.reduce<Record<string, ForecastResult[]>>((acc, currentResult)  => {
     const currentDateString = currentResult.startAt.toISOString().split('T')[0]
 

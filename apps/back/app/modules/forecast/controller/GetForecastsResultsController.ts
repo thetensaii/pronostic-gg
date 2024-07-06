@@ -28,7 +28,7 @@ export default class GetForecastsResultsController {
 
     const competition = await CompetitionModel.findBy('slug', payload.params.competition_slug)
     if(!competition){
-      return response.status(401)
+      return response.status(404)
     }
 
     const endedMatches = await competition.related('matches').query().whereNotNull('score_a').andWhereNotNull('score_b') 
