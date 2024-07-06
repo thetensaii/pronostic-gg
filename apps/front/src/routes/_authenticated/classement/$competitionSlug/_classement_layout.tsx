@@ -4,7 +4,6 @@ import { RankingNavigationSidebar } from '~/leaderboard/ui/organism/RankingNavig
 
 export const Route = createFileRoute('/_authenticated/classement/$competitionSlug/_classement_layout')({
   component: ClassementLayout
-  
 })
 
 function ClassementLayout() {

@@ -1,6 +1,6 @@
 import * as Table from '~/components/ui/table'
 import { Text } from "~/components/ui/text"
-import { RankedMember } from '../organism/Leaderboard'
+import { RankedMember } from '~/leaderboard/services/GetLeaderboard'
 
 type Props = {
   member: RankedMember 

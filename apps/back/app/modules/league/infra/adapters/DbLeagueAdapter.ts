@@ -10,6 +10,7 @@ export class DbLeagueAdapter {
     return new League({
       id: dbLeague.id,
       name: dbLeague.name,
+      code: dbLeague.code,
       owner: new User({ id: dbLeague.ownerId }),
       competition: new Competition({ id: dbLeague.competitionId }),
       members: dbMembers.map(dbMember => new Member({ id: dbMember.user_id, joinedAt: dbMember.created_at })),

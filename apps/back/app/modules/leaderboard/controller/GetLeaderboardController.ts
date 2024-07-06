@@ -52,7 +52,7 @@ export default class GetLeaderboardController {
   
       await league.load('members')
       if(!league.members.map((m) => m.id).includes(user.id)){
-        return response.status(401)
+        return response.status(403)
       }
       await league.load('competition')
 
@@ -68,7 +68,7 @@ export default class GetLeaderboardController {
 
     const rankedUser = rankedMembers.find(m => m.username === user.username)
     if(!rankedUser){
-      return response.status(401)
+      return response.status(403)
     }
 
     return {
