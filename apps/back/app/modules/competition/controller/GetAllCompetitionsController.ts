@@ -12,7 +12,7 @@ export default class GetAllCompetitionsController {
 
     return competitions.map((c) => ({
       id: c.id,
-      // name: c.name,
+      name: c.name,
       slug: c.slug,
     }))
   }
