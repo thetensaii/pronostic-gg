@@ -1,5 +1,5 @@
 type MemberProps = {
-  id: string,
+  id: string
   joinedAt: Date
 }
 
@@ -7,16 +7,16 @@ export class Member {
   private _id: string
   private _joinedAt: Date
 
-  constructor(props: MemberProps){
+  constructor(props: MemberProps) {
     this._id = props.id
     this._joinedAt = props.joinedAt
   }
 
-  public get id(): string {
+  get id(): string {
     return this._id
   }
 
-  public get joinedAt(): Date {
+  get joinedAt(): Date {
     return this._joinedAt
   }
-} 
+}

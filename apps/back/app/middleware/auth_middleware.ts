@@ -7,7 +7,6 @@ import type { Authenticators } from '@adonisjs/auth/types'
  * access to unauthenticated users.
  */
 export default class AuthMiddleware {
-
   async handle(
     { auth }: HttpContext,
     next: NextFn,

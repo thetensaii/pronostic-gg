@@ -1,9 +1,9 @@
 export class CodeGenerator {
-  public generate(): string {
+  generate(): string {
     const codeLength = 7
     let code = ''
-    
-    for(let i = 0; i < codeLength; i++){
+
+    for (let i = 0; i < codeLength; i++) {
       code += this.getRandomCharacter()
     }
 

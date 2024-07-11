@@ -1,7 +1,7 @@
 import { VStack } from 'styled-system/jsx'
 import { Text } from "~/components/ui/text"
+import { ForecastResult } from '~/results/services/FindForecastsResults'
 import { ResultList } from "~/results/ui/molecule/ResultList"
-import { ForecastResult } from '../orgasnism/Results'
 
 type Props = {
   date: Date

@@ -1,6 +1,6 @@
-import { UUIDGenerator } from "#common/utils/UUIDGenerator";
-import { inject } from "@adonisjs/core";
-import { User } from "./User.js";
+import { UUIDGenerator } from '#common/utils/UUIDGenerator'
+import { inject } from '@adonisjs/core'
+import { User } from './User.js'
 
 type CreateUserProps = {
   username: string
@@ -8,12 +8,11 @@ type CreateUserProps = {
 
 @inject()
 export class UserFactory {
+  constructor(private uuidGenerator: UUIDGenerator) {}
 
-  constructor(private uuidGenerator: UUIDGenerator){}
-
-  public create(props: CreateUserProps): User {
+  create(props: CreateUserProps): User {
     const id = this.uuidGenerator.generate()
 
-    return new User({id: id, username: props.username, createdAt: new Date()})
+    return new User({ id: id, username: props.username, createdAt: new Date() })
   }
 }

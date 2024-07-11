@@ -1,10 +1,10 @@
-import { ResultType } from "#common/Result";
-import { LeagueAlreadyJoinedError } from "#league/domain/errors/LeagueAlreadyJoinedError";
-import { LeagueDontExistError } from "#league/domain/errors/LeagueDontExistError";
-import { UserDontExistError } from "#league/domain/errors/UserDontExistError";
+import { ResultType } from '#common/Result'
+import { LeagueAlreadyJoinedError } from '#league/domain/errors/LeagueAlreadyJoinedError'
+import { LeagueDontExistError } from '#league/domain/errors/LeagueDontExistError'
+import { UserDontExistError } from '#league/domain/errors/UserDontExistError'
 
 export type JoinLeagueDto = {
-  userId: string,
+  userId: string
   leagueCode: string
 }
 

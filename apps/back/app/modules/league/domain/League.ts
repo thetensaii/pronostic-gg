@@ -1,16 +1,16 @@
-import { Competition } from "./Competition.js"
-import { Member } from "./Member.js"
-import { MemberFactory } from "./MemberFactory.js"
-import { User } from "./User.js"
+import { Competition } from './Competition.js'
+import { Member } from './Member.js'
+import { MemberFactory } from './MemberFactory.js'
+import { User } from './User.js'
 
 type LeagueProps = {
-  id: string,
-  name: string,
-  code: string,
-  competition: Competition,
-  owner: User,
-  members: Member[],
-  createdAt: Date,
+  id: string
+  name: string
+  code: string
+  competition: Competition
+  owner: User
+  members: Member[]
+  createdAt: Date
   updatedAt: Date | null
 }
 
@@ -21,11 +21,11 @@ export class League {
   private _competition: Competition
   private _owner: User
   private _members: Member[]
-  
+
   private _createdAt: Date
   private _updatedAt: Date | null
 
-  constructor(props: LeagueProps){
+  constructor(props: LeagueProps) {
     this._id = props.id
     this._name = props.name
     this._code = props.code
@@ -36,28 +36,28 @@ export class League {
     this._updatedAt = props.updatedAt
   }
 
-  public get id(): string {
+  get id(): string {
     return this._id
   }
-  public get name(): string {
+  get name(): string {
     return this._name
   }
-  public get code(): string {
+  get code(): string {
     return this._code
   }
-  public get competition(): Competition {
+  get competition(): Competition {
     return this._competition
   }
-  public get owner(): User {
+  get owner(): User {
     return this._owner
   }
-  public get members(): Member[] {
+  get members(): Member[] {
     return this._members
   }
-  public get createdAt(): Date {
+  get createdAt(): Date {
     return this._createdAt
   }
-  public get updatedAt(): Date | null {
+  get updatedAt(): Date | null {
     return this._updatedAt
   }
 
@@ -65,10 +65,10 @@ export class League {
     return this.members.some((member) => member.id === user.id)
   }
 
-  public join(user: User): boolean {
-    if(this.isMember(user)) return false;
+  join(user: User): boolean {
+    if (this.isMember(user)) return false
     this._members.push(new MemberFactory().create(user))
     this._updatedAt = new Date()
     return true
   }
-} 
+}

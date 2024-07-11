@@ -1,8 +1,8 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column, hasMany, manyToMany } from '@adonisjs/lucid/orm'
-import type { HasMany, ManyToMany } from '@adonisjs/lucid/types/relations';
-import { LeagueModel } from './league.js';
-import { CredentialModel } from './credential.js';
+import type { HasMany, ManyToMany } from '@adonisjs/lucid/types/relations'
+import { LeagueModel } from './league.js'
+import { CredentialModel } from './credential.js'
 
 export class UserModel extends BaseModel {
   static table = 'users'
@@ -11,15 +11,15 @@ export class UserModel extends BaseModel {
   declare id: string
 
   @column()
-  declare username: string;
+  declare username: string
 
   @manyToMany(() => LeagueModel, {
-    pivotTable: 'leagues_users'
+    pivotTable: 'leagues_users',
   })
   declare leagues: ManyToMany<typeof LeagueModel>
 
   @hasMany(() => CredentialModel, {
-    foreignKey: 'userId'
+    foreignKey: 'userId',
   })
   declare credentials: HasMany<typeof CredentialModel>
 

@@ -15,26 +15,31 @@ export default class extends BaseSeeder {
 
     const league = await LeagueModel.create({
       id: crypto.randomUUID(),
-      name: "Les Zamis",
+      name: 'Les Zamis',
       code: new CodeGenerator().generate(),
       ownerId: user.id,
       competitionId: competition.id,
       createdAt: DateTime.fromJSDate(new Date()),
     })
     await league.related('members').detach()
-    await league.related('members').attach(users.reduce((acc, current) => {
-      return Math.random() > 0.5 ? 
-        acc : 
+    await league.related('members').attach(
+      users.reduce(
+        (acc, current) => {
+          return Math.random() > 0.5
+            ? acc
+            : {
+                ...acc,
+                [current.id]: {
+                  created_at: DateTime.fromJSDate(new Date()),
+                },
+              }
+        },
         {
-          ...acc, 
-          [current.id]: {
-            created_at : DateTime.fromJSDate(new Date())
-          }
-        } 
-    }, {
-      [league.ownerId]: {
-        created_at : DateTime.fromJSDate(new Date())
-      }
-    }))
+          [league.ownerId]: {
+            created_at: DateTime.fromJSDate(new Date()),
+          },
+        }
+      )
+    )
   }
 }

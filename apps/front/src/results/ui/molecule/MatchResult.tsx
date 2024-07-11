@@ -3,7 +3,7 @@ import { Icon } from "~/components/ui/icon"
 import { Team } from "~/forecasts/ui/atom/Team"
 import { Score } from "~/results/ui/atom/Score"
 import {Check, X} from 'lucide-react'
-import { ForecastResult } from "../orgasnism/Results"
+import { ForecastResult } from "~/results/services/FindForecastsResults"
 
 type Props = {
   result: ForecastResult,

@@ -1,8 +1,8 @@
 import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, column, manyToMany } from '@adonisjs/lucid/orm'
-import { UserModel } from './user.js';
-import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations';
-import { CompetitionModel } from './competition.js';
+import { UserModel } from './user.js'
+import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations'
+import { CompetitionModel } from './competition.js'
 
 export class LeagueModel extends BaseModel {
   static table = 'leagues'
@@ -11,10 +11,10 @@ export class LeagueModel extends BaseModel {
   declare id: string
 
   @column()
-  declare name:string;
+  declare name: string
 
   @column()
-  declare code:string;
+  declare code: string
 
   @column()
   declare ownerId: string
@@ -23,7 +23,7 @@ export class LeagueModel extends BaseModel {
   declare competitionId: string
 
   @belongsTo(() => CompetitionModel, {
-    foreignKey: 'competitionId'
+    foreignKey: 'competitionId',
   })
   declare competition: BelongsTo<typeof CompetitionModel>
 

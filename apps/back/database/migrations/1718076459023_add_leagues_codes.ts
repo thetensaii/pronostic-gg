@@ -5,9 +5,7 @@ export default class extends BaseSchema {
 
   async up() {
     this.schema.alterTable(this.tableName, (table) => {
-      table.string('code').unique()
-        .notNullable()
-        
+      table.string('code').unique().notNullable()
     })
   }
 

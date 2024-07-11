@@ -1,6 +1,6 @@
 import { VStack } from "styled-system/jsx"
-import { ForecastResult } from "../orgasnism/Results"
 import { MatchResult } from "./MatchResult"
+import { ForecastResult } from "~/results/services/FindForecastsResults"
 
 
 type Props = {

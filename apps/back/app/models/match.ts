@@ -1,10 +1,10 @@
 import { DateTime } from 'luxon'
-import { BaseModel, belongsTo, column, } from '@adonisjs/lucid/orm'
+import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import { TeamModel } from '#models/team'
 
 export class MatchModel extends BaseModel {
-  static table = "matches"
+  static table = 'matches'
 
   @column({ isPrimary: true })
   declare id: string
@@ -36,7 +36,6 @@ export class MatchModel extends BaseModel {
 
   @column()
   declare scoreB: number
-
 
   @column.dateTime()
   declare createdAt: DateTime

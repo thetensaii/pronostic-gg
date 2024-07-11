@@ -23,6 +23,7 @@ export const findForecastsResults = async (competitionSlug: string): Promise<For
 
   const data = await response.json()
   
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return data.map((rawForecastResult: any): ForecastResult => ({ 
     matchId: rawForecastResult.match_id,
     startAt: new Date(rawForecastResult.start_at),

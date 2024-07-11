@@ -6,18 +6,22 @@ export default class extends BaseSchema {
 
   async up() {
     this.schema.createTable(this.credentialsTableName, (table) => {
-      table.enum('provider_name', ['google'], {
-        useNative: true,
-        enumName: 'allowed_provider_name',
-        existingType: false,
-      }).notNullable()
+      table
+        .enum('provider_name', ['google'], {
+          useNative: true,
+          enumName: 'allowed_provider_name',
+          existingType: false,
+        })
+        .notNullable()
       table.string('provider_user_id').notNullable()
-      table.string("email").notNullable()
-      table.string('user_id').notNullable()
-        .references("id")
+      table.string('email').notNullable()
+      table
+        .string('user_id')
+        .notNullable()
+        .references('id')
         .inTable(this.usersTableName)
-        .onUpdate("CASCADE")
-        .onDelete("CASCADE")
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE')
       table.primary(['provider_name', 'provider_user_id'])
 
       table.timestamp('created_at').notNullable()

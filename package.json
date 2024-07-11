@@ -4,6 +4,8 @@
   "scripts": {
     "dev": "pnpm --parallel run dev",
     "build": "pnpm --parallel run build",
+    "lint": "pnpm --parallel run lint",
+    "lint:fix": "pnpm --parallel run lint:fix",
     "db:up": "pnpm --parallel run db:up",
     "db:down": "pnpm --parallel run db:down",
     "db:migrations:run": "pnpm --parallel run db:migrations:run",

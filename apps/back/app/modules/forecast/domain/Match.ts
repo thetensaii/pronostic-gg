@@ -1,22 +1,22 @@
 type MatchProps = {
-  id: string;
-  startAt: Date;
+  id: string
+  startAt: Date
 }
 
 export class Match {
-  private _id: string;
-  private _startAt: Date;
+  private _id: string
+  private _startAt: Date
 
-  constructor(props: MatchProps){
+  constructor(props: MatchProps) {
     this._id = props.id
     this._startAt = props.startAt
   }
 
-  public get id(): string {
+  get id(): string {
     return this._id
   }
 
-  public get startAt(): Date {
+  get startAt(): Date {
     return this._startAt
   }
 }

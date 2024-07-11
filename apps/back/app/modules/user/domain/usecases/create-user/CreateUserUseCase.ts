@@ -1,5 +1,5 @@
-import { ResultType } from "#common/Result"
-import { UsernameAlreadyExists } from "../../errors/UsernameAlreadyExists.js"
+import { ResultType } from '#common/Result'
+import { UsernameAlreadyExists } from '../../errors/UsernameAlreadyExists.js'
 
 export type CreateUserDto = {
   username: string

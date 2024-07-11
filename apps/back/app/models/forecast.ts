@@ -4,7 +4,7 @@ import { MatchModel } from './match.js'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 
 export class ForecastModel extends BaseModel {
-  static table = "forecasts"
+  static table = 'forecasts'
 
   @column({ isPrimary: true })
   declare userId: string
@@ -13,7 +13,7 @@ export class ForecastModel extends BaseModel {
   declare matchId: string
 
   @belongsTo(() => MatchModel, {
-    foreignKey: 'matchId'
+    foreignKey: 'matchId',
   })
   declare match: BelongsTo<typeof MatchModel>
 

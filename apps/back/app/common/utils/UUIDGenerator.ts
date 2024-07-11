@@ -1,5 +1,5 @@
 export class UUIDGenerator {
-  public generate(): string {
+  generate(): string {
     return crypto.randomUUID()
   }
 }

@@ -1,5 +1,5 @@
-import { Match } from "../Match.js";
+import { Match } from '../Match.js'
 
 export abstract class MatchService {
-  abstract find:(matchId: string) => Promise<Match | null>
+  abstract find: (matchId: string) => Promise<Match | null>
 }

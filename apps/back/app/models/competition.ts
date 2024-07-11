@@ -1,23 +1,23 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column, hasMany, manyToMany } from '@adonisjs/lucid/orm'
-import type { HasMany, ManyToMany } from '@adonisjs/lucid/types/relations';
-import { TeamModel } from "#models/team"
-import { MatchModel } from './match.js';
- 
+import type { HasMany, ManyToMany } from '@adonisjs/lucid/types/relations'
+import { TeamModel } from '#models/team'
+import { MatchModel } from './match.js'
+
 export class CompetitionModel extends BaseModel {
-  static table = "competitions"
+  static table = 'competitions'
 
   @column({ isPrimary: true })
   declare id: string
 
   @column()
-  declare name:string
+  declare name: string
 
   @column()
-  declare slug:string
+  declare slug: string
 
   @column()
-  declare gameId: string;
+  declare gameId: string
 
   @manyToMany(() => TeamModel)
   declare teams: ManyToMany<typeof TeamModel>
