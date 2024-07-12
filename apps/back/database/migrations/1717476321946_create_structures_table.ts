@@ -14,11 +14,12 @@ export default class extends BaseSchema {
 
     this.schema.alterTable(this.teamsTableName, (table) => {
       table
-        .string('structure_id').notNullable()
-        .references("id")
+        .string('structure_id')
+        .notNullable()
+        .references('id')
         .inTable(this.structuresTableName)
-        .onUpdate("CASCADE")
-        .onDelete("CASCADE")
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE')
     })
   }
 
@@ -27,7 +28,7 @@ export default class extends BaseSchema {
       table.dropForeign('structure_id')
       table.dropColumn('structure_id')
     })
-    
+
     this.schema.dropTable(this.structuresTableName)
   }
 }

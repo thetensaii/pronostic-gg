@@ -1,8 +1,8 @@
-import { Result } from "#common/Result";
-import { CreateLeagueUseCase } from "../domain/usecases/create-league/CreateLeagueUseCase.js";
-import { inject } from "@adonisjs/core";
-import { HttpContext } from "@adonisjs/core/http";
-import vine from "@vinejs/vine";
+import { Result } from '#common/Result'
+import { CreateLeagueUseCase } from '../domain/usecases/create-league/CreateLeagueUseCase.js'
+import { inject } from '@adonisjs/core'
+import { HttpContext } from '@adonisjs/core/http'
+import vine from '@vinejs/vine'
 
 const createLeagueValidator = vine.compile(
   vine.object({
@@ -13,20 +13,19 @@ const createLeagueValidator = vine.compile(
 
 @inject()
 export default class CreateLeagueController {
+  constructor(private createLeagueUseCase: CreateLeagueUseCase) {}
 
-  constructor(private createLeagueUseCase: CreateLeagueUseCase){}
-
-  public async handle({ auth, request, response }: HttpContext) {
+  async handle({ auth, request, response }: HttpContext) {
     const user = auth.getUserOrFail()
     const payload = await request.validateUsing(createLeagueValidator)
 
-    const result = await this.createLeagueUseCase.execute({ 
+    const result = await this.createLeagueUseCase.execute({
       name: payload.name,
       ownerId: user.id,
-      competitionId: payload.competition_id
+      competitionId: payload.competition_id,
     })
 
-    if(Result.isFail(result)){
+    if (Result.isFail(result)) {
       response.status(400)
     } else {
       const leagueId = result.value

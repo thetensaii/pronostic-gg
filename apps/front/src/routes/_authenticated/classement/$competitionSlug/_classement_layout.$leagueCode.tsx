@@ -19,7 +19,7 @@ export const Route = createFileRoute('/_authenticated/classement/$competitionSlu
   component: LeaderboardComponent
 })
 
-function LeaderboardComponent({} ) {
+function LeaderboardComponent() {
   const { leaderboard } = Route.useLoaderData()
 
   return (

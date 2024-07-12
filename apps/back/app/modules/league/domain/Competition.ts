@@ -5,11 +5,11 @@ type CompetitionProps = {
 export class Competition {
   private _id: string
 
-  constructor(props: CompetitionProps){
+  constructor(props: CompetitionProps) {
     this._id = props.id
   }
 
-  public get id(): string {
+  get id(): string {
     return this._id
   }
-} 
+}

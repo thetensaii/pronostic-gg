@@ -1,44 +1,43 @@
-import { CodeGenerator } from "#common/utils/CodeGenerator";
-import { UUIDGenerator } from "#common/utils/UUIDGenerator";
-import { CredentialModel } from "#models/credential";
-import { UserModel } from "#models/user";
-import { inject } from "@adonisjs/core";
-import { HttpContext } from "@adonisjs/core/http";
-import db from "@adonisjs/lucid/services/db";
-import { DateTime } from "luxon";
+import { CodeGenerator } from '#common/utils/CodeGenerator'
+import { UUIDGenerator } from '#common/utils/UUIDGenerator'
+import { CredentialModel } from '#models/credential'
+import { UserModel } from '#models/user'
+import { inject } from '@adonisjs/core'
+import { HttpContext } from '@adonisjs/core/http'
+import db from '@adonisjs/lucid/services/db'
+import { DateTime } from 'luxon'
 
 type CreateUserProps = {
-  googleId: string,
-  email: string,
+  googleId: string
+  email: string
   username: string
 }
 
 @inject()
 export default class GoogleOauthController {
-
   constructor(
-    private uuidGenerator: UUIDGenerator, 
+    private uuidGenerator: UUIDGenerator,
     private codeGenerator: CodeGenerator
-  ){}
+  ) {}
 
-  public async redirect({ ally }: HttpContext) {
+  async redirect({ ally }: HttpContext) {
     return ally.use('google').redirect()
   }
 
-  public async callback({ ally, auth, response }: HttpContext) {
+  async callback({ ally, auth, response }: HttpContext) {
     const googleUser = await ally.use('google').user()
 
     const credential = await CredentialModel.findBy({
       providerName: 'google',
-      providerUserId: googleUser.id
+      providerUserId: googleUser.id,
     })
 
-    let user: UserModel;
-    if(!credential){
-      user = await this.createUser({ 
-        googleId: googleUser.id, 
-        email: googleUser.email, 
-        username: googleUser.nickName
+    let user: UserModel
+    if (!credential) {
+      user = await this.createUser({
+        googleId: googleUser.id,
+        email: googleUser.email,
+        username: googleUser.nickName,
       })
     } else {
       credential.email = googleUser.email
@@ -60,16 +59,16 @@ export default class GoogleOauthController {
         {
           id: this.uuidGenerator.generate(),
           username: `${username}-${this.codeGenerator.generate()}`,
-          createdAt: DateTime.fromJSDate(currentDate)
-        }, 
+          createdAt: DateTime.fromJSDate(currentDate),
+        },
         { client: trx }
       )
 
       await createdUser.related('credentials').create({
-        providerName: 'google', 
-        providerUserId: googleId, 
-        createdAt: DateTime.fromJSDate(currentDate), 
-        email 
+        providerName: 'google',
+        providerUserId: googleId,
+        createdAt: DateTime.fromJSDate(currentDate),
+        email,
       })
 
       return createdUser

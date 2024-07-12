@@ -22,6 +22,7 @@ export const findNextForecasts = async (competitionSlug: string): Promise<NextFo
 
   const data = await response.json()
   
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return data.map((rawNextForecast: any) => ({ 
     matchId: rawNextForecast.match_id,
     startAt: new Date(rawNextForecast.start_at),

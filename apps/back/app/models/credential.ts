@@ -1,7 +1,7 @@
-import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm';
-import type { BelongsTo } from '@adonisjs/lucid/types/relations';
+import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
+import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import { DateTime } from 'luxon'
-import { UserModel } from './user.js';
+import { UserModel } from './user.js'
 
 export class CredentialModel extends BaseModel {
   static table = 'credentials'
@@ -16,11 +16,11 @@ export class CredentialModel extends BaseModel {
   declare email: string
 
   @column()
-  declare userId: string;
+  declare userId: string
 
   @belongsTo(() => UserModel, {
     foreignKey: 'userId',
-    localKey: 'id'
+    localKey: 'id',
   })
   declare user: BelongsTo<typeof UserModel>
 

@@ -6,7 +6,7 @@ const allyConfig = defineConfig({
     clientId: env.get('GOOGLE_CLIENT_ID'),
     clientSecret: env.get('GOOGLE_CLIENT_SECRET'),
     callbackUrl: `http://${env.get('HOST')}:${env.get('PORT')}/auth/google/callback`,
-    scopes: ['userinfo.email', 'userinfo.profile']
+    scopes: ['userinfo.email', 'userinfo.profile'],
   }),
 })
 

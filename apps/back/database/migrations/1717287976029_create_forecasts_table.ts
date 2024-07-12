@@ -8,17 +8,19 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.forecastsTableName, (table) => {
       table
-        .string('user_id').notNullable()
-        .references("id")
+        .string('user_id')
+        .notNullable()
+        .references('id')
         .inTable(this.usersTableName)
-        .onUpdate("CASCADE")
-        .onDelete("CASCADE")
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE')
       table
-        .string('match_id').notNullable()
-        .references("id")
+        .string('match_id')
+        .notNullable()
+        .references('id')
         .inTable(this.matchesTableName)
-        .onUpdate("CASCADE")
-        .onDelete("CASCADE")
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE')
       table.integer('team_a_score').unsigned().notNullable()
       table.integer('team_b_score').unsigned().notNullable()
 

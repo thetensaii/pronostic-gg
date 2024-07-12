@@ -1,6 +1,6 @@
-import { Forecast } from "../Forecast.js";
+import { Forecast } from '../Forecast.js'
 export type FindForecastProps = {
-  userId: string,
+  userId: string
   matchId: string
 }
 

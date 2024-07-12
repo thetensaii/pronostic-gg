@@ -9,36 +9,39 @@ export default class extends BaseSeeder {
   async run() {
     const lol = await GameModel.findByOrFail('name', 'League of Legends')
     const valorant = await GameModel.updateOrCreate(
-      { name: "Valorant" }, 
+      { name: 'Valorant' },
       {
         id: crypto.randomUUID(),
-        name: "Valorant",
+        name: 'Valorant',
         createdAt: DateTime.fromJSDate(new Date()),
       }
-  )
+    )
 
-    await CompetitionModel.updateOrCreateMany(['slug'], [
-      {
-        id: crypto.randomUUID(),
-        gameId: lol.id,
-        name: "LEC",
-        slug: "lec",
-        createdAt: DateTime.fromJSDate(new Date()),
-      },
-      {
-        id: crypto.randomUUID(),
-        gameId: valorant.id,
-        name: "VRL",
-        slug: "vrl",
-        createdAt: DateTime.fromJSDate(new Date()),
-      },
-      {
-        id: crypto.randomUUID(),
-        gameId: valorant.id,
-        name: "VCT EMEA",
-        slug: "vct-emea",
-        createdAt: DateTime.fromJSDate(new Date()),
-      },
-    ])
+    await CompetitionModel.updateOrCreateMany(
+      ['slug'],
+      [
+        {
+          id: crypto.randomUUID(),
+          gameId: lol.id,
+          name: 'LEC',
+          slug: 'lec',
+          createdAt: DateTime.fromJSDate(new Date()),
+        },
+        {
+          id: crypto.randomUUID(),
+          gameId: valorant.id,
+          name: 'VRL',
+          slug: 'vrl',
+          createdAt: DateTime.fromJSDate(new Date()),
+        },
+        {
+          id: crypto.randomUUID(),
+          gameId: valorant.id,
+          name: 'VCT EMEA',
+          slug: 'vct-emea',
+          createdAt: DateTime.fromJSDate(new Date()),
+        },
+      ]
+    )
   }
 }
