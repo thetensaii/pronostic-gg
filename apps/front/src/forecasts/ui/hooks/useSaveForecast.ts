@@ -4,7 +4,7 @@ import { Environment } from "~/environment"
 export const useSaveForecast = (matchId: string) => {
   const mutation = useMutation({ 
     mutationFn: async ( score: [number, number]) => {
-      const url = new URL(`${Environment.VITE_BACKEND_URL}/forecasts`)
+      const url = new URL(`${Environment.VITE_PUBLIC_BACKEND_URL}/forecasts`)
 
       const response = await fetch(url.toString(), {
         method: 'POST',

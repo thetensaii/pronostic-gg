@@ -1,0 +1,6 @@
+.env
+
+logs
+
+nginx/nginx.crt
+nginx/nginx.key

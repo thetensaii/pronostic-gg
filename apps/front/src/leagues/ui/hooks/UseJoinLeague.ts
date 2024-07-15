@@ -11,7 +11,7 @@ type JoinLeagueHookProps = {
 export const useJoinLeague = ({ onSuccess } : JoinLeagueHookProps) => {
   const mutation = useMutation({ 
     mutationFn: async ({leagueCode}:JoinLeagueMutationProps) => {
-      const url = new URL(`${Environment.VITE_BACKEND_URL}/leagues/join`)
+      const url = new URL(`${Environment.VITE_PUBLIC_BACKEND_URL}/leagues/join`)
 
       const response = await fetch(url.toString(), {
         method: 'POST',

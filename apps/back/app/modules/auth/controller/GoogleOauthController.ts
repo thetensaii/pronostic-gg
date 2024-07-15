@@ -2,6 +2,7 @@ import { CodeGenerator } from '#common/utils/CodeGenerator'
 import { UUIDGenerator } from '#common/utils/UUIDGenerator'
 import { CredentialModel } from '#models/credential'
 import { UserModel } from '#models/user'
+import env from '#start/env'
 import { inject } from '@adonisjs/core'
 import { HttpContext } from '@adonisjs/core/http'
 import db from '@adonisjs/lucid/services/db'
@@ -49,7 +50,7 @@ export default class GoogleOauthController {
 
     await auth.use('web').login(user)
 
-    return response.redirect('http://localhost:3000')
+    return response.redirect(env.get('PUBLIC_FRONT_URL'))
   }
 
   private async createUser({ googleId, email, username }: CreateUserProps): Promise<UserModel> {

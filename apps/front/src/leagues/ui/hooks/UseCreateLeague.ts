@@ -12,7 +12,7 @@ type CreateLeagueHookProps = {
 export const useCreateLeague = ({ onSuccess } : CreateLeagueHookProps) => {
   const mutation = useMutation({ 
     mutationFn: async ({name, competitionId}:CreateLeagueMutationProps) => {
-      const url = new URL(`${Environment.VITE_BACKEND_URL}/leagues`)
+      const url = new URL(`${Environment.VITE_PUBLIC_BACKEND_URL}/leagues`)
 
       const response = await fetch(url.toString(), {
         method: 'POST',

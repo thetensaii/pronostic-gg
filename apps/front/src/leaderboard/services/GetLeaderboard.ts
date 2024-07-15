@@ -18,7 +18,7 @@ type Props = {
 }
 
 export const findLeaderBoard = async ({ competitionSlug, leagueCode }: Props): Promise<Leaderboard|null> => {
-  const url = new URL(`${Environment.VITE_BACKEND_URL}/leaderboard/${competitionSlug}/${leagueCode}`)
+  const url = new URL(`${Environment.VITE_PUBLIC_BACKEND_URL}/leaderboard/${competitionSlug}/${leagueCode}`)
   const response = await fetch(url.toString(), {
     credentials: 'include'
   })
