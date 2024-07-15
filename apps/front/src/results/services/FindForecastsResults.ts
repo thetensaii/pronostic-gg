@@ -9,7 +9,7 @@ export type ForecastResult = {
 }
 
 export const findForecastsResults = async (competitionSlug: string): Promise<ForecastResult[] | null> => {
-  const url = new URL(`${Environment.VITE_BACKEND_URL}/forecasts/${competitionSlug}/results`)
+  const url = new URL(`${Environment.VITE_PUBLIC_BACKEND_URL}/forecasts/${competitionSlug}/results`)
 
   const response = await fetch(url.toString(), {
     credentials: 'include'

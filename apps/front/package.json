@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "router:generate": "tsr generate",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --fix --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
@@ -25,6 +26,7 @@
     "@pandacss/dev": "^0.40.1",
     "@park-ui/panda-preset": "^0.38.0",
     "@tanstack/eslint-plugin-query": "^5.35.6",
+    "@tanstack/router-cli": "^1.44.3",
     "@tanstack/router-devtools": "^1.31.6",
     "@tanstack/router-vite-plugin": "^1.30.0",
     "@types/node": "^20.12.7",

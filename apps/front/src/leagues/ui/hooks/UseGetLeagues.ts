@@ -11,7 +11,7 @@ export const useGetLeagues = () => {
   const query = useQuery<RawLeague[]>({ 
     queryKey: ['leagues'], 
     queryFn: async () => {
-      const url = new URL(`${Environment.VITE_BACKEND_URL}/leagues`)
+      const url = new URL(`${Environment.VITE_PUBLIC_BACKEND_URL}/leagues`)
       const response = await fetch(url.toString(), {
         credentials: 'include'
       })

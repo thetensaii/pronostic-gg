@@ -1,0 +1,62 @@
+services:
+  reverse-proxy:
+    image: nginx:1.27
+    ports:
+      - "443:443"
+    depends_on:
+      - webapp
+      - backend
+    volumes:
+      - ./nginx:/etc/nginx/templates
+      - ./nginx/nginx.crt:/etc/nginx/nginx.crt
+      - ./nginx/nginx.key:/etc/nginx/nginx.key
+    environment:
+      - PUBLIC_FRONT_DOMAIN=${PUBLIC_FRONT_DOMAIN}
+      - PUBLIC_BACKEND_DOMAIN=${PUBLIC_BACKEND_DOMAIN}
+    restart: always
+
+  webapp:
+    build:
+      context: ../apps/front/
+      dockerfile: Dockerfile
+      args:
+        - PUBLIC_BACKEND_URL=${PUBLIC_BACKEND_URL}
+    restart: always
+
+  backend:
+    build:
+      context: ../apps/back/
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    volumes:
+      - ./logs/:/var/log/apps/
+    environment:
+      - NODE_ENV=production
+      - TZ=UTC
+      - SESSION_DRIVER=cookie
+      - PORT=80
+      - HOST=0.0.0.0
+      - LOG_LEVEL=info
+      - LOG_FILE_PATH=/var/log/apps/adonisjs.log
+      - APP_KEY=${APP_KEY}
+      - PUBLIC_FRONT_URL=${PUBLIC_FRONT_URL}
+      - PUBLIC_BACKEND_URL=${PUBLIC_BACKEND_URL}
+      - DB_HOST=db
+      - DB_PORT=${DB_PORT}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_DATABASE=${DB_DATABASE}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+    restart: always
+  
+  db:
+    image: postgres:16
+    ports:
+      - "${DB_PORT}:5432"
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_DATABASE}
+    restart: always

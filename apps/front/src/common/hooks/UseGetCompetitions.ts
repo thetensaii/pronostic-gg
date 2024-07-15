@@ -11,7 +11,7 @@ export const useGetCompetitions = (): Competition[] => {
   const query = useQuery<Competition[]>({ 
     queryKey: ['competitions'], 
     queryFn: async () => {
-      const response = await fetch(`${Environment.VITE_BACKEND_URL}/competitions`, {
+      const response = await fetch(`${Environment.VITE_PUBLIC_BACKEND_URL}/competitions`, {
         credentials: 'include'
       })
       if(response.ok) return await response.json()

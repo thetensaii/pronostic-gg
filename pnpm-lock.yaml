@@ -90,92 +90,7 @@ importers:
         specifier: ^10.9.2
         version: 10.9.2(@swc/core@1.5.7)(@types/node@20.12.12)(typescript@5.4.5)
       typescript:
-        specifier: ^5.4.5
-        version: 5.4.5
-
-  apps/back/build:
-    dependencies:
-      '@adonisjs/ally':
-        specifier: ^5.0.2
-        version: 5.0.2(@adonisjs/core@6.9.0)
-      '@adonisjs/auth':
-        specifier: ^9.2.1
-        version: 9.2.1(@adonisjs/assembler@7.5.2)(@adonisjs/core@6.9.0)(@adonisjs/lucid@20.6.0)(@adonisjs/session@7.4.0)(@japa/api-client@2.0.3)(@japa/plugin-adonisjs@3.0.1)
-      '@adonisjs/core':
-        specifier: ^6.9.0
-        version: 6.9.0(@adonisjs/assembler@7.5.2)(@vinejs/vine@2.0.0)
-      '@adonisjs/cors':
-        specifier: ^2.2.1
-        version: 2.2.1(@adonisjs/core@6.9.0)
-      '@adonisjs/lucid':
-        specifier: ^20.6.0
-        version: 20.6.0(@adonisjs/assembler@7.5.2)(@adonisjs/core@6.9.0)(luxon@3.4.4)(pg@8.11.5)
-      '@adonisjs/session':
-        specifier: ^7.4.0
-        version: 7.4.0(@adonisjs/core@6.9.0)(@japa/api-client@2.0.3)
-      '@vinejs/vine':
-        specifier: ^2.0.0
-        version: 2.0.0
-      luxon:
-        specifier: ^3.4.4
-        version: 3.4.4
-      pg:
-        specifier: ^8.11.5
-        version: 8.11.5
-      reflect-metadata:
-        specifier: ^0.2.2
-        version: 0.2.2
-    devDependencies:
-      '@adonisjs/assembler':
-        specifier: ^7.5.2
-        version: 7.5.2(typescript@5.4.5)
-      '@adonisjs/eslint-config':
-        specifier: ^1.3.0
-        version: 1.3.0(eslint@8.57.0)(prettier@3.2.5)(typescript@5.4.5)
-      '@adonisjs/prettier-config':
-        specifier: ^1.3.0
-        version: 1.3.0
-      '@adonisjs/tsconfig':
-        specifier: ^1.3.0
-        version: 1.3.0
-      '@japa/api-client':
-        specifier: ^2.0.3
-        version: 2.0.3(@japa/assert@3.0.0)(@japa/runner@3.1.4)
-      '@japa/assert':
-        specifier: ^3.0.0
-        version: 3.0.0(@japa/runner@3.1.4)(openapi-types@12.1.3)
-      '@japa/plugin-adonisjs':
-        specifier: ^3.0.1
-        version: 3.0.1(@adonisjs/core@6.9.0)(@japa/api-client@2.0.3)(@japa/runner@3.1.4)
-      '@japa/runner':
-        specifier: ^3.1.4
-        version: 3.1.4
-      '@swc/core':
-        specifier: ^1.5.3
-        version: 1.5.7
-      '@types/luxon':
-        specifier: ^3.4.2
-        version: 3.4.2
-      '@types/node':
-        specifier: ^20.12.10
-        version: 20.12.12
-      eslint:
-        specifier: ^8.57.0
-        version: 8.57.0
-      hot-hook:
-        specifier: ^0.2.5
-        version: 0.2.6
-      pino-pretty:
-        specifier: ^11.0.0
-        version: 11.0.0
-      prettier:
-        specifier: ^3.2.5
-        version: 3.2.5
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@swc/core@1.5.7)(@types/node@20.12.12)(typescript@5.4.5)
-      typescript:
-        specifier: ^5.4.5
+        specifier: ~5.4.5
         version: 5.4.5
 
   apps/front:
@@ -214,6 +129,9 @@ importers:
       '@tanstack/eslint-plugin-query':
         specifier: ^5.35.6
         version: 5.35.6(eslint@8.57.0)(typescript@5.4.5)
+      '@tanstack/router-cli':
+        specifier: ^1.44.3
+        version: 1.44.3
       '@tanstack/router-devtools':
         specifier: ^1.31.6
         version: 1.31.6(csstype@3.1.3)(react-dom@18.3.1)(react@18.3.1)
@@ -2379,6 +2297,16 @@ packages:
       react-dom: 18.3.1(react@18.3.1)
       use-sync-external-store: 1.2.2(react@18.3.1)
 
+  /@tanstack/router-cli@1.44.3:
+    resolution: {integrity: sha512-+AbkbWNGl/aOmRtrbV/U1rON6Va78Fem8Z8novWi9dzWMblyrgAiSMQBk0YP8zF9DzWLWrLLNpi9YS5yhmdtDQ==}
+    engines: {node: '>=12'}
+    hasBin: true
+    dependencies:
+      '@tanstack/router-generator': 1.44.3
+      chokidar: 3.6.0
+      yargs: 17.7.2
+    dev: true
+
   /@tanstack/router-devtools@1.31.6(csstype@3.1.3)(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-vtlEk8uu0eiEjGQVN7okE0ly9XJQ1HZO8e2CwTm4nymUn1N+RRHarbVJcSn9Sh3Hynn7MyqrVquo7VDFT6bzGQ==}
     engines: {node: '>=12'}
@@ -2402,6 +2330,14 @@ packages:
     dependencies:
       prettier: 3.2.5
       zod: 3.23.5
+    dev: true
+
+  /@tanstack/router-generator@1.44.3:
+    resolution: {integrity: sha512-HREwp8dpArD6OXROWOvsNPo1dlK/SNLDvCypj3VIBewH+JNWEjnv42m0lpddIbVjrm/kiHiVJVIRi4rnlrXnjQ==}
+    engines: {node: '>=12'}
+    dependencies:
+      prettier: 3.3.2
+      zod: 3.23.8
     dev: true
 
   /@tanstack/router-vite-plugin@1.30.0(vite@5.2.10):
@@ -4510,6 +4446,15 @@ packages:
       slice-ansi: 5.0.0
       string-width: 7.1.0
 
+  /cliui@8.0.1:
+    resolution: {integrity: sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==}
+    engines: {node: '>=12'}
+    dependencies:
+      string-width: 4.2.3
+      strip-ansi: 6.0.1
+      wrap-ansi: 7.0.0
+    dev: true
+
   /clone-deep@4.0.1:
     resolution: {integrity: sha512-neHB9xuzh/wk0dIHweyAXv2aPGZIVk3pLMe+/RNzINf17fe0OG96QroktYAUm7SM1PBnzTabaLboqqxDyMU+SQ==}
     engines: {node: '>=6'}
@@ -5482,6 +5427,11 @@ packages:
   /gensync@1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
     engines: {node: '>=6.9.0'}
+    dev: true
+
+  /get-caller-file@2.0.5:
+    resolution: {integrity: sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==}
+    engines: {node: 6.* || 8.* || >= 10.*}
     dev: true
 
   /get-east-asian-width@1.2.0:
@@ -7212,6 +7162,12 @@ packages:
     hasBin: true
     dev: true
 
+  /prettier@3.3.2:
+    resolution: {integrity: sha512-rAVeHYMcv8ATV5d508CFdn+8/pHPpXeIid1DdrPwXnaAdH7cqjVbpJaT5eq4yRAFU/lsbwYwSF/n5iNrdJHPQA==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: true
+
   /pretty-format@25.5.0:
     resolution: {integrity: sha512-kbo/kq2LQ/A/is0PQwsEHM7Ca6//bGPPvU6UnsdDRSKTWxT/ru/xb88v4BJf6a69H+uTytOEsTusT9ksd/1iWQ==}
     engines: {node: '>= 8.3'}
@@ -7442,6 +7398,11 @@ packages:
     hasBin: true
     dependencies:
       jsesc: 0.5.0
+    dev: true
+
+  /require-directory@2.1.1:
+    resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
+    engines: {node: '>=0.10.0'}
     dev: true
 
   /resolve-alpn@1.2.1:
@@ -8380,6 +8341,15 @@ packages:
   /wordwrap@1.0.0:
     resolution: {integrity: sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==}
 
+  /wrap-ansi@7.0.0:
+    resolution: {integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==}
+    engines: {node: '>=10'}
+    dependencies:
+      ansi-styles: 4.3.0
+      string-width: 4.2.3
+      strip-ansi: 6.0.1
+    dev: true
+
   /wrap-ansi@9.0.0:
     resolution: {integrity: sha512-G8ura3S+3Z2G+mkgNRq8dqaFZAuxfsxpBB8OCTGRTCtp+l/v9nbFNmCUP1BZMts3G1142MsZfn6eeUKrr4PD1Q==}
     engines: {node: '>=18'}
@@ -8396,6 +8366,11 @@ packages:
     engines: {node: '>=0.4'}
     dev: false
 
+  /y18n@5.0.8:
+    resolution: {integrity: sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==}
+    engines: {node: '>=10'}
+    dev: true
+
   /yallist@3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
     dev: true
@@ -8406,6 +8381,19 @@ packages:
   /yargs-parser@21.1.1:
     resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
     engines: {node: '>=12'}
+
+  /yargs@17.7.2:
+    resolution: {integrity: sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w==}
+    engines: {node: '>=12'}
+    dependencies:
+      cliui: 8.0.1
+      escalade: 3.1.2
+      get-caller-file: 2.0.5
+      require-directory: 2.1.1
+      string-width: 4.2.3
+      y18n: 5.0.8
+      yargs-parser: 21.1.1
+    dev: true
 
   /yn@3.1.1:
     resolution: {integrity: sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==}
@@ -8448,4 +8436,8 @@ packages:
 
   /zod@3.23.5:
     resolution: {integrity: sha512-fkwiq0VIQTksNNA131rDOsVJcns0pfVUjHzLrNBiF/O/Xxb5lQyEXkhZWcJ7npWsYlvs+h0jFWXXy4X46Em1JA==}
+    dev: true
+
+  /zod@3.23.8:
+    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
     dev: true
