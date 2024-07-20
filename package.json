@@ -12,7 +12,7 @@
     "db:migrations:rollback": "pnpm --parallel run db:migrations:rollback",
     "db:migrations:seed": "pnpm --parallel run db:migrations:seed",
     "generate:cert:local": "./hosting/generate-local-cert.sh",
-    "host:local:run": "pnpm run host:local:down && docker compose -f ./hosting/docker-compose.yml up --build -d && pnpm run db:migrations:seed",
+    "host:local:run": "pnpm run host:local:down && docker compose -f ./hosting/docker-compose.yml up --remove-orphans --build -d && pnpm run db:migrations:seed",
     "host:local:down": "docker compose -f ./hosting/docker-compose.yml down && docker compose -f ./hosting/docker-compose.yml rm"
   }
 }
