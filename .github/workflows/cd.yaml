@@ -16,12 +16,12 @@ env:
   DB_DATABASE: ${{ secrets.DB_DATABASE }}
 
   # BACKEND
-  NODE_ENV: not-used
+  NODE_ENV: production
   APP_KEY: not-used
   TZ: not-used
-  PORT: not-used
+  PORT: 80
   HOST: 0.0.0.0
-  SESSION_DRIVER: not-used
+  SESSION_DRIVER: cookie
   LOG_LEVEL: not-used
   LOG_FILE_PATH: not-used
   PUBLIC_FRONT_URL: not-used
