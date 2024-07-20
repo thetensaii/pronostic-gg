@@ -16,7 +16,7 @@ env:
   DB_DATABASE: ${{ secrets.DB_DATABASE }}
 
   # BACKEND
-  NODE_ENV: production
+  NODE_ENV: development
   APP_KEY: not-used
   TZ: not-used
   PORT: 80
