@@ -16,6 +16,7 @@
     "db:up": "docker compose up -d",
     "db:down": "docker compose down",
     "db:migrations:run": "node ace migration:run",
+    "db:migrations:run:force": "node ace migration:run --force",
     "db:migrations:rollback": "node ace migration:rollback",
     "db:migrations:seed": "node ace migration:fresh --seed"
   },

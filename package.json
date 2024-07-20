@@ -9,6 +9,7 @@
     "db:up": "pnpm --parallel run db:up",
     "db:down": "pnpm --parallel run db:down",
     "db:migrations:run": "pnpm --parallel run db:migrations:run",
+    "db:migrations:run:force": "pnpm --parallel run db:migrations:run:force",
     "db:migrations:rollback": "pnpm --parallel run db:migrations:rollback",
     "db:migrations:seed": "pnpm --parallel run db:migrations:seed",
     "generate:cert:local": "./hosting/generate-local-cert.sh",
