@@ -7,6 +7,7 @@ services:
     depends_on:
       - webapp
       - backend
+      - admin
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile
       - ./caddy/data:/data
@@ -45,4 +46,12 @@ services:
       - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
       - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
     restart: always
+
+  admin:
+    image: index.docker.io/appsmith/appsmith-ee
+    container_name: appsmith
+    volumes:
+      - ./appsmith-stacks:/appsmith-stacks
+    restart: always
+
   
