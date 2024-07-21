@@ -46,5 +46,6 @@ jobs:
         script: |
           cd pronostic-gg
           git pull
+          npm -v
           pnpm install
           pnpm run db:migrations:run:force
