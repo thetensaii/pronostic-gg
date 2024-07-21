@@ -49,3 +49,6 @@ jobs:
           git pull
           NODE_ENV=development pnpm install
           pnpm run db:migrations:run:force
+
+          cd hosting/prod
+          docker compose up -d --build --remove-orphans

@@ -1,0 +1,7 @@
+prono.tensaii.dev {
+	reverse_proxy webapp
+}
+
+api.prono.tensaii.dev {
+	reverse_proxy backend
+}
