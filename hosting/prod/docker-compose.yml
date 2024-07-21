@@ -27,7 +27,7 @@ services:
     volumes:
       - ./logs/:/var/log/apps/
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
       - TZ=UTC
       - SESSION_DRIVER=cookie
       - PORT=80
