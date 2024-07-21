@@ -34,23 +34,16 @@ jobs:
   deploy:
     runs-on: ubuntu-24.04
     steps:
-    - name: Checkout Repo
-      uses: actions/checkout@v4
-
-    - name: Install PNPM 8.15
-      uses: pnpm/action-setup@v4
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v1.0.3
       with:
-        version: 8.15
-
-    - name: Install Node 20.11
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20.11
-        cache: 'pnpm'
-
-    - name: Install Project
-      run: pnpm install
-    
-    - name: Run DB Migrations
-      run: pnpm run db:migrations:run:force
-
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USERNAME }}
+        password: ${{ secrets.VPS_PASSWORD }}
+        port: ${{ secrets.VPS_PORT }}
+        script_stop: true
+        envs: DB_HOST,DB_PORT,DB_USER,DB_PASSWORD,DB_DATABASE,NODE_ENV,APP_KEY,TZ,PORT,HOST,SESSION_DRIVER,LOG_LEVEL,LOG_FILE_PATH,PUBLIC_FRONT_URL,PUBLIC_BACKEND_URL,GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET
+        script: |
+          cd pronostic-gg
+          git pull
+          pnpm run db:migrations:run:force
