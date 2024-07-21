@@ -16,7 +16,7 @@ env:
   DB_DATABASE: ${{ secrets.DB_DATABASE }}
 
   # BACKEND
-  NODE_ENV: development
+  NODE_ENV: production
   APP_KEY: ${{ secrets.APP_KEY }}
   TZ: UTC
   PORT: 80
@@ -47,5 +47,5 @@ jobs:
           source ~/.nvm/nvm.sh
           cd pronostic-gg
           git pull
-          pnpm install
+          NODE_ENV=development pnpm install
           pnpm run db:migrations:run:force

@@ -52,7 +52,7 @@ export default defineConfig({
 
   metaFiles: [
     {
-      pattern: 'databse/ca-certificate.crt',
+      pattern: 'database/ca-certificate.crt',
       reloadServer: false,
     },
   ],

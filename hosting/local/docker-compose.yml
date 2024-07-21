@@ -17,7 +17,7 @@ services:
 
   webapp:
     build:
-      context: ../apps/front/
+      context: ../../apps/front/
       dockerfile: Dockerfile
       args:
         - PUBLIC_BACKEND_URL=${PUBLIC_BACKEND_URL}
@@ -25,14 +25,14 @@ services:
 
   backend:
     build:
-      context: ../apps/back/
+      context: ../../apps/back/
       dockerfile: Dockerfile
     depends_on:
       - db
     volumes:
       - ./logs/:/var/log/apps/
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
       - TZ=UTC
       - SESSION_DRIVER=cookie
       - PORT=80
