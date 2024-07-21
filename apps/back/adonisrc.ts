@@ -50,6 +50,13 @@ export default defineConfig({
   */
   preloads: [() => import('#start/routes'), () => import('#start/kernel')],
 
+  metaFiles: [
+    {
+      pattern: 'databse/ca-certificate.crt',
+      reloadServer: false,
+    },
+  ],
+
   /*
   |--------------------------------------------------------------------------
   | Tests
