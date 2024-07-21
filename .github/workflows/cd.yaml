@@ -26,8 +26,8 @@ env:
   LOG_FILE_PATH: not-used
   PUBLIC_FRONT_URL: https://prono.tensaii.dev
   PUBLIC_BACKEND_URL: https://api.prono.tensaii.dev
-  GOOGLE_CLIENT_ID: {{ secrets.GOOGLE_CLIENT_ID }}
-  GOOGLE_CLIENT_SECRET: {{ secrets.GOOGLE_CLIENT_SECRET }}
+  GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+  GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
 
 
 jobs:
