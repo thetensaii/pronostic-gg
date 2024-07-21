@@ -44,7 +44,7 @@ jobs:
         script_stop: true
         envs: DB_HOST,DB_PORT,DB_USER,DB_PASSWORD,DB_DATABASE,NODE_ENV,APP_KEY,TZ,PORT,HOST,SESSION_DRIVER,LOG_LEVEL,LOG_FILE_PATH,PUBLIC_FRONT_URL,PUBLIC_BACKEND_URL,GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET
         script: |
-          source ~/.nvm/nvm.sh
+          source .profile
           cd pronostic-gg
           git pull
           pnpm install
