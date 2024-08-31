@@ -6,6 +6,6 @@ api.prono.tensaii.dev {
 	reverse_proxy backend
 }
 
-admin.prono.tensaii.dev www.prono.tensaii.dev {
+admin.prono.tensaii.dev {
 	reverse_proxy admin
 }
